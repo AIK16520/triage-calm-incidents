@@ -3,23 +3,103 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { ThumbsUp, Check, Send } from "lucide-react";
+import { ThumbsUp, Send, FileText, Zap } from "lucide-react";
 import { toast } from "sonner";
 
 const supportedIntegrations = [
-  { name: "AWS CloudWatch", teams: "2,341", connected: true },
-  { name: "Vercel", teams: "1,892", connected: true },
-  { name: "Railway", teams: "1,456", connected: true },
-  { name: "Render", teams: "1,234", connected: true },
-  { name: "Modal", teams: "987", connected: true },
-  { name: "Digital Ocean", teams: "876", connected: true },
+  { 
+    name: "AWS CloudWatch", 
+    logo: (
+      <svg viewBox="0 0 64 64" className="w-10 h-10">
+        <path fill="#FF9900" d="M32 4L4 18v28l28 14 28-14V18L32 4z"/>
+        <path fill="#252F3E" d="M32 18L12 28v16l20 10 20-10V28L32 18z"/>
+        <path fill="#FF9900" d="M32 28l-12 6v8l12 6 12-6v-8l-12-6z"/>
+      </svg>
+    )
+  },
+  { 
+    name: "Vercel", 
+    logo: (
+      <svg viewBox="0 0 76 65" className="w-10 h-10">
+        <path fill="currentColor" d="M37.5274 0L75.0548 65H0L37.5274 0Z"/>
+      </svg>
+    )
+  },
+  { 
+    name: "Railway", 
+    logo: (
+      <svg viewBox="0 0 32 32" className="w-10 h-10">
+        <path fill="currentColor" d="M6.5 4h19a2.5 2.5 0 0 1 2.5 2.5v19a2.5 2.5 0 0 1-2.5 2.5h-19A2.5 2.5 0 0 1 4 25.5v-19A2.5 2.5 0 0 1 6.5 4zm2.5 6a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V11a1 1 0 0 0-1-1H9z"/>
+      </svg>
+    )
+  },
+  { 
+    name: "Render", 
+    logo: (
+      <svg viewBox="0 0 40 52" className="w-10 h-10">
+        <path fill="#46E3B7" d="M0 0h14.12v14.12H0V0zm25.88 0H40v14.12H25.88V0zM0 12.94h14.12v14.12H0V12.94zm0 12.94h14.12V40H0V25.88zm0 12.94h14.12V52H0V38.82zm25.88-12.94H40V40H25.88V25.88zM12.94 25.88h14.12V40H12.94V25.88z"/>
+      </svg>
+    )
+  },
+  { 
+    name: "Modal", 
+    logo: (
+      <svg viewBox="0 0 24 24" className="w-10 h-10">
+        <path fill="#00D26A" d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+      </svg>
+    )
+  },
+  { 
+    name: "Digital Ocean", 
+    logo: (
+      <svg viewBox="0 0 32 32" className="w-10 h-10">
+        <path fill="#0080FF" d="M16 32v-6.1c5.5 0 9.4-5.7 7-10.9-1-2.2-2.8-4-5-5-5.2-2.4-10.9 1.5-10.9 7H1c0-8.3 8-14.6 16.3-12.1C22 6.2 25.8 10 27.1 14.7c2.5 8.3-3.8 16.3-12.1 16.3h1z"/>
+        <path fill="#0080FF" d="M16 25.9h-6.1v6.1H16v-6.1zm-6.1 0H4.8v5.1h5.1v-5.1zm0-6.1H4.8v5.1h5.1v-5.1z"/>
+      </svg>
+    )
+  },
 ];
 
 const comingSoonIntegrations = [
-  { name: "Heroku", votes: 234 },
-  { name: "Fly.io", votes: 189 },
-  { name: "Google Cloud Platform", votes: 156 },
-  { name: "Azure", votes: 143 },
+  { 
+    name: "Heroku", 
+    votes: 234,
+    logo: (
+      <svg viewBox="0 0 24 24" className="w-8 h-8">
+        <path fill="#6762A6" d="M20.61 0H3.39C2.62 0 2 .62 2 1.39v21.22c0 .77.62 1.39 1.39 1.39h17.22c.77 0 1.39-.62 1.39-1.39V1.39c0-.77-.62-1.39-1.39-1.39zM14.5 20h-3v-6l-3 3V6h3v6l3-3v11zm1.5-9.5h-2.5V6H16c0 1.5-.5 3-1.5 4.5h1.5z"/>
+      </svg>
+    )
+  },
+  { 
+    name: "Fly.io", 
+    votes: 189,
+    logo: (
+      <svg viewBox="0 0 24 24" className="w-8 h-8">
+        <path fill="#8B5CF6" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+      </svg>
+    )
+  },
+  { 
+    name: "Google Cloud", 
+    votes: 156,
+    logo: (
+      <svg viewBox="0 0 24 24" className="w-8 h-8">
+        <path fill="#EA4335" d="M12.5 7.5v2h4.5c-.2 1-.8 1.8-1.6 2.3l1.6 1.2c1.1-.9 1.8-2.3 1.8-3.9 0-.4 0-.7-.1-1h-6.2z"/>
+        <path fill="#4285F4" d="M12.5 19.5c2.4 0 4.4-.8 5.9-2.2l-1.6-1.2c-.6.4-1.4.7-2.3.8v-2.4h-2v5z"/>
+        <path fill="#FBBC05" d="M6.6 14.3c-.3-.6-.5-1.3-.5-2s.2-1.4.5-2l-1.6-1.2c-.6 1-.9 2.1-.9 3.2s.3 2.2.9 3.2l1.6-1.2z"/>
+        <path fill="#34A853" d="M12.5 4.5c1.3 0 2.5.5 3.4 1.3l1.4-1.4c-1.3-1.2-3-1.9-4.8-1.9-2.7 0-5 1.4-6.4 3.6l1.6 1.2c.9-1.5 2.6-2.8 4.8-2.8z"/>
+      </svg>
+    )
+  },
+  { 
+    name: "Azure", 
+    votes: 143,
+    logo: (
+      <svg viewBox="0 0 24 24" className="w-8 h-8">
+        <path fill="#0089D6" d="M13.05 4.24l-4.71 4.39L3 18.57h6.32l3.73-14.33zm.88 1.49l2.03 6.22-3.72 4.41-4.66.84h8.27L21 18.57H9.9l4.03-12.84z"/>
+      </svg>
+    )
+  },
 ];
 
 const IntegrationsSection = () => {
@@ -54,25 +134,51 @@ const IntegrationsSection = () => {
             Connect your entire infrastructure in minutes. No complex setup required.
           </p>
         </div>
+
+        {/* Review Mode Feature */}
+        <div className="max-w-4xl mx-auto mb-16">
+          <div className="glass rounded-2xl p-8 border border-accent/20">
+            <div className="flex flex-col md:flex-row items-center gap-6">
+              <div className="flex-shrink-0 w-16 h-16 rounded-2xl bg-accent/10 flex items-center justify-center">
+                <FileText className="w-8 h-8 text-accent" />
+              </div>
+              <div className="flex-1 text-center md:text-left">
+                <div className="flex items-center justify-center md:justify-start gap-2 mb-2">
+                  <h3 className="text-xl font-bold">Review Mode</h3>
+                  <span className="px-2 py-0.5 text-xs font-medium bg-accent/20 text-accent rounded-full">New</span>
+                </div>
+                <p className="text-muted-foreground">
+                  Not ready for auto-remediation? Start with Review Mode. Get detailed triage reports with root cause analysis, 
+                  recommended actions, and impact assessments — without any automated changes to your infrastructure.
+                </p>
+              </div>
+              <div className="flex-shrink-0 flex gap-2">
+                <div className="flex items-center gap-2 px-4 py-2 rounded-lg bg-secondary/50 text-sm">
+                  <FileText className="w-4 h-4 text-accent" />
+                  <span>Reports Only</span>
+                </div>
+                <div className="flex items-center gap-2 px-4 py-2 rounded-lg bg-secondary/50 text-sm">
+                  <Zap className="w-4 h-4 text-primary" />
+                  <span>Auto-Fix</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
         
         {/* Supported integrations */}
         <div className="mb-12">
-          <h3 className="text-xl font-semibold mb-6 text-center">Currently Supported</h3>
+          <h3 className="text-xl font-semibold mb-6 text-center">Supported Platforms</h3>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 max-w-5xl mx-auto">
             {supportedIntegrations.map((integration) => (
               <div
                 key={integration.name}
-                className="glass rounded-xl p-6 text-center hover:scale-105 transition-all duration-300 group cursor-pointer"
+                className="glass rounded-xl p-6 text-center hover:scale-105 transition-all duration-300 group cursor-pointer hover:border-primary/30 border border-transparent"
               >
-                <div className="w-12 h-12 mx-auto mb-3 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                  <span className="text-lg font-bold text-primary">{integration.name.charAt(0)}</span>
+                <div className="w-16 h-16 mx-auto mb-4 rounded-xl bg-secondary/80 flex items-center justify-center group-hover:bg-secondary transition-colors">
+                  {integration.logo}
                 </div>
-                <h4 className="font-medium text-sm mb-1">{integration.name}</h4>
-                <div className="flex items-center justify-center gap-1 text-xs text-green-400">
-                  <Check className="w-3 h-3" />
-                  <span>Connected</span>
-                </div>
-                <p className="text-xs text-muted-foreground mt-2">{integration.teams} teams</p>
+                <h4 className="font-medium text-sm">{integration.name}</h4>
               </div>
             ))}
           </div>
@@ -85,13 +191,12 @@ const IntegrationsSection = () => {
             {comingSoonIntegrations.map((integration) => (
               <div
                 key={integration.name}
-                className="glass rounded-xl p-6 text-center opacity-60 hover:opacity-100 transition-all duration-300"
+                className="glass rounded-xl p-6 text-center opacity-70 hover:opacity-100 transition-all duration-300"
               >
-                <div className="w-12 h-12 mx-auto mb-3 rounded-xl bg-muted flex items-center justify-center">
-                  <span className="text-lg font-bold text-muted-foreground">{integration.name.charAt(0)}</span>
+                <div className="w-14 h-14 mx-auto mb-3 rounded-xl bg-muted/50 flex items-center justify-center grayscale group-hover:grayscale-0 transition-all">
+                  {integration.logo}
                 </div>
-                <h4 className="font-medium text-sm mb-2">{integration.name}</h4>
-                <p className="text-xs text-muted-foreground mb-3">Requested by {votes[integration.name]} teams</p>
+                <h4 className="font-medium text-sm mb-3">{integration.name}</h4>
                 <Button
                   variant={voted[integration.name] ? "secondary" : "outline"}
                   size="sm"
@@ -100,7 +205,7 @@ const IntegrationsSection = () => {
                   className="w-full"
                 >
                   <ThumbsUp className="w-3 h-3 mr-1" />
-                  {voted[integration.name] ? "Voted!" : "Upvote"}
+                  {voted[integration.name] ? "Voted!" : `Upvote (${votes[integration.name]})`}
                 </Button>
               </div>
             ))}
@@ -151,7 +256,7 @@ const IntegrationsSection = () => {
               </Button>
               
               <p className="text-xs text-center text-muted-foreground">
-                Join 847 requests • Most requested integrations ship within 60 days
+                Most requested integrations ship within 60 days
               </p>
             </form>
           </div>
@@ -162,7 +267,7 @@ const IntegrationsSection = () => {
           {[
             { value: "6", label: "Platforms supported" },
             { value: "12", label: "In development" },
-            { value: "2,000+", label: "Integration requests" },
+            { value: "2", label: "Modes available" },
             { value: "45 days", label: "Avg. turnaround" },
           ].map((stat) => (
             <div key={stat.label} className="text-center">
