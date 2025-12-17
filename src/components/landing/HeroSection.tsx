@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Play, ArrowRight, Shield, Zap, Clock } from "lucide-react";
+import { Play, ArrowRight, Shield, Zap, Clock, Eye } from "lucide-react";
 
 const HeroSection = () => {
   return (
@@ -15,7 +15,7 @@ const HeroSection = () => {
         <div className="max-w-5xl mx-auto text-center">
           {/* Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-8 animate-fade-up">
-            <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
+            <span className="w-2 h-2 bg-success rounded-full animate-pulse" />
             <span className="text-sm text-muted-foreground">Now accepting early access requests</span>
           </div>
           
@@ -29,7 +29,7 @@ const HeroSection = () => {
           {/* Subheadline */}
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-10 animate-fade-up stagger-2 text-balance">
             Triage automatically detects, analyzes, and fixes production incidents while your team rests. 
-            Intelligent rollbacks, restarts, and escalations using advanced AI.
+            Intelligent rollbacks, restarts, and human oversight when needed.
           </p>
           
           {/* CTA buttons */}
@@ -45,27 +45,34 @@ const HeroSection = () => {
           </div>
           
           {/* Stats row */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto animate-fade-up stagger-4">
-            <div className="glass rounded-xl p-6 hover:scale-105 transition-transform">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 max-w-4xl mx-auto animate-fade-up stagger-4">
+            <div className="glass rounded-xl p-5 hover:scale-105 transition-transform">
               <div className="flex items-center justify-center gap-3 mb-2">
                 <Clock className="w-5 h-5 text-primary" />
-                <span className="text-3xl font-bold text-foreground">3 min</span>
+                <span className="text-2xl font-bold text-foreground">3 min</span>
               </div>
-              <p className="text-sm text-muted-foreground">Avg. response time</p>
+              <p className="text-xs text-muted-foreground">Avg. response time</p>
             </div>
-            <div className="glass rounded-xl p-6 hover:scale-105 transition-transform">
+            <div className="glass rounded-xl p-5 hover:scale-105 transition-transform">
               <div className="flex items-center justify-center gap-3 mb-2">
-                <Shield className="w-5 h-5 text-primary" />
-                <span className="text-3xl font-bold text-foreground">80%</span>
+                <Shield className="w-5 h-5 text-success" />
+                <span className="text-2xl font-bold text-foreground">78%</span>
               </div>
-              <p className="text-sm text-muted-foreground">Auto-resolved incidents</p>
+              <p className="text-xs text-muted-foreground">Auto-resolved</p>
             </div>
-            <div className="glass rounded-xl p-6 hover:scale-105 transition-transform">
+            <div className="glass rounded-xl p-5 hover:scale-105 transition-transform">
+              <div className="flex items-center justify-center gap-3 mb-2">
+                <Eye className="w-5 h-5 text-attention" />
+                <span className="text-2xl font-bold text-foreground">22%</span>
+              </div>
+              <p className="text-xs text-muted-foreground">Human reviewed</p>
+            </div>
+            <div className="glass rounded-xl p-5 hover:scale-105 transition-transform">
               <div className="flex items-center justify-center gap-3 mb-2">
                 <Zap className="w-5 h-5 text-primary" />
-                <span className="text-3xl font-bold text-foreground">$50K+</span>
+                <span className="text-2xl font-bold text-foreground">$50K+</span>
               </div>
-              <p className="text-sm text-muted-foreground">Annual savings/engineer</p>
+              <p className="text-xs text-muted-foreground">Annual savings/eng</p>
             </div>
           </div>
         </div>
@@ -77,9 +84,9 @@ const HeroSection = () => {
               {/* Mock dashboard header */}
               <div className="flex items-center gap-2 px-4 py-3 border-b border-border">
                 <div className="flex gap-1.5">
-                  <div className="w-3 h-3 rounded-full bg-red-500/80" />
-                  <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
-                  <div className="w-3 h-3 rounded-full bg-green-500/80" />
+                  <div className="w-3 h-3 rounded-full bg-destructive/80" />
+                  <div className="w-3 h-3 rounded-full bg-attention/80" />
+                  <div className="w-3 h-3 rounded-full bg-success/80" />
                 </div>
                 <div className="flex-1 text-center">
                   <span className="text-sm text-muted-foreground">Triage Dashboard</span>
@@ -90,7 +97,7 @@ const HeroSection = () => {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
                   <div className="bg-secondary/50 rounded-lg p-4">
                     <div className="flex items-center gap-2 mb-2">
-                      <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse" />
+                      <div className="w-2 h-2 bg-destructive rounded-full animate-pulse" />
                       <span className="text-sm font-medium">Incident Detected</span>
                     </div>
                     <p className="text-xs text-muted-foreground">API Latency Spike - 450ms avg</p>
@@ -98,15 +105,15 @@ const HeroSection = () => {
                   </div>
                   <div className="bg-secondary/50 rounded-lg p-4">
                     <div className="flex items-center gap-2 mb-2">
-                      <div className="w-2 h-2 bg-yellow-500 rounded-full animate-pulse" />
+                      <div className="w-2 h-2 bg-accent rounded-full animate-pulse" />
                       <span className="text-sm font-medium">AI Analyzing</span>
                     </div>
-                    <p className="text-xs text-muted-foreground">Checking recent deploys...</p>
+                    <p className="text-xs text-muted-foreground">Confidence: 82%</p>
                     <p className="text-xs text-muted-foreground mt-1">Correlating with metrics</p>
                   </div>
                   <div className="bg-secondary/50 rounded-lg p-4">
                     <div className="flex items-center gap-2 mb-2">
-                      <div className="w-2 h-2 bg-green-500 rounded-full" />
+                      <div className="w-2 h-2 bg-success rounded-full" />
                       <span className="text-sm font-medium">Auto-Resolution</span>
                     </div>
                     <p className="text-xs text-muted-foreground">Rollback to v2.4.1 initiated</p>
@@ -117,7 +124,7 @@ const HeroSection = () => {
                 <div className="bg-secondary/30 rounded-lg p-4">
                   <div className="flex items-center justify-between mb-4">
                     <span className="text-sm font-medium">Incident Timeline</span>
-                    <span className="text-xs text-green-400">Resolving...</span>
+                    <span className="text-xs text-success">Resolving...</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <div className="flex-1 h-2 bg-secondary rounded-full overflow-hidden">

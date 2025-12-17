@@ -1,4 +1,4 @@
-import { Webhook, LineChart, CheckSquare, TrendingUp } from "lucide-react";
+import { Webhook, LineChart, GitBranch, TrendingUp } from "lucide-react";
 
 const steps = [
   {
@@ -10,20 +10,20 @@ const steps = [
   {
     icon: LineChart,
     title: "AI Learns Your Patterns",
-    description: "Analyzes historical incidents and establishes baselines for normal behavior.",
+    description: "Analyzes historical incidents, deploys, and establishes baselines for normal behavior.",
     detail: "Gets smarter with every incident",
   },
   {
-    icon: CheckSquare,
-    title: "Automatic Response",
-    description: "Handles 80% of incidents without human intervention. You sleep, we work.",
-    detail: "24/7 autonomous monitoring",
+    icon: GitBranch,
+    title: "Intelligent Response",
+    description: "High-confidence incidents resolve automatically. Uncertain ones go to Review Mode for your approval.",
+    detail: "78% auto-resolved, 22% human-reviewed",
   },
   {
     icon: TrendingUp,
     title: "Continuous Improvement",
-    description: "Learns from every incident for better decisions. Your system gets more reliable over time.",
-    detail: "ML-powered optimization",
+    description: "Learns from every incident and your review decisions. Your system becomes more reliable over time.",
+    detail: "Feedback-driven optimization",
   },
 ];
 
@@ -35,7 +35,7 @@ const HowItWorksSection = () => {
       <div className="container relative z-10 px-4">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-3xl md:text-5xl font-bold mb-6">
-            Three Steps to <span className="gradient-text">Zero-Touch Incident Response</span>
+            Four Steps to <span className="gradient-text">Intelligent Incident Response</span>
           </h2>
           <p className="text-lg text-muted-foreground">
             From integration to full automation in under an hour.

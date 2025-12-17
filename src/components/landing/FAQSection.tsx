@@ -7,12 +7,20 @@ import {
 
 const faqs = [
   {
-    question: "How does Triage make decisions?",
-    answer: "Triage uses a multi-agent AI system that analyzes your logs, metrics, and deployment history. It looks for patterns, correlates events, and makes decisions based on historical data and configured rules. When confidence is low, it always escalates to a human.",
+    question: "How does Triage decide between auto-resolve and review?",
+    answer: "Triage uses confidence scoring based on pattern matching, historical data, and risk assessment. Incidents with >75% confidence are auto-resolved. Those between 50-75% go to Review Mode for human approval. Anything below 50% triggers an immediate alert. You can customize these thresholds.",
+  },
+  {
+    question: "What happens in Review Mode?",
+    answer: "In Review Mode, you receive a comprehensive incident report with AI analysis, confidence score, root cause assessment, and recommended actions. You can approve the AI's recommendation with one click, choose an alternative action, or reject and handle manually. Every review helps the AI learn.",
+  },
+  {
+    question: "Can I customize confidence thresholds?",
+    answer: "Yes! You can set custom thresholds for auto-resolution vs review based on your team's risk tolerance. You can also configure certain action types (like database operations) to always require review, regardless of confidence.",
   },
   {
     question: "What if the AI makes a mistake?",
-    answer: "Triage is designed with safety as the top priority. It only takes actions it's highly confident about (>95% confidence) and uses conservative thresholds. For anything uncertain, it escalates to your on-call engineer with full context. You can also configure custom approval workflows for critical actions.",
+    answer: "Triage is designed with safety as the top priority. High-risk actions always go through Review Mode. Built-in cooldowns prevent action storms. If an auto-resolved incident wasn't handled correctly, mark it for review—the AI learns from this feedback and adjusts its confidence for similar situations.",
   },
   {
     question: "Do you store our logs?",
@@ -35,8 +43,8 @@ const faqs = [
     answer: "Absolutely! We prioritize integrations based on demand. Use the integration request form to tell us what platforms you need. Popular requests are fast-tracked—most ship within 60 days of reaching 100 votes.",
   },
   {
-    question: "How do you prioritize integration requests?",
-    answer: "We use a combination of vote count, company size, and strategic fit. Enterprise customers can also request dedicated integrations as part of their package. Transparency is key—you can see vote counts for all requested integrations.",
+    question: "How does the AI learn from my review decisions?",
+    answer: "Every time you approve, reject, or modify an AI recommendation, Triage learns. Approved actions reinforce the AI's confidence. Rejections or modifications help it understand edge cases. Over time, your system auto-resolves more incidents accurately.",
   },
 ];
 
