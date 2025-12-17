@@ -6,9 +6,7 @@ import ReviewModeSection from "@/components/landing/ReviewModeSection";
 import IntegrationsSection from "@/components/landing/IntegrationsSection";
 import FeaturesSection from "@/components/landing/FeaturesSection";
 import HowItWorksSection from "@/components/landing/HowItWorksSection";
-import SafetySection from "@/components/landing/SafetySection";
-import PricingSection from "@/components/landing/PricingSection";
-import FAQSection from "@/components/landing/FAQSection";
+import WaitlistSection from "@/components/landing/WaitlistSection";
 import CTASection from "@/components/landing/CTASection";
 import Footer from "@/components/landing/Footer";
 
@@ -25,9 +23,7 @@ const Index = () => {
         <FeaturesSection />
       </section>
       <HowItWorksSection />
-      <SafetySection />
-      <PricingSection />
-      <FAQSection />
+      <WaitlistSection />
       <CTASection />
       <Footer />
     </main>
