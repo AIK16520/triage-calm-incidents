@@ -1,10 +1,10 @@
-import { ShieldCheck, Database, FileSearch } from "lucide-react";
+import { ShieldCheck, Database, FileSearch, Users } from "lucide-react";
 
 const safetyFeatures = [
   {
     icon: ShieldCheck,
     title: "Conservative AI",
-    description: "Escalates to humans when uncertain—never takes risky actions. Your production environment is sacred.",
+    description: "Escalates to humans when uncertain—never takes risky actions blindly. Your production environment is sacred.",
     highlight: "Zero risky actions",
   },
   {
@@ -18,6 +18,12 @@ const safetyFeatures = [
     title: "Complete Audit Trail",
     description: "Every decision logged with full AI reasoning for compliance and post-incident review.",
     highlight: "Full transparency",
+  },
+  {
+    icon: Users,
+    title: "Human-in-the-Loop",
+    description: "You're always in control. Review and approve complex decisions. The AI assists, you decide.",
+    highlight: "You're in control",
   },
 ];
 
@@ -36,22 +42,22 @@ const SafetySection = () => {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
           {safetyFeatures.map((feature) => (
             <div
               key={feature.title}
               className="glass rounded-2xl p-8 text-center hover:scale-105 transition-all duration-300 group"
             >
-              <div className="w-16 h-16 mx-auto mb-6 rounded-xl bg-green-500/10 flex items-center justify-center group-hover:scale-110 transition-transform">
-                <feature.icon className="w-8 h-8 text-green-400" />
+              <div className="w-16 h-16 mx-auto mb-6 rounded-xl bg-success/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <feature.icon className="w-8 h-8 text-success" />
               </div>
               
-              <span className="inline-block px-3 py-1 text-xs font-medium rounded-full bg-green-500/10 text-green-400 mb-4">
+              <span className="inline-block px-3 py-1 text-xs font-medium rounded-full bg-success/10 text-success mb-4">
                 {feature.highlight}
               </span>
               
               <h3 className="text-xl font-semibold mb-3">{feature.title}</h3>
-              <p className="text-muted-foreground">{feature.description}</p>
+              <p className="text-muted-foreground text-sm">{feature.description}</p>
             </div>
           ))}
         </div>

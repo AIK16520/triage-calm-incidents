@@ -6,46 +6,58 @@
 
 @layer base {
   :root {
-    --background: 222 47% 6%;
+    --background: 220 20% 10%;
     --foreground: 210 40% 98%;
 
-    --card: 222 47% 8%;
+    --card: 220 20% 12%;
     --card-foreground: 210 40% 98%;
 
-    --popover: 222 47% 8%;
+    --popover: 220 20% 12%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 216 100% 50%;
+    /* Primary: Teal #14B8A6 */
+    --primary: 173 58% 39%;
     --primary-foreground: 210 40% 98%;
 
-    --secondary: 222 47% 12%;
+    --secondary: 220 20% 16%;
     --secondary-foreground: 210 40% 98%;
 
-    --muted: 222 47% 15%;
+    --muted: 220 20% 18%;
     --muted-foreground: 215 20% 55%;
 
-    --accent: 263 83% 57%;
+    /* Accent: Deep Indigo #5B21B6 */
+    --accent: 263 70% 42%;
     --accent-foreground: 210 40% 98%;
 
-    --destructive: 0 84% 60%;
+    /* Success: Emerald #10B981 */
+    --success: 160 84% 39%;
+    --success-foreground: 210 40% 98%;
+
+    /* Attention: Amber #F59E0B */
+    --attention: 38 92% 50%;
+    --attention-foreground: 220 20% 10%;
+
+    /* Critical: Coral #FF6B6B */
+    --destructive: 0 100% 71%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 222 47% 18%;
-    --input: 222 47% 15%;
-    --ring: 216 100% 50%;
+    --border: 220 20% 20%;
+    --input: 220 20% 18%;
+    --ring: 173 58% 39%;
 
     --radius: 0.75rem;
 
     /* Custom design tokens */
-    --gradient-primary: linear-gradient(135deg, hsl(216, 100%, 50%) 0%, hsl(263, 83%, 57%) 100%);
-    --gradient-mesh: radial-gradient(at 40% 20%, hsl(216, 100%, 50%, 0.15) 0px, transparent 50%),
-                     radial-gradient(at 80% 0%, hsl(263, 83%, 57%, 0.1) 0px, transparent 50%),
-                     radial-gradient(at 0% 50%, hsl(216, 100%, 50%, 0.1) 0px, transparent 50%),
-                     radial-gradient(at 80% 100%, hsl(263, 83%, 57%, 0.08) 0px, transparent 50%);
-    --glow-primary: 0 0 60px hsl(216, 100%, 50%, 0.4);
-    --glow-accent: 0 0 60px hsl(263, 83%, 57%, 0.3);
-    --glass-bg: hsl(222, 47%, 10%, 0.6);
-    --glass-border: hsl(222, 47%, 20%, 0.5);
+    --gradient-primary: linear-gradient(135deg, hsl(173, 58%, 39%) 0%, hsl(263, 70%, 42%) 100%);
+    --gradient-mesh: radial-gradient(at 40% 20%, hsl(173, 58%, 39%, 0.15) 0px, transparent 50%),
+                     radial-gradient(at 80% 0%, hsl(263, 70%, 42%, 0.1) 0px, transparent 50%),
+                     radial-gradient(at 0% 50%, hsl(173, 58%, 39%, 0.1) 0px, transparent 50%),
+                     radial-gradient(at 80% 100%, hsl(263, 70%, 42%, 0.08) 0px, transparent 50%);
+    --glow-primary: 0 0 60px hsl(173, 58%, 39%, 0.4);
+    --glow-accent: 0 0 60px hsl(263, 70%, 42%, 0.3);
+    --glow-attention: 0 0 40px hsl(38, 92%, 50%, 0.3);
+    --glass-bg: hsl(220, 20%, 12%, 0.6);
+    --glass-border: hsl(220, 20%, 22%, 0.5);
   }
 }
 
@@ -92,6 +104,10 @@
     box-shadow: var(--glow-accent);
   }
 
+  .glow-attention {
+    box-shadow: var(--glow-attention);
+  }
+
   .text-balance {
     text-wrap: balance;
   }
@@ -109,10 +125,10 @@
 
 @keyframes pulse-glow {
   0%, 100% {
-    box-shadow: 0 0 20px hsl(216, 100%, 50%, 0.3);
+    box-shadow: 0 0 20px hsl(173, 58%, 39%, 0.3);
   }
   50% {
-    box-shadow: 0 0 40px hsl(216, 100%, 50%, 0.5);
+    box-shadow: 0 0 40px hsl(173, 58%, 39%, 0.5);
   }
 }
 
@@ -147,6 +163,12 @@
   to {
     opacity: 1;
     transform: scale(1);
+  }
+}
+
+@keyframes gauge-fill {
+  from {
+    stroke-dashoffset: 283;
   }
 }
 
@@ -185,14 +207,14 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: hsl(222, 47%, 8%);
+  background: hsl(220, 20%, 10%);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: hsl(222, 47%, 20%);
+  background: hsl(220, 20%, 22%);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: hsl(222, 47%, 25%);
+  background: hsl(220, 20%, 28%);
 }
