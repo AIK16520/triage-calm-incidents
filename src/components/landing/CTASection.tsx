@@ -4,18 +4,17 @@ import { ArrowRight, Users } from "lucide-react";
 const CTASection = () => {
   return (
     <section className="py-24 md:py-32 relative overflow-hidden">
-      {/* Background gradients */}
-      <div className="absolute inset-0 gradient-mesh" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/20 rounded-full blur-3xl" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-accent/20 rounded-full blur-3xl" />
+      {/* Background */}
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-primary/5 to-background" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/10 rounded-full blur-3xl" />
       
       <div className="container relative z-10 px-4">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-6">
+          <h2 className="text-headline mb-6">
             Stop Losing Sleep Over <span className="gradient-text">Production Issues</span>
           </h2>
           
-          <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+          <p className="text-body text-muted-foreground mb-10 max-w-2xl mx-auto">
             Join 500+ engineering teams on the waitlist. Be among the first 1,000 to get early access.
           </p>
           
@@ -33,7 +32,7 @@ const CTASection = () => {
           
           <div className="flex items-center justify-center gap-2 text-muted-foreground">
             <Users className="w-5 h-5" />
-            <span>500+ teams already on the waitlist</span>
+            <span className="text-sm">500+ teams already on the waitlist</span>
           </div>
         </div>
       </div>

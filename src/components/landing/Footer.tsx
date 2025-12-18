@@ -17,12 +17,12 @@ const Footer = () => {
   };
 
   return (
-    <footer className="border-t border-border bg-card/50">
+    <footer className="border-t border-border bg-secondary/30">
       <div className="container px-4 py-16">
         <div className="grid grid-cols-2 md:grid-cols-6 gap-8 mb-12">
           {/* Logo and description */}
           <div className="col-span-2">
-            <h3 className="text-2xl font-bold gradient-text mb-4">Triage</h3>
+            <h3 className="text-2xl font-bold text-foreground mb-4">Triage</h3>
             <p className="text-muted-foreground text-sm mb-6">
               Your AI on-call engineer. Automatic incident detection, analysis, and resolution.
             </p>
@@ -32,9 +32,9 @@ const Footer = () => {
               <Input 
                 type="email" 
                 placeholder="Get product updates" 
-                className="bg-secondary/50 border-border text-sm"
+                className="bg-card border-border text-sm h-10 rounded-lg"
               />
-              <Button type="submit" size="icon" variant="outline">
+              <Button type="submit" size="icon" variant="outline" className="h-10 w-10 rounded-lg">
                 <Send className="w-4 h-4" />
               </Button>
             </form>
@@ -43,8 +43,8 @@ const Footer = () => {
           {/* Links */}
           {Object.entries(footerLinks).map(([category, links]) => (
             <div key={category}>
-              <h4 className="font-semibold mb-4">{category}</h4>
-              <ul className="space-y-2">
+              <h4 className="font-semibold mb-4 text-sm">{category}</h4>
+              <ul className="space-y-3">
                 {links.map((link) => (
                   <li key={link}>
                     <a 

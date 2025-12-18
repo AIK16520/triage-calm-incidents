@@ -26,15 +26,13 @@ const problems = [
 
 const ProblemSection = () => {
   return (
-    <section className="py-24 md:py-32 relative">
-      <div className="absolute inset-0 gradient-mesh opacity-50" />
-      
-      <div className="container relative z-10 px-4">
+    <section className="py-24 md:py-32">
+      <div className="container px-4">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold mb-6">
+          <h2 className="text-headline mb-6">
             The <span className="gradient-text">On-Call Nightmare</span>
           </h2>
-          <p className="text-lg text-muted-foreground">
+          <p className="text-body text-muted-foreground">
             Production incidents don't care about your sleep schedule, your vacation, or your sanity.
           </p>
         </div>
@@ -43,19 +41,19 @@ const ProblemSection = () => {
           {problems.map((problem, index) => (
             <div
               key={problem.title}
-              className="glass rounded-2xl p-8 hover:scale-105 transition-all duration-300 group"
+              className="bg-card border border-border rounded-3xl p-8 hover:shadow-elevated hover:border-destructive/20 transition-all duration-300 group"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <div className="w-14 h-14 rounded-xl bg-destructive/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+              <div className="w-14 h-14 rounded-2xl bg-destructive/10 flex items-center justify-center mb-6 group-hover:scale-105 transition-transform">
                 <problem.icon className="w-7 h-7 text-destructive" />
               </div>
               
-              <h3 className="text-xl font-semibold mb-3">{problem.title}</h3>
-              <p className="text-muted-foreground mb-6">{problem.description}</p>
+              <h3 className="text-xl font-bold mb-3">{problem.title}</h3>
+              <p className="text-muted-foreground mb-8">{problem.description}</p>
               
               <div className="pt-6 border-t border-border">
-                <span className="text-3xl font-bold text-destructive">{problem.stat}</span>
-                <p className="text-sm text-muted-foreground mt-1">{problem.statLabel}</p>
+                <span className="text-4xl font-bold text-destructive">{problem.stat}</span>
+                <p className="text-sm text-muted-foreground mt-2">{problem.statLabel}</p>
               </div>
             </div>
           ))}

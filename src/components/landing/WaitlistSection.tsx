@@ -51,25 +51,23 @@ const WaitlistSection = () => {
   };
 
   return (
-    <section id="waitlist" className="py-24 md:py-32 relative">
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent" />
-      
-      <div className="container relative z-10 px-4">
+    <section id="waitlist" className="py-24 md:py-32 bg-secondary/30">
+      <div className="container px-4">
         <div className="max-w-2xl mx-auto">
           <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-6 border border-primary/30">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
               <Sparkles className="w-4 h-4 text-primary" />
-              <span className="text-sm font-medium">Join the Waitlist</span>
+              <span className="text-sm font-medium text-primary">Join the Waitlist</span>
             </div>
-            <h2 className="text-3xl md:text-5xl font-bold mb-6">
+            <h2 className="text-headline mb-6">
               Get <span className="gradient-text">Early Access</span>
             </h2>
-            <p className="text-lg text-muted-foreground">
+            <p className="text-body text-muted-foreground">
               Be among the first to experience AI-powered incident response. We'll notify you when Triage is ready.
             </p>
           </div>
           
-          <div className="glass rounded-2xl p-8 border border-primary/20 glow-primary">
+          <div className="bg-card border border-border rounded-3xl p-8 shadow-elevated">
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
@@ -79,7 +77,7 @@ const WaitlistSection = () => {
                     required
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="bg-secondary/50 border-border"
+                    className="bg-secondary/50 border-border h-12 rounded-xl"
                   />
                 </div>
                 <div className="space-y-2">
@@ -88,7 +86,7 @@ const WaitlistSection = () => {
                     placeholder="Company name" 
                     value={formData.company}
                     onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                    className="bg-secondary/50 border-border"
+                    className="bg-secondary/50 border-border h-12 rounded-xl"
                   />
                 </div>
               </div>
@@ -101,7 +99,7 @@ const WaitlistSection = () => {
                   required
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="bg-secondary/50 border-border"
+                  className="bg-secondary/50 border-border h-12 rounded-xl"
                 />
               </div>
               
@@ -111,7 +109,7 @@ const WaitlistSection = () => {
                   placeholder="" 
                   value={formData.teamSize}
                   onChange={(e) => setFormData({ ...formData, teamSize: e.target.value })}
-                  className="bg-secondary/50 border-border"
+                  className="bg-secondary/50 border-border h-12 rounded-xl"
                 />
               </div>
               
@@ -121,7 +119,7 @@ const WaitlistSection = () => {
                   placeholder="Tell us about your use case, current on-call challenges, or anything else..."
                   value={formData.comments}
                   onChange={(e) => setFormData({ ...formData, comments: e.target.value })}
-                  className="bg-secondary/50 border-border min-h-[100px]"
+                  className="bg-secondary/50 border-border min-h-[100px] rounded-xl"
                 />
               </div>
               
@@ -136,7 +134,7 @@ const WaitlistSection = () => {
                 {isSubmitting ? "Joining..." : "Join the Waitlist"}
               </Button>
               
-              <p className="text-xs text-center text-muted-foreground">
+              <p className="text-sm text-center text-muted-foreground">
                 Join 500+ engineering teams on the waitlist. No spam, ever.
               </p>
             </form>
