@@ -1,4 +1,4 @@
-import { Radar, Brain, GitBranch, CheckCircle } from "lucide-react";
+import { Radar, Brain, GitBranch, RotateCcw, RefreshCw, Bell } from "lucide-react";
 
 const steps = [
   {
@@ -16,10 +16,26 @@ const steps = [
     title: "Decide",
     description: "Auto-resolve high-confidence incidents OR request human review when uncertain",
   },
+];
+
+const actions = [
   {
-    icon: CheckCircle,
-    title: "Execute",
-    description: "Auto-rollback, restart services, or send comprehensive reports for engineer approval",
+    icon: RotateCcw,
+    title: "Rollback",
+    description: "Automatically reverts bad deployments to the last known good state",
+    color: "primary",
+  },
+  {
+    icon: RefreshCw,
+    title: "Restart",
+    description: "Intelligently restarts degraded services with built-in cooldowns",
+    color: "primary",
+  },
+  {
+    icon: Bell,
+    title: "Alert Dev",
+    description: "Sends comprehensive context to the right engineer when human judgment needed",
+    color: "success",
   },
 ];
 
@@ -38,10 +54,10 @@ const SolutionSection = () => {
         
         <div className="max-w-5xl mx-auto">
           {/* Flow timeline */}
-          <div className="relative">
+          <div className="relative mb-20">
             {/* Connecting line */}
-            <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-primary/50 to-success hidden md:block" />
-            <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-primary/50 to-success md:hidden" />
+            <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary to-primary/30 hidden md:block" />
+            <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary to-primary/30 md:hidden" />
             
             <div className="space-y-8 md:space-y-0">
               {steps.map((step, index) => (
@@ -53,9 +69,7 @@ const SolutionSection = () => {
                 >
                   {/* Mobile: Icon on left */}
                   <div className="relative z-10 md:hidden">
-                    <div className={`w-16 h-16 rounded-full flex items-center justify-center border-4 border-background ${
-                      index === steps.length - 1 ? 'bg-success' : 'bg-primary'
-                    }`}>
+                    <div className="w-16 h-16 rounded-full flex items-center justify-center border-4 border-background bg-primary">
                       <step.icon className="w-7 h-7 text-primary-foreground" />
                     </div>
                   </div>
@@ -73,9 +87,7 @@ const SolutionSection = () => {
                   
                   {/* Desktop: Center icon */}
                   <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 z-10">
-                    <div className={`w-16 h-16 rounded-full flex items-center justify-center border-4 border-background shadow-lg ${
-                      index === steps.length - 1 ? 'bg-success' : 'bg-primary'
-                    }`}>
+                    <div className="w-16 h-16 rounded-full flex items-center justify-center border-4 border-background shadow-lg bg-primary">
                       <step.icon className="w-7 h-7 text-primary-foreground" />
                     </div>
                   </div>
@@ -92,6 +104,31 @@ const SolutionSection = () => {
                 </div>
               ))}
             </div>
+          </div>
+
+          {/* Actions - Rollback, Restart, Alert */}
+          <div className="text-center mb-10">
+            <h3 className="text-2xl font-bold mb-2">Then Triage Takes Action</h3>
+            <p className="text-muted-foreground">Three ways to resolve incidents automatically</p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {actions.map((action) => (
+              <div
+                key={action.title}
+                className="relative p-8 rounded-2xl border-2 border-primary/20 bg-card hover:border-primary/40 hover:shadow-glow transition-all duration-300 group text-center"
+              >
+                <div className={`w-16 h-16 rounded-2xl mx-auto mb-6 flex items-center justify-center group-hover:scale-110 transition-transform ${
+                  action.color === 'success' ? 'bg-success/10' : 'bg-primary/10'
+                }`}>
+                  <action.icon className={`w-8 h-8 ${
+                    action.color === 'success' ? 'text-success' : 'text-primary'
+                  }`} />
+                </div>
+                <h4 className="text-xl font-bold mb-3">{action.title}</h4>
+                <p className="text-muted-foreground text-sm">{action.description}</p>
+              </div>
+            ))}
           </div>
         </div>
       </div>
