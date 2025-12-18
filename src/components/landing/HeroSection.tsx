@@ -99,8 +99,8 @@ const HeroSection = () => {
               <div
                 key={index}
                 className="group relative bg-card border border-border rounded-2xl p-9 
-                           border-l-4 border-l-primary shadow-sm
-                           hover:translate-x-[-8px] hover:shadow-[0_8px_30px_hsl(var(--primary)/0.15)] 
+                           border-l-4 border-l-primary shadow-[4px_4px_20px_hsl(var(--primary)/0.1)]
+                           hover:translate-x-2 hover:shadow-[8px_8px_30px_hsl(var(--primary)/0.2)] 
                            transition-all duration-300 ease-out"
               >
                 <div className="flex items-center gap-4 mb-3">
