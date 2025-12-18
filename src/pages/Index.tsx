@@ -4,7 +4,6 @@ import ProblemSection from "@/components/landing/ProblemSection";
 import SolutionSection from "@/components/landing/SolutionSection";
 import ReviewModeSection from "@/components/landing/ReviewModeSection";
 import IntegrationsSection from "@/components/landing/IntegrationsSection";
-import FeaturesSection from "@/components/landing/FeaturesSection";
 import WaitlistSection from "@/components/landing/WaitlistSection";
 import CTASection from "@/components/landing/CTASection";
 import Footer from "@/components/landing/Footer";
@@ -18,9 +17,6 @@ const Index = () => {
       <ProblemSection />
       <SolutionSection />
       <ReviewModeSection />
-      <section id="features">
-        <FeaturesSection />
-      </section>
       <WaitlistSection />
       <CTASection />
       <Footer />
