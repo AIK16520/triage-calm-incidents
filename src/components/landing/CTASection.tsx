@@ -25,9 +25,7 @@ const CTASection = () => {
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </a>
             </Button>
-            <Button variant="heroOutline" size="xl" asChild>
-              <a href="#integrations">Request an Integration</a>
-            </Button>
+           
           </div>
         </div>
       </div>
