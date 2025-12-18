@@ -1,113 +1,119 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { ArrowRight, Clock, Calendar, DollarSign } from "lucide-react";
+import { useState } from "react";
+import { supabase } from "@/integrations/supabase/client";
+import { toast } from "@/hooks/use-toast";
 
 const HeroSection = () => {
+  const [email, setEmail] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email) return;
+
+    setIsSubmitting(true);
+    try {
+      const { error } = await supabase
+        .from('waitlist_submissions')
+        .insert({ email, name: email.split('@')[0] });
+
+      if (error) {
+        if (error.code === '23505') {
+          toast({ title: "You're already on the list!", description: "We'll be in touch soon." });
+        } else {
+          throw error;
+        }
+      } else {
+        toast({ title: "Welcome aboard!", description: "You've joined the waitlist." });
+        setEmail("");
+      }
+    } catch (error) {
+      toast({ title: "Something went wrong", description: "Please try again.", variant: "destructive" });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const metrics = [
+    { icon: Clock, value: "3 min", label: "Avg. response time" },
+    { icon: Calendar, value: "2 weeks", label: "Dev time saved" },
+    { icon: DollarSign, value: "$20K+", label: "Annual savings" },
+  ];
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-      {/* Subtle radial gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-secondary/30" />
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-3xl" />
+    <section className="relative min-h-screen flex items-center overflow-hidden pt-20 bg-[#0A0A0A]">
+      {/* Teal radial gradient background */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_hsl(var(--primary)/0.15)_0%,_transparent_50%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_hsl(var(--primary)/0.1)_0%,_transparent_50%)]" />
       
       <div className="container relative z-10 px-4 py-20 md:py-32">
-        <div className="max-w-5xl mx-auto text-center">
-          {/* Main headline */}
-          <h1 className="text-display mb-8 animate-fade-up">
-            Your AI On-Call Engineer
-            <br />
-            <span className="gradient-text">Sleep Through the Night</span>
-          </h1>
-          
-          {/* Subheadline */}
-          <p className="text-subheadline text-muted-foreground max-w-3xl mx-auto mb-12 animate-fade-up stagger-2 text-balance">
-            Triage automatically detects, analyzes, and fixes production incidents while your team rests. 
-            It reads logs, analyze and then either rollbacks, restarts or alert the developer when needed.
-          </p>
-          
-          {/* CTA buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-20 animate-fade-up stagger-3">
-            <Button variant="hero" size="xl" className="group" asChild>
-              <a href="#waitlist">
-                Join Waitlist
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+          {/* Left Side - 55% */}
+          <div className="lg:col-span-7">
+            {/* Overline */}
+            <span className="text-xs uppercase tracking-[0.2em] text-primary font-medium mb-6 block">
+              Autonomous Incident Response
+            </span>
+            
+            {/* Headline */}
+            <h1 className="text-5xl md:text-7xl lg:text-[88px] font-bold leading-[1.05] mb-8">
+              <span className="gradient-text">Your AI On-Call Engineer</span>
+              <br />
+              <span className="text-foreground">Sleep Through the Night</span>
+            </h1>
+            
+            {/* Description */}
+            <p className="text-lg md:text-xl text-muted-foreground max-w-xl mb-10 leading-relaxed">
+              Triage automatically detects, analyzes, and fixes production incidents while your team rests. 
+              It reads logs, analyzes and then either rollbacks, restarts or alerts the developer when needed.
+            </p>
+            
+            {/* Inline Waitlist Form */}
+            <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4 max-w-lg">
+              <Input
+                type="email"
+                placeholder="Enter your email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="h-[58px] bg-secondary/50 border-border text-foreground placeholder:text-muted-foreground text-base px-6 flex-1"
+                required
+              />
+              <Button 
+                type="submit" 
+                variant="hero" 
+                size="xl" 
+                className="h-[58px] px-8 shadow-[0_0_30px_hsl(var(--primary)/0.4)] group whitespace-nowrap"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? "Joining..." : "Join Waitlist"}
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </a>
-            </Button>
+              </Button>
+            </form>
           </div>
           
-          {/* Stats row - simple inline style */}
-          <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 animate-fade-up stagger-4">
-            <div className="text-center">
-              <span className="text-4xl md:text-5xl font-bold text-primary block">3 min</span>
-              <p className="text-sm text-muted-foreground mt-1">Avg. response time</p>
-            </div>
-            <div className="hidden md:block w-px h-12 bg-border" />
-            <div className="text-center">
-              <span className="text-4xl md:text-5xl font-bold text-primary block">2 weeks</span>
-              <p className="text-sm text-muted-foreground mt-1">Dev time saved</p>
-            </div>
-            <div className="hidden md:block w-px h-12 bg-border" />
-            <div className="text-center">
-              <span className="text-4xl md:text-5xl font-bold text-primary block">$20K+</span>
-              <p className="text-sm text-muted-foreground mt-1">Annual savings</p>
-            </div>
-          </div>
-        </div>
-        
-        {/* Dashboard preview */}
-        <div className="mt-24 max-w-5xl mx-auto animate-fade-up stagger-5">
-          <div className="relative bg-card rounded-3xl border border-border shadow-elevated overflow-hidden">
-            {/* Mock dashboard header */}
-            <div className="flex items-center gap-2 px-6 py-4 border-b border-border bg-secondary/30">
-              <div className="flex gap-2">
-                <div className="w-3 h-3 rounded-full bg-destructive/80" />
-                <div className="w-3 h-3 rounded-full bg-attention/80" />
-                <div className="w-3 h-3 rounded-full bg-success/80" />
+          {/* Right Side - 45% */}
+          <div className="lg:col-span-5 flex flex-col gap-8">
+            {metrics.map((metric, index) => (
+              <div
+                key={index}
+                className="group relative bg-card/30 backdrop-blur-xl border border-border/50 rounded-2xl p-9 
+                           border-l-4 border-l-primary
+                           hover:translate-x-[-8px] hover:shadow-[0_0_40px_hsl(var(--primary)/0.3)] 
+                           transition-all duration-300 ease-out"
+              >
+                <div className="flex items-center gap-4 mb-3">
+                  <metric.icon className="w-12 h-12 text-primary" strokeWidth={1.5} />
+                  <span className="text-5xl md:text-[56px] font-bold gradient-text leading-none">
+                    {metric.value}
+                  </span>
+                </div>
+                <p className="text-muted-foreground text-lg pl-16">
+                  {metric.label}
+                </p>
               </div>
-              <div className="flex-1 text-center">
-                <span className="text-sm text-muted-foreground font-medium">Triage Dashboard</span>
-              </div>
-            </div>
-            {/* Dashboard content */}
-            <div className="p-8 md:p-10">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-                <div className="bg-secondary/50 rounded-xl p-5 border border-border">
-                  <div className="flex items-center gap-2 mb-3">
-                    <div className="w-2.5 h-2.5 bg-destructive rounded-full animate-pulse" />
-                    <span className="text-sm font-semibold">Incident Detected</span>
-                  </div>
-                  <p className="text-sm text-muted-foreground">API Latency Spike - 450ms avg</p>
-                  <p className="text-xs text-muted-foreground mt-2">2 seconds ago</p>
-                </div>
-                <div className="bg-secondary/50 rounded-xl p-5 border border-border">
-                  <div className="flex items-center gap-2 mb-3">
-                    <div className="w-2.5 h-2.5 bg-primary rounded-full animate-pulse" />
-                    <span className="text-sm font-semibold">AI Analyzing</span>
-                  </div>
-                  <p className="text-sm text-muted-foreground">Confidence: 82%</p>
-                  <p className="text-xs text-muted-foreground mt-2">Correlating with metrics</p>
-                </div>
-                <div className="bg-secondary/50 rounded-xl p-5 border border-border">
-                  <div className="flex items-center gap-2 mb-3">
-                    <div className="w-2.5 h-2.5 bg-success rounded-full" />
-                    <span className="text-sm font-semibold">Auto-Resolution</span>
-                  </div>
-                  <p className="text-sm text-muted-foreground">Rollback to v2.4.1 initiated</p>
-                  <p className="text-xs text-muted-foreground mt-2">ETA: 45 seconds</p>
-                </div>
-              </div>
-              {/* Timeline visualization */}
-              <div className="bg-secondary/30 rounded-xl p-5 border border-border">
-                <div className="flex items-center justify-between mb-4">
-                  <span className="text-sm font-semibold">Incident Timeline</span>
-                  <span className="text-sm text-success font-medium">Resolving...</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <div className="flex-1 h-2 bg-secondary rounded-full overflow-hidden">
-                    <div className="h-full w-3/4 gradient-bg rounded-full" />
-                  </div>
-                  <span className="text-sm text-muted-foreground font-medium">75%</span>
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>
