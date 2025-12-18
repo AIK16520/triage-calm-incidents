@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Send, Sparkles } from "lucide-react";
 import { toast } from "sonner";
 
@@ -98,17 +97,12 @@ const WaitlistSection = () => {
               
               <div className="space-y-2">
                 <label className="text-sm font-medium">Team Size <span className="text-muted-foreground">(optional)</span></label>
-                <Select value={formData.teamSize} onValueChange={(value) => setFormData({ ...formData, teamSize: value })}>
-                  <SelectTrigger className="bg-secondary/50 border-border">
-                    <SelectValue placeholder="Select team size" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="1-10">1-10 engineers</SelectItem>
-                    <SelectItem value="11-50">11-50 engineers</SelectItem>
-                    <SelectItem value="51-200">51-200 engineers</SelectItem>
-                    <SelectItem value="200+">200+ engineers</SelectItem>
-                  </SelectContent>
-                </Select>
+                <Input 
+                  placeholder="e.g. 5 engineers" 
+                  value={formData.teamSize}
+                  onChange={(e) => setFormData({ ...formData, teamSize: e.target.value })}
+                  className="bg-secondary/50 border-border"
+                />
               </div>
               
               <div className="space-y-2">
