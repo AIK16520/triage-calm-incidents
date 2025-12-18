@@ -6,7 +6,6 @@ import ReviewModeSection from "@/components/landing/ReviewModeSection";
 import IntegrationsSection from "@/components/landing/IntegrationsSection";
 import WaitlistSection from "@/components/landing/WaitlistSection";
 import CTASection from "@/components/landing/CTASection";
-import Footer from "@/components/landing/Footer";
 
 const Index = () => {
   return (
@@ -19,7 +18,6 @@ const Index = () => {
       <ReviewModeSection />
       <WaitlistSection />
       <CTASection />
-      <Footer />
     </main>
   );
 };
