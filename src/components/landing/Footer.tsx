@@ -4,7 +4,7 @@ import { Twitter, Linkedin, Github, Send } from "lucide-react";
 import { toast } from "sonner";
 
 const footerLinks = {
-  Product: ["Features", "Pricing", "Integrations", "Security", "Roadmap"],
+  Product: ["Features", "Integrations", "Security", "Roadmap"],
   Company: ["About", "Blog", "Careers", "Press Kit"],
   Resources: ["Documentation", "API Reference", "Status Page", "Support"],
   Legal: ["Privacy Policy", "Terms of Service", "Security Policy"],
