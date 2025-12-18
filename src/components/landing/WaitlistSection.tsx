@@ -4,8 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Send, Sparkles } from "lucide-react";
 import { toast } from "sonner";
-
-const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzPvjJRqENR6qAhJqDWl9LKm6XKJvXK1xrXf5r9qYKJKJ3Aw-bYxvZw1qJw9qJ3Kx3A/exec";
+import { supabase } from "@/integrations/supabase/client";
 
 const WaitlistSection = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -22,18 +21,29 @@ const WaitlistSection = () => {
     setIsSubmitting(true);
     
     try {
-      const response = await fetch("https://script.google.com/macros/s/AKfycbyJqTjxcjjEjXQ-8f6K77cKxwqQzLQvXS1rCL0XcXY/dev", {
-        method: "POST",
-        mode: "no-cors",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+      const { error } = await supabase
+        .from('waitlist_submissions')
+        .insert({
+          name: formData.name.trim(),
+          email: formData.email.trim().toLowerCase(),
+          company: formData.company.trim() || null,
+          team_size: formData.teamSize.trim() || null,
+          comments: formData.comments.trim() || null,
+        });
+
+      if (error) {
+        if (error.code === '23505') {
+          toast.error("This email is already on the waitlist!");
+        } else {
+          throw error;
+        }
+        return;
+      }
       
       toast.success("You're on the waitlist! We'll be in touch soon.");
       setFormData({ name: "", company: "", email: "", teamSize: "", comments: "" });
     } catch (error) {
+      console.error("Waitlist submission error:", error);
       toast.error("Something went wrong. Please try again.");
     } finally {
       setIsSubmitting(false);
