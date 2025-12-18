@@ -6,42 +6,36 @@ const features = [
     title: "Smart Rollbacks",
     description: "Automatically reverts bad deployments within minutes of detection. No manual intervention required.",
     highlight: "< 3 min response",
-    color: "primary",
   },
   {
     icon: RefreshCw,
     title: "Service Restarts",
     description: "Intelligently restarts degraded services with built-in cooldowns to prevent restart loops.",
     highlight: "Built-in safeguards",
-    color: "primary",
   },
   {
     icon: FileText,
     title: "Context-Aware Analysis",
     description: "AI provides comprehensive reports with root cause analysis and recommended actions.",
     highlight: "Full context",
-    color: "accent",
   },
   {
     icon: Cloud,
     title: "Multi-Cloud Support",
     description: "Works across all your infrastructure providers. No vendor lock-in, complete flexibility.",
     highlight: "6+ platforms",
-    color: "primary",
   },
   {
     icon: Eye,
     title: "Review Mode",
     description: "Human oversight for complex scenarios requiring judgment. One-click approval workflow.",
     highlight: "Human-in-loop",
-    color: "attention",
   },
   {
     icon: TrendingUp,
     title: "Learning System",
     description: "Gets smarter with every incident. Your review decisions improve AI confidence over time.",
     highlight: "Continuous learning",
-    color: "success",
   },
 ];
 
@@ -58,35 +52,34 @@ const FeaturesSection = () => {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-          {features.map((feature) => (
+        <div className="max-w-5xl mx-auto space-y-6">
+          {features.map((feature, index) => (
             <div
               key={feature.title}
-              className="bg-card border border-border rounded-3xl p-8 hover:shadow-elevated hover:border-primary/20 transition-all duration-300 group"
+              className={`flex flex-col md:flex-row items-start md:items-center gap-6 p-6 md:p-8 rounded-2xl border border-border bg-card/50 hover:bg-card hover:border-primary/20 transition-all duration-300 group ${
+                index % 2 === 1 ? 'md:flex-row-reverse' : ''
+              }`}
             >
-              <div className="flex items-start justify-between mb-6">
-                <div className={`w-14 h-14 rounded-2xl flex items-center justify-center group-hover:scale-105 transition-transform ${
-                  feature.color === 'primary' ? 'bg-primary/10' : 
-                  feature.color === 'accent' ? 'bg-accent/10' : 
-                  feature.color === 'attention' ? 'bg-attention/10' : 'bg-success/10'
-                }`}>
-                  <feature.icon className={`w-7 h-7 ${
-                    feature.color === 'primary' ? 'text-primary' : 
-                    feature.color === 'accent' ? 'text-accent' : 
-                    feature.color === 'attention' ? 'text-attention' : 'text-success'
-                  }`} />
-                </div>
-                <span className={`px-3 py-1.5 text-xs font-medium rounded-full ${
-                  feature.color === 'primary' ? 'bg-primary/10 text-primary' : 
-                  feature.color === 'accent' ? 'bg-accent/10 text-accent' : 
-                  feature.color === 'attention' ? 'bg-attention/10 text-attention' : 'bg-success/10 text-success'
-                }`}>
-                  {feature.highlight}
-                </span>
+              {/* Icon */}
+              <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+                <feature.icon className="w-8 h-8 text-primary" />
               </div>
               
-              <h3 className="text-xl font-bold mb-3">{feature.title}</h3>
-              <p className="text-muted-foreground">{feature.description}</p>
+              {/* Content */}
+              <div className={`flex-1 ${index % 2 === 1 ? 'md:text-right' : ''}`}>
+                <div className={`flex items-center gap-3 mb-2 ${index % 2 === 1 ? 'md:flex-row-reverse' : ''}`}>
+                  <h3 className="text-xl font-bold">{feature.title}</h3>
+                  <span className="px-3 py-1 text-xs font-medium rounded-full bg-primary/10 text-primary">
+                    {feature.highlight}
+                  </span>
+                </div>
+                <p className="text-muted-foreground">{feature.description}</p>
+              </div>
+              
+              {/* Decorative line */}
+              <div className={`hidden md:block w-24 h-px bg-gradient-to-r ${
+                index % 2 === 1 ? 'from-primary/30 to-transparent' : 'from-transparent to-primary/30'
+              }`} />
             </div>
           ))}
         </div>

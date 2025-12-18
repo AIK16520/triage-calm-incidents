@@ -1,4 +1,3 @@
-
 const supportedIntegrations = [
   { 
     name: "AWS CloudWatch", 
@@ -53,7 +52,35 @@ const supportedIntegrations = [
   },
 ];
 
-const comingSoonPlatforms = ["Azure", "Google Cloud", "Heroku"];
+const comingSoonIntegrations = [
+  { 
+    name: "Azure", 
+    logo: (
+      <svg viewBox="0 0 24 24" className="w-8 h-8">
+        <path fill="#0089D6" d="M13.05 4.24l-4.71 4.39L3 18.57h6.32l3.73-14.33zm.88 1.49l2.03 6.22-3.72 4.41-4.66.84h8.27L21 18.57H9.9l4.03-12.84z"/>
+      </svg>
+    )
+  },
+  { 
+    name: "Google Cloud", 
+    logo: (
+      <svg viewBox="0 0 24 24" className="w-8 h-8">
+        <path fill="#EA4335" d="M12.5 7.5v2h4.5c-.2 1-.8 1.8-1.6 2.3l1.6 1.2c1.1-.9 1.8-2.3 1.8-3.9 0-.4 0-.7-.1-1h-6.2z"/>
+        <path fill="#4285F4" d="M12.5 19.5c2.4 0 4.4-.8 5.9-2.2l-1.6-1.2c-.6.4-1.4.7-2.3.8v-2.4h-2v5z"/>
+        <path fill="#FBBC05" d="M6.6 14.3c-.3-.6-.5-1.3-.5-2s.2-1.4.5-2l-1.6-1.2c-.6 1-.9 2.1-.9 3.2s.3 2.2.9 3.2l1.6-1.2z"/>
+        <path fill="#34A853" d="M12.5 4.5c1.3 0 2.5.5 3.4 1.3l1.4-1.4c-1.3-1.2-3-1.9-4.8-1.9-2.7 0-5 1.4-6.4 3.6l1.6 1.2c.9-1.5 2.6-2.8 4.8-2.8z"/>
+      </svg>
+    )
+  },
+  { 
+    name: "Heroku", 
+    logo: (
+      <svg viewBox="0 0 24 24" className="w-8 h-8">
+        <path fill="#6762A6" d="M20.61 0H3.39C2.62 0 2 .62 2 1.39v21.22c0 .77.62 1.39 1.39 1.39h17.22c.77 0 1.39-.62 1.39-1.39V1.39c0-.77-.62-1.39-1.39-1.39zM14.5 20h-3v-6l-3 3V6h3v6l3-3v11zm1.5-9.5h-2.5V6H16c0 1.5-.5 3-1.5 4.5h1.5z"/>
+      </svg>
+    )
+  },
+];
 
 const IntegrationsSection = () => {
   return (
@@ -86,12 +113,22 @@ const IntegrationsSection = () => {
           </div>
         </div>
         
-        {/* Coming soon - simple text */}
+        {/* Coming soon with logos */}
         <div className="text-center">
-          <p className="text-muted-foreground">
-            <span className="text-label text-muted-foreground mr-2">Coming Soon:</span>
-            {comingSoonPlatforms.join(", ")}
-          </p>
+          <p className="text-label text-muted-foreground mb-6">Coming Soon</p>
+          <div className="flex items-center justify-center gap-8">
+            {comingSoonIntegrations.map((integration) => (
+              <div 
+                key={integration.name}
+                className="flex flex-col items-center gap-2 opacity-60 hover:opacity-100 transition-opacity"
+              >
+                <div className="w-12 h-12 rounded-xl bg-secondary/50 flex items-center justify-center">
+                  {integration.logo}
+                </div>
+                <span className="text-xs text-muted-foreground">{integration.name}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
