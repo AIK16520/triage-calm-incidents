@@ -5,9 +5,9 @@ const ReviewModeSection = () => {
     <section id="review-mode" className="py-24 md:py-32">
       <div className="container px-4">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-attention/10 border border-attention/20 mb-6">
-            <Eye className="w-4 h-4 text-attention" />
-            <span className="text-sm font-medium text-attention">Human-in-the-Loop</span>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
+            <Eye className="w-4 h-4 text-primary" />
+            <span className="text-sm font-medium text-primary">Human-in-the-Loop</span>
           </div>
           <h2 className="text-headline mb-6">
             Full Control <span className="gradient-text">When You Need It</span>
@@ -46,8 +46,8 @@ const ReviewModeSection = () => {
                   </div>
                   <ArrowRight className="w-4 h-4 text-muted-foreground/40" />
                   <div className="flex items-center gap-2">
-                    <div className="w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center">
-                      <div className="w-2 h-2 bg-accent rounded-full" />
+                    <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
+                      <div className="w-2 h-2 bg-primary rounded-full" />
                     </div>
                     <span className="text-xs font-medium">Analyzed</span>
                   </div>
@@ -87,19 +87,19 @@ const ReviewModeSection = () => {
             </div>
 
             {/* Review Mode */}
-            <div className="bg-card border border-border rounded-3xl p-8 hover:border-attention/30 transition-colors relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-48 h-48 bg-attention/5 rounded-full blur-3xl" />
+            <div className="bg-card border border-border rounded-3xl p-8 hover:border-primary/30 transition-colors relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-48 h-48 bg-primary/5 rounded-full blur-3xl" />
               
               <div className="relative z-10">
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="w-12 h-12 rounded-xl bg-attention/10 flex items-center justify-center">
-                    <Eye className="w-6 h-6 text-attention" />
+                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+                    <Eye className="w-6 h-6 text-primary" />
                   </div>
                   <div>
                     <h3 className="text-xl font-bold">Review Mode</h3>
                     <span className="text-sm text-muted-foreground">Complex scenarios</span>
                   </div>
-                  <span className="ml-auto px-3 py-1 text-xs font-medium rounded-full bg-attention/10 text-attention">
+                  <span className="ml-auto px-3 py-1 text-xs font-medium rounded-full bg-primary/10 text-primary">
                     Human Review
                   </span>
                 </div>
@@ -115,15 +115,15 @@ const ReviewModeSection = () => {
                     </div>
                     <ArrowRight className="w-4 h-4 text-muted-foreground/40" />
                     <div className="flex items-center gap-2">
-                      <div className="w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center">
-                        <div className="w-2 h-2 bg-accent rounded-full" />
+                      <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
+                        <div className="w-2 h-2 bg-primary rounded-full" />
                       </div>
                       <span className="text-xs font-medium">Analyzed</span>
                     </div>
                     <ArrowRight className="w-4 h-4 text-muted-foreground/40" />
                     <div className="flex items-center gap-2">
-                      <div className="w-8 h-8 rounded-lg bg-attention/10 flex items-center justify-center">
-                        <FileText className="w-4 h-4 text-attention" />
+                      <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
+                        <FileText className="w-4 h-4 text-primary" />
                       </div>
                       <span className="text-xs font-medium">Report</span>
                     </div>
@@ -143,8 +143,8 @@ const ReviewModeSection = () => {
                 
                 <div className="flex items-center gap-6 text-sm">
                   <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-attention rounded-full" />
-                    <span className="font-bold text-attention">22%</span>
+                    <div className="w-2 h-2 bg-primary rounded-full" />
+                    <span className="font-bold text-primary">22%</span>
                     <span className="text-muted-foreground">of incidents</span>
                   </div>
                   <div className="flex items-center gap-2">

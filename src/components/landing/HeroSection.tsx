@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Clock, Calendar, DollarSign } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 const HeroSection = () => {
   return (
@@ -33,34 +33,21 @@ const HeroSection = () => {
             </Button>
           </div>
           
-          {/* Stats row */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto animate-fade-up stagger-4">
-            <div className="bg-card border border-border rounded-2xl p-6 shadow-elegant hover:shadow-elevated transition-shadow">
-              <div className="flex items-center justify-center gap-3 mb-2">
-                <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
-                  <Clock className="w-5 h-5 text-primary" />
-                </div>
-              </div>
-              <span className="text-3xl font-bold text-foreground block mb-1">3 min</span>
-              <p className="text-sm text-muted-foreground">Avg. response time</p>
+          {/* Stats row - simple inline style */}
+          <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 animate-fade-up stagger-4">
+            <div className="text-center">
+              <span className="text-4xl md:text-5xl font-bold text-primary block">3 min</span>
+              <p className="text-sm text-muted-foreground mt-1">Avg. response time</p>
             </div>
-            <div className="bg-card border border-border rounded-2xl p-6 shadow-elegant hover:shadow-elevated transition-shadow">
-              <div className="flex items-center justify-center gap-3 mb-2">
-                <div className="w-10 h-10 rounded-xl bg-success/10 flex items-center justify-center">
-                  <Calendar className="w-5 h-5 text-success" />
-                </div>
-              </div>
-              <span className="text-3xl font-bold text-foreground block mb-1">2 weeks</span>
-              <p className="text-sm text-muted-foreground">Dev time saved</p>
+            <div className="hidden md:block w-px h-12 bg-border" />
+            <div className="text-center">
+              <span className="text-4xl md:text-5xl font-bold text-primary block">2 weeks</span>
+              <p className="text-sm text-muted-foreground mt-1">Dev time saved</p>
             </div>
-            <div className="bg-card border border-border rounded-2xl p-6 shadow-elegant hover:shadow-elevated transition-shadow">
-              <div className="flex items-center justify-center gap-3 mb-2">
-                <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
-                  <DollarSign className="w-5 h-5 text-primary" />
-                </div>
-              </div>
-              <span className="text-3xl font-bold text-foreground block mb-1">$20K+</span>
-              <p className="text-sm text-muted-foreground">Annual savings</p>
+            <div className="hidden md:block w-px h-12 bg-border" />
+            <div className="text-center">
+              <span className="text-4xl md:text-5xl font-bold text-primary block">$20K+</span>
+              <p className="text-sm text-muted-foreground mt-1">Annual savings</p>
             </div>
           </div>
         </div>
@@ -92,7 +79,7 @@ const HeroSection = () => {
                 </div>
                 <div className="bg-secondary/50 rounded-xl p-5 border border-border">
                   <div className="flex items-center gap-2 mb-3">
-                    <div className="w-2.5 h-2.5 bg-accent rounded-full animate-pulse" />
+                    <div className="w-2.5 h-2.5 bg-primary rounded-full animate-pulse" />
                     <span className="text-sm font-semibold">AI Analyzing</span>
                   </div>
                   <p className="text-sm text-muted-foreground">Confidence: 82%</p>
