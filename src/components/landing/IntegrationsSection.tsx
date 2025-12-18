@@ -1,7 +1,3 @@
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { ThumbsUp } from "lucide-react";
-import { toast } from "sonner";
 
 const supportedIntegrations = [
   { 
@@ -57,62 +53,9 @@ const supportedIntegrations = [
   },
 ];
 
-const comingSoonIntegrations = [
-  { 
-    name: "Heroku", 
-    votes: 234,
-    logo: (
-      <svg viewBox="0 0 24 24" className="w-10 h-10">
-        <path fill="#6762A6" d="M20.61 0H3.39C2.62 0 2 .62 2 1.39v21.22c0 .77.62 1.39 1.39 1.39h17.22c.77 0 1.39-.62 1.39-1.39V1.39c0-.77-.62-1.39-1.39-1.39zM14.5 20h-3v-6l-3 3V6h3v6l3-3v11zm1.5-9.5h-2.5V6H16c0 1.5-.5 3-1.5 4.5h1.5z"/>
-      </svg>
-    )
-  },
-  { 
-    name: "Fly.io", 
-    votes: 189,
-    logo: (
-      <svg viewBox="0 0 24 24" className="w-10 h-10">
-        <path fill="#8B5CF6" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-      </svg>
-    )
-  },
-  { 
-    name: "Google Cloud", 
-    votes: 156,
-    logo: (
-      <svg viewBox="0 0 24 24" className="w-10 h-10">
-        <path fill="#EA4335" d="M12.5 7.5v2h4.5c-.2 1-.8 1.8-1.6 2.3l1.6 1.2c1.1-.9 1.8-2.3 1.8-3.9 0-.4 0-.7-.1-1h-6.2z"/>
-        <path fill="#4285F4" d="M12.5 19.5c2.4 0 4.4-.8 5.9-2.2l-1.6-1.2c-.6.4-1.4.7-2.3.8v-2.4h-2v5z"/>
-        <path fill="#FBBC05" d="M6.6 14.3c-.3-.6-.5-1.3-.5-2s.2-1.4.5-2l-1.6-1.2c-.6 1-.9 2.1-.9 3.2s.3 2.2.9 3.2l1.6-1.2z"/>
-        <path fill="#34A853" d="M12.5 4.5c1.3 0 2.5.5 3.4 1.3l1.4-1.4c-1.3-1.2-3-1.9-4.8-1.9-2.7 0-5 1.4-6.4 3.6l1.6 1.2c.9-1.5 2.6-2.8 4.8-2.8z"/>
-      </svg>
-    )
-  },
-  { 
-    name: "Azure", 
-    votes: 143,
-    logo: (
-      <svg viewBox="0 0 24 24" className="w-10 h-10">
-        <path fill="#0089D6" d="M13.05 4.24l-4.71 4.39L3 18.57h6.32l3.73-14.33zm.88 1.49l2.03 6.22-3.72 4.41-4.66.84h8.27L21 18.57H9.9l4.03-12.84z"/>
-      </svg>
-    )
-  },
-];
+const comingSoonPlatforms = ["Azure", "Google Cloud", "Heroku"];
 
 const IntegrationsSection = () => {
-  const [votes, setVotes] = useState<Record<string, number>>(
-    Object.fromEntries(comingSoonIntegrations.map(i => [i.name, i.votes]))
-  );
-  const [voted, setVoted] = useState<Record<string, boolean>>({});
-
-  const handleVote = (name: string) => {
-    if (!voted[name]) {
-      setVotes(prev => ({ ...prev, [name]: prev[name] + 1 }));
-      setVoted(prev => ({ ...prev, [name]: true }));
-      toast.success(`Voted for ${name}!`);
-    }
-  };
-
   return (
     <section id="integrations" className="py-24 md:py-32 bg-secondary/30">
       <div className="container px-4">
@@ -143,32 +86,12 @@ const IntegrationsSection = () => {
           </div>
         </div>
         
-        {/* Coming soon integrations */}
-        <div>
-          <p className="text-label text-muted-foreground text-center mb-8">Coming Soon</p>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
-            {comingSoonIntegrations.map((integration) => (
-              <div
-                key={integration.name}
-                className="bg-card border border-border rounded-2xl p-6 text-center opacity-80 hover:opacity-100 transition-all duration-300"
-              >
-                <div className="w-14 h-14 mx-auto mb-3 rounded-xl bg-secondary/50 flex items-center justify-center grayscale hover:grayscale-0 transition-all">
-                  {integration.logo}
-                </div>
-                <h4 className="font-medium text-sm mb-3">{integration.name}</h4>
-                <Button
-                  variant={voted[integration.name] ? "secondary" : "outline"}
-                  size="sm"
-                  onClick={() => handleVote(integration.name)}
-                  disabled={voted[integration.name]}
-                  className="w-full"
-                >
-                  <ThumbsUp className="w-3 h-3 mr-1" />
-                  {voted[integration.name] ? "Voted!" : `Upvote (${votes[integration.name]})`}
-                </Button>
-              </div>
-            ))}
-          </div>
+        {/* Coming soon - simple text */}
+        <div className="text-center">
+          <p className="text-muted-foreground">
+            <span className="text-label text-muted-foreground mr-2">Coming Soon:</span>
+            {comingSoonPlatforms.join(", ")}
+          </p>
         </div>
       </div>
     </section>

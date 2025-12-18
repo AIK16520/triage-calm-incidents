@@ -11,13 +11,13 @@ const steps = [
     icon: Brain,
     title: "Analyze",
     description: "AI examines patterns, recent deploys, and historical incidents with confidence scoring",
-    color: "accent",
+    color: "primary",
   },
   {
     icon: GitBranch,
     title: "Decide",
     description: "Auto-resolve high-confidence incidents OR request human review when uncertain",
-    color: "attention",
+    color: "primary",
   },
   {
     icon: CheckCircle,
@@ -48,15 +48,11 @@ const SolutionSection = () => {
                 <div className="bg-card border border-border rounded-2xl p-6 h-full hover:shadow-elegant hover:border-primary/20 transition-all duration-300 group">
                   <div 
                     className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 group-hover:scale-105 transition-transform ${
-                      step.color === 'primary' ? 'bg-primary/10' : 
-                      step.color === 'accent' ? 'bg-accent/10' : 
-                      step.color === 'attention' ? 'bg-attention/10' : 'bg-success/10'
+                      step.color === 'primary' ? 'bg-primary/10' : 'bg-success/10'
                     }`}
                   >
                     <step.icon className={`w-6 h-6 ${
-                      step.color === 'primary' ? 'text-primary' : 
-                      step.color === 'accent' ? 'text-accent' : 
-                      step.color === 'attention' ? 'text-attention' : 'text-success'
+                      step.color === 'primary' ? 'text-primary' : 'text-success'
                     }`} />
                   </div>
                   

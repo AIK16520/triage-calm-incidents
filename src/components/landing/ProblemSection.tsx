@@ -37,23 +37,29 @@ const ProblemSection = () => {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           {problems.map((problem, index) => (
             <div
               key={problem.title}
-              className="bg-card border border-border rounded-3xl p-8 hover:shadow-elevated hover:border-destructive/20 transition-all duration-300 group"
-              style={{ animationDelay: `${index * 0.1}s` }}
+              className={`flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-12 py-10 ${
+                index !== problems.length - 1 ? 'border-b border-border' : ''
+              }`}
             >
-              <div className="w-14 h-14 rounded-2xl bg-destructive/10 flex items-center justify-center mb-6 group-hover:scale-105 transition-transform">
-                <problem.icon className="w-7 h-7 text-destructive" />
+              {/* Icon and title */}
+              <div className="flex items-center gap-4 md:w-64 shrink-0">
+                <div className="w-12 h-12 rounded-xl bg-destructive/10 flex items-center justify-center">
+                  <problem.icon className="w-6 h-6 text-destructive" />
+                </div>
+                <h3 className="text-xl font-bold">{problem.title}</h3>
               </div>
               
-              <h3 className="text-xl font-bold mb-3">{problem.title}</h3>
-              <p className="text-muted-foreground mb-8">{problem.description}</p>
+              {/* Description */}
+              <p className="text-muted-foreground flex-1">{problem.description}</p>
               
-              <div className="pt-6 border-t border-border">
-                <span className="text-4xl font-bold text-destructive">{problem.stat}</span>
-                <p className="text-sm text-muted-foreground mt-2">{problem.statLabel}</p>
+              {/* Stat */}
+              <div className="md:text-right shrink-0">
+                <span className="text-3xl font-bold text-destructive">{problem.stat}</span>
+                <p className="text-sm text-muted-foreground mt-1">{problem.statLabel}</p>
               </div>
             </div>
           ))}
