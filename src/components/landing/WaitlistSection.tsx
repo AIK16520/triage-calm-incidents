@@ -135,7 +135,7 @@ const WaitlistSection = () => {
               </Button>
               
               <p className="text-sm text-center text-muted-foreground">
-                Join 500+ engineering teams on the waitlist. No spam, ever.
+                No spam, ever.
               </p>
             </form>
           </div>

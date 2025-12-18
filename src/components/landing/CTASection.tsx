@@ -15,10 +15,10 @@ const CTASection = () => {
           </h2>
           
           <p className="text-body text-muted-foreground mb-10 max-w-2xl mx-auto">
-            Join 500+ engineering teams on the waitlist. Be among the first 1,000 to get early access.
+            Be among the first to get early access.
           </p>
           
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button variant="hero" size="xl" className="group" asChild>
               <a href="#waitlist">
                 Join the Waitlist
@@ -28,11 +28,6 @@ const CTASection = () => {
             <Button variant="heroOutline" size="xl" asChild>
               <a href="#integrations">Request an Integration</a>
             </Button>
-          </div>
-          
-          <div className="flex items-center justify-center gap-2 text-muted-foreground">
-            <Users className="w-5 h-5" />
-            <span className="text-sm">500+ teams already on the waitlist</span>
           </div>
         </div>
       </div>
