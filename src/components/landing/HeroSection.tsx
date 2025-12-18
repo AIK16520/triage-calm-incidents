@@ -43,10 +43,10 @@ const HeroSection = () => {
   ];
 
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden pt-20 bg-[#0A0A0A]">
-      {/* Teal radial gradient background */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_hsl(var(--primary)/0.15)_0%,_transparent_50%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_hsl(var(--primary)/0.1)_0%,_transparent_50%)]" />
+    <section className="relative min-h-screen flex items-center overflow-hidden pt-20 bg-background">
+      {/* Subtle teal radial gradient background */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_hsl(var(--primary)/0.08)_0%,_transparent_50%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_hsl(var(--primary)/0.05)_0%,_transparent_50%)]" />
       
       <div className="container relative z-10 px-4 py-20 md:py-32">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
@@ -98,9 +98,9 @@ const HeroSection = () => {
             {metrics.map((metric, index) => (
               <div
                 key={index}
-                className="group relative bg-card/30 backdrop-blur-xl border border-border/50 rounded-2xl p-9 
-                           border-l-4 border-l-primary
-                           hover:translate-x-[-8px] hover:shadow-[0_0_40px_hsl(var(--primary)/0.3)] 
+                className="group relative bg-card border border-border rounded-2xl p-9 
+                           border-l-4 border-l-primary shadow-sm
+                           hover:translate-x-[-8px] hover:shadow-[0_8px_30px_hsl(var(--primary)/0.15)] 
                            transition-all duration-300 ease-out"
               >
                 <div className="flex items-center gap-4 mb-3">
