@@ -77,67 +77,6 @@ const SolutionSection = () => {
             ))}
           </div>
           
-          {/* Stats split */}
-          <div className="mt-16 glass rounded-2xl p-8 glow-primary">
-            <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-              <div className="flex-1 text-center md:text-left">
-                <h3 className="text-2xl font-bold mb-4">Intelligent Decision Making</h3>
-                <p className="text-muted-foreground mb-6">
-                  Triage analyzes each incident and decides the best course of action based on confidence levels. 
-                  High-confidence issues are resolved automatically. Complex scenarios get human review.
-                </p>
-                <div className="flex items-center gap-6 justify-center md:justify-start text-sm">
-                  <div className="flex items-center gap-2">
-                    <div className="w-3 h-3 bg-success rounded-full" />
-                    <span><span className="font-semibold text-success">78%</span> Auto-resolved</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <div className="w-3 h-3 bg-attention rounded-full" />
-                    <span><span className="font-semibold text-attention">22%</span> Human reviewed</span>
-                  </div>
-                </div>
-              </div>
-              
-              {/* Visual split */}
-              <div className="flex-1 max-w-md">
-                <div className="relative">
-                  {/* Pie chart visualization */}
-                  <svg viewBox="0 0 200 200" className="w-48 h-48 mx-auto">
-                    {/* Background circle */}
-                    <circle cx="100" cy="100" r="80" fill="none" stroke="hsl(var(--secondary))" strokeWidth="24" />
-                    {/* Auto-resolved segment (78%) */}
-                    <circle 
-                      cx="100" cy="100" r="80" fill="none" 
-                      stroke="hsl(var(--success))" strokeWidth="24"
-                      strokeDasharray="392.7" strokeDashoffset="86.4"
-                      transform="rotate(-90 100 100)"
-                      className="drop-shadow-lg"
-                    />
-                    {/* Human reviewed segment (22%) */}
-                    <circle 
-                      cx="100" cy="100" r="80" fill="none" 
-                      stroke="hsl(var(--attention))" strokeWidth="24"
-                      strokeDasharray="392.7" strokeDashoffset="306.3"
-                      transform="rotate(191 100 100)"
-                      className="drop-shadow-lg"
-                    />
-                  </svg>
-                  
-                  {/* Legend */}
-                  <div className="flex justify-center gap-6 mt-4">
-                    <div className="flex items-center gap-2 text-sm">
-                      <div className="w-3 h-3 rounded-full bg-success" />
-                      <span>Auto-resolved</span>
-                    </div>
-                    <div className="flex items-center gap-2 text-sm">
-                      <div className="w-3 h-3 rounded-full bg-attention" />
-                      <span>Human reviewed</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </section>

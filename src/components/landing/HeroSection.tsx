@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Play, ArrowRight, Shield, Zap, Clock, Eye } from "lucide-react";
+import { ArrowRight, Clock, Calendar, DollarSign } from "lucide-react";
 
 const HeroSection = () => {
   return (
@@ -29,7 +29,7 @@ const HeroSection = () => {
           {/* Subheadline */}
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-10 animate-fade-up stagger-2 text-balance">
             Triage automatically detects, analyzes, and fixes production incidents while your team rests. 
-            Intelligent rollbacks, restarts, and human oversight when needed.
+            It reads logs, analyze and then either rollbacks, restarts or alert the developer when needed.
           </p>
           
           {/* CTA buttons */}
@@ -38,14 +38,10 @@ const HeroSection = () => {
               Join Waitlist
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Button>
-            <Button variant="heroOutline" size="xl" className="group">
-              <Play className="w-5 h-5" />
-              Watch Demo
-            </Button>
           </div>
           
           {/* Stats row */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 max-w-4xl mx-auto animate-fade-up stagger-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-3xl mx-auto animate-fade-up stagger-4">
             <div className="glass rounded-xl p-5 hover:scale-105 transition-transform">
               <div className="flex items-center justify-center gap-3 mb-2">
                 <Clock className="w-5 h-5 text-primary" />
@@ -55,24 +51,17 @@ const HeroSection = () => {
             </div>
             <div className="glass rounded-xl p-5 hover:scale-105 transition-transform">
               <div className="flex items-center justify-center gap-3 mb-2">
-                <Shield className="w-5 h-5 text-success" />
-                <span className="text-2xl font-bold text-foreground">78%</span>
+                <Calendar className="w-5 h-5 text-success" />
+                <span className="text-2xl font-bold text-foreground">2 weeks</span>
               </div>
-              <p className="text-xs text-muted-foreground">Auto-resolved</p>
+              <p className="text-xs text-muted-foreground">Dev time saved</p>
             </div>
             <div className="glass rounded-xl p-5 hover:scale-105 transition-transform">
               <div className="flex items-center justify-center gap-3 mb-2">
-                <Eye className="w-5 h-5 text-attention" />
-                <span className="text-2xl font-bold text-foreground">22%</span>
+                <DollarSign className="w-5 h-5 text-primary" />
+                <span className="text-2xl font-bold text-foreground">$20K+</span>
               </div>
-              <p className="text-xs text-muted-foreground">Human reviewed</p>
-            </div>
-            <div className="glass rounded-xl p-5 hover:scale-105 transition-transform">
-              <div className="flex items-center justify-center gap-3 mb-2">
-                <Zap className="w-5 h-5 text-primary" />
-                <span className="text-2xl font-bold text-foreground">$50K+</span>
-              </div>
-              <p className="text-xs text-muted-foreground">Annual savings/eng</p>
+              <p className="text-xs text-muted-foreground">Annual savings</p>
             </div>
           </div>
         </div>
