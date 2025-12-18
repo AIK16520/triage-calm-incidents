@@ -98,7 +98,7 @@ const WaitlistSection = () => {
               <div className="space-y-2">
                 <label className="text-sm font-medium">Team Size <span className="text-muted-foreground">(optional)</span></label>
                 <Input 
-                  placeholder="e.g. 5 engineers" 
+                  placeholder="" 
                   value={formData.teamSize}
                   onChange={(e) => setFormData({ ...formData, teamSize: e.target.value })}
                   className="bg-secondary/50 border-border"
