@@ -1,9 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { ThumbsUp, Send } from "lucide-react";
+import { ThumbsUp } from "lucide-react";
 import { toast } from "sonner";
 
 const supportedIntegrations = [
@@ -116,35 +113,28 @@ const IntegrationsSection = () => {
     }
   };
 
-  const handleRequestSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    toast.success("Integration request submitted! We'll notify you when it's available.");
-  };
-
   return (
-    <section id="integrations" className="py-24 md:py-32 relative">
-      <div className="absolute inset-0 gradient-mesh opacity-30" />
-      
-      <div className="container relative z-10 px-4">
+    <section id="integrations" className="py-24 md:py-32 bg-secondary/30">
+      <div className="container px-4">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold mb-6">
+          <h2 className="text-headline mb-6">
             One Platform, <span className="gradient-text">Every Stack</span>
           </h2>
-          <p className="text-lg text-muted-foreground">
+          <p className="text-body text-muted-foreground">
             Connect your entire infrastructure in minutes. No complex setup required.
           </p>
         </div>
         
         {/* Supported integrations */}
-        <div className="mb-12">
-          <h3 className="text-xl font-semibold mb-6 text-center">Supported Platforms</h3>
+        <div className="mb-16">
+          <p className="text-label text-muted-foreground text-center mb-8">Supported Platforms</p>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 max-w-5xl mx-auto">
             {supportedIntegrations.map((integration) => (
               <div
                 key={integration.name}
-                className="glass rounded-xl p-6 text-center hover:scale-105 transition-all duration-300 group cursor-pointer hover:border-primary/30 border border-transparent"
+                className="bg-card border border-border rounded-2xl p-6 text-center hover:shadow-elegant hover:border-primary/20 transition-all duration-300 group"
               >
-                <div className="w-16 h-16 mx-auto mb-4 rounded-xl bg-secondary/80 flex items-center justify-center group-hover:bg-secondary transition-colors">
+                <div className="w-16 h-16 mx-auto mb-4 rounded-xl bg-secondary flex items-center justify-center group-hover:scale-105 transition-transform">
                   {integration.logo}
                 </div>
                 <h4 className="font-medium text-sm">{integration.name}</h4>
@@ -154,15 +144,15 @@ const IntegrationsSection = () => {
         </div>
         
         {/* Coming soon integrations */}
-        <div className="mb-16">
-          <h3 className="text-xl font-semibold mb-6 text-center">Coming Soon</h3>
+        <div>
+          <p className="text-label text-muted-foreground text-center mb-8">Coming Soon</p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
             {comingSoonIntegrations.map((integration) => (
               <div
                 key={integration.name}
-                className="glass rounded-xl p-6 text-center opacity-70 hover:opacity-100 transition-all duration-300"
+                className="bg-card border border-border rounded-2xl p-6 text-center opacity-80 hover:opacity-100 transition-all duration-300"
               >
-                <div className="w-14 h-14 mx-auto mb-3 rounded-xl bg-muted/50 flex items-center justify-center grayscale group-hover:grayscale-0 transition-all">
+                <div className="w-14 h-14 mx-auto mb-3 rounded-xl bg-secondary/50 flex items-center justify-center grayscale hover:grayscale-0 transition-all">
                   {integration.logo}
                 </div>
                 <h4 className="font-medium text-sm mb-3">{integration.name}</h4>
@@ -180,7 +170,6 @@ const IntegrationsSection = () => {
             ))}
           </div>
         </div>
-        
       </div>
     </section>
   );

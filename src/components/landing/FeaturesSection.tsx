@@ -47,13 +47,13 @@ const features = [
 
 const FeaturesSection = () => {
   return (
-    <section className="py-24 md:py-32 relative">
-      <div className="container relative z-10 px-4">
+    <section className="py-24 md:py-32 bg-secondary/30">
+      <div className="container px-4">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold mb-6">
+          <h2 className="text-headline mb-6">
             Built for <span className="gradient-text">Modern DevOps Teams</span>
           </h2>
-          <p className="text-lg text-muted-foreground">
+          <p className="text-body text-muted-foreground">
             Every feature designed to reduce toil and let your team focus on what matters.
           </p>
         </div>
@@ -62,36 +62,31 @@ const FeaturesSection = () => {
           {features.map((feature) => (
             <div
               key={feature.title}
-              className="glass rounded-2xl p-8 hover:scale-[1.02] transition-all duration-300 group relative overflow-hidden"
+              className="bg-card border border-border rounded-3xl p-8 hover:shadow-elevated hover:border-primary/20 transition-all duration-300 group"
             >
-              {/* Gradient overlay on hover */}
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity" />
-              
-              <div className="relative z-10">
-                <div className="flex items-start justify-between mb-6">
-                  <div className={`w-14 h-14 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform ${
-                    feature.color === 'primary' ? 'bg-primary/10' : 
-                    feature.color === 'accent' ? 'bg-accent/10' : 
-                    feature.color === 'attention' ? 'bg-attention/10' : 'bg-success/10'
-                  }`}>
-                    <feature.icon className={`w-7 h-7 ${
-                      feature.color === 'primary' ? 'text-primary' : 
-                      feature.color === 'accent' ? 'text-accent' : 
-                      feature.color === 'attention' ? 'text-attention' : 'text-success'
-                    }`} />
-                  </div>
-                  <span className={`px-3 py-1 text-xs font-medium rounded-full ${
-                    feature.color === 'primary' ? 'bg-primary/10 text-primary' : 
-                    feature.color === 'accent' ? 'bg-accent/10 text-accent' : 
-                    feature.color === 'attention' ? 'bg-attention/10 text-attention' : 'bg-success/10 text-success'
-                  }`}>
-                    {feature.highlight}
-                  </span>
+              <div className="flex items-start justify-between mb-6">
+                <div className={`w-14 h-14 rounded-2xl flex items-center justify-center group-hover:scale-105 transition-transform ${
+                  feature.color === 'primary' ? 'bg-primary/10' : 
+                  feature.color === 'accent' ? 'bg-accent/10' : 
+                  feature.color === 'attention' ? 'bg-attention/10' : 'bg-success/10'
+                }`}>
+                  <feature.icon className={`w-7 h-7 ${
+                    feature.color === 'primary' ? 'text-primary' : 
+                    feature.color === 'accent' ? 'text-accent' : 
+                    feature.color === 'attention' ? 'text-attention' : 'text-success'
+                  }`} />
                 </div>
-                
-                <h3 className="text-xl font-semibold mb-3">{feature.title}</h3>
-                <p className="text-muted-foreground">{feature.description}</p>
+                <span className={`px-3 py-1.5 text-xs font-medium rounded-full ${
+                  feature.color === 'primary' ? 'bg-primary/10 text-primary' : 
+                  feature.color === 'accent' ? 'bg-accent/10 text-accent' : 
+                  feature.color === 'attention' ? 'bg-attention/10 text-attention' : 'bg-success/10 text-success'
+                }`}>
+                  {feature.highlight}
+                </span>
               </div>
+              
+              <h3 className="text-xl font-bold mb-3">{feature.title}</h3>
+              <p className="text-muted-foreground">{feature.description}</p>
             </div>
           ))}
         </div>
