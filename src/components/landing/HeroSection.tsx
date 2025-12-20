@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
-import { Bell, Moon, CheckCircle2 } from "lucide-react";
+import { Bell, Moon, CheckCircle2, ArrowRight, Zap, Clock } from "lucide-react";
 
 const BeforePhone = () => {
   const [showAlarm, setShowAlarm] = useState(true);
@@ -248,27 +248,46 @@ const HeroSection = () => {
       
       <div className="container relative z-10 px-4">
         {/* Centered Heading */}
-        <div className="text-center mb-12 md:mb-16">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight text-foreground mb-3">
+        <div className="text-center mb-10 md:mb-14">
+          <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold leading-tight text-foreground mb-4 animate-fade-up">
             Triage
           </h1>
-          <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold mb-6 animate-fade-up stagger-1">
             <span className="gradient-text bg-gradient-to-r from-primary via-primary/90 to-primary/70 bg-clip-text text-transparent">
               Your On-Call Engineer
             </span>
           </h2>
+          
+          {/* Quick Stats Badge */}
+          <div className="inline-flex items-center gap-4 px-6 py-3 bg-primary/5 border border-primary/20 rounded-full mb-8 animate-fade-up stagger-2">
+            <div className="flex items-center gap-2">
+              <Clock className="w-4 h-4 text-primary" />
+              <span className="text-sm font-medium text-foreground">47s avg resolution</span>
+            </div>
+            <div className="w-1 h-1 bg-primary/30 rounded-full" />
+            <div className="flex items-center gap-2">
+              <Zap className="w-4 h-4 text-primary" />
+              <span className="text-sm font-medium text-foreground">Auto-resolved</span>
+            </div>
+          </div>
         </div>
 
         {/* Before/After Comparison */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 lg:gap-16 max-w-6xl mx-auto mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 lg:gap-12 max-w-6xl mx-auto mb-12 relative">
+          {/* VS Divider - Desktop Only */}
+          <div className="hidden md:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
+            <div className="flex items-center gap-2 bg-background px-4 py-2 rounded-full border-2 border-primary/20 shadow-lg">
+              <span className="text-sm font-bold text-primary">VS</span>
+            </div>
+          </div>
           {/* Before - Left Side */}
-          <div className="flex flex-col items-center">
-            <div className="mb-3">
-              <span className="inline-flex items-center gap-2 px-6 py-3 bg-red-100 border-2 border-red-400 rounded-full shadow-sm">
+          <div className="flex flex-col items-center relative z-0">
+            <div className="mb-4">
+              <span className="inline-flex items-center gap-2 px-6 py-3 bg-red-50 border-2 border-red-500 rounded-full shadow-md">
                 <span className="text-base font-bold text-red-700">Before</span>
               </span>
             </div>
-            <p className="mb-6 text-base font-medium text-foreground text-center max-w-xs">
+            <p className="mb-6 text-base font-semibold text-foreground text-center max-w-xs leading-relaxed">
               Devs get woken up by alerts at 2 AM
             </p>
             <div className="phone-float w-full flex justify-center">
@@ -277,13 +296,13 @@ const HeroSection = () => {
           </div>
           
           {/* After - Right Side */}
-          <div className="flex flex-col items-center">
-            <div className="mb-3">
-              <span className="inline-flex items-center gap-2 px-6 py-3 bg-green-100 border-2 border-green-400 rounded-full shadow-sm">
+          <div className="flex flex-col items-center relative z-0">
+            <div className="mb-4">
+              <span className="inline-flex items-center gap-2 px-6 py-3 bg-green-50 border-2 border-green-500 rounded-full shadow-md">
                 <span className="text-base font-bold text-green-700">After</span>
               </span>
             </div>
-            <p className="mb-6 text-base font-medium text-foreground text-center max-w-xs">
+            <p className="mb-6 text-base font-semibold text-foreground text-center max-w-xs leading-relaxed">
               Triage auto-resolves incidents while you sleep
             </p>
             <div className="phone-float w-full flex justify-center">
@@ -292,16 +311,20 @@ const HeroSection = () => {
           </div>
         </div>
 
-        {/* CTA Button */}
-        <div className="flex justify-center">
+        {/* CTA Section */}
+        <div className="flex flex-col items-center gap-4">
           <Button 
             variant="hero" 
             size="lg" 
-            className="h-14 px-8 text-base shadow-[0_0_30px_hsl(var(--primary)/0.4)] hover:shadow-[0_0_40px_hsl(var(--primary)/0.5)]"
+            className="h-14 px-10 text-base shadow-[0_0_30px_hsl(var(--primary)/0.4)] hover:shadow-[0_0_40px_hsl(var(--primary)/0.5)] group"
             onClick={scrollToWaitlist}
           >
             Join Waitlist
+            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </Button>
+          <p className="text-sm text-muted-foreground">
+            Be among the first to experience autonomous incident response
+          </p>
         </div>
       </div>
     </section>
