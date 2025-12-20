@@ -47,25 +47,32 @@ const BeforePhone = () => {
           </div>
 
           {/* Lock Screen Content */}
-          <div className="absolute inset-0 flex flex-col items-center justify-center p-6 pt-16 pb-20">
-            {/* Moon icon for night */}
-            <Moon className="w-12 h-12 text-white/30 mb-6" />
+          <div className="absolute inset-0 flex flex-col p-6 pt-16 pb-20">
+            {/* Top: Sleeping Dev Indicator - Bigger than After */}
+            <div className="flex items-center justify-center mb-4">
+              <div className="flex items-center gap-2 px-5 py-2.5 bg-white/5 rounded-full border border-white/10">
+                <Moon className="w-5 h-5 text-white/40" />
+                <span className="text-sm text-white/60 font-medium">Dev sleeping</span>
+              </div>
+            </div>
             
-            {/* Alarm Notification */}
-            <div className={`w-full transition-all duration-500 ${showAlarm ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-              <div className="bg-red-500/20 backdrop-blur-xl rounded-2xl p-4 border border-red-500/50 shadow-[0_0_30px_rgba(239,68,68,0.5)] animate-pulse-glow">
-                <div className="flex items-center gap-3 mb-2">
-                  <Bell className="w-6 h-6 text-red-400 animate-pulse" />
-                  <div className="flex-1">
-                    <h3 className="text-sm font-bold text-red-400">PAGERDUTY ALERT</h3>
-                    <p className="text-xs text-white/70 mt-1">INFRA DOWN - API Gateway</p>
+            {/* Middle: Alarm Notification */}
+            <div className="flex-1 flex items-center">
+              <div className={`w-full transition-all duration-500 ${showAlarm ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+                <div className="bg-red-500/20 backdrop-blur-xl rounded-2xl p-4 border border-red-500/50 shadow-[0_0_30px_rgba(239,68,68,0.5)] animate-pulse-glow">
+                  <div className="flex items-center gap-3 mb-2">
+                    <Bell className="w-6 h-6 text-red-400 animate-pulse" />
+                    <div className="flex-1">
+                      <h3 className="text-sm font-bold text-red-400">PAGERDUTY ALERT</h3>
+                      <p className="text-xs text-white/70 mt-1">INFRA DOWN - API Gateway</p>
+                    </div>
                   </div>
+                  <p className="text-xs text-white/60">Error rate: 8% → Normal: 1%</p>
                 </div>
-                <p className="text-xs text-white/60">Error rate: 8% → Normal: 1%</p>
               </div>
             </div>
 
-            {/* Wake up indicator */}
+            {/* Bottom: Wake up indicator */}
             {showWake && (
               <div className="mt-4 text-center animate-fade-up">
                 <div className="inline-flex items-center gap-2 px-4 py-2 bg-yellow-500/20 rounded-full border border-yellow-500/30">
@@ -137,7 +144,7 @@ const AfterPhone = () => {
 
           {/* Lock Screen Content - Split View */}
           <div className="absolute inset-0 flex flex-col p-6 pt-16 pb-20">
-            {/* Top: Sleeping Dev Indicator */}
+            {/* Top: Sleeping Dev Indicator - Smaller than Before */}
             <div className="flex items-center justify-center mb-4">
               <div className="flex items-center gap-2 px-4 py-2 bg-white/5 rounded-full border border-white/10">
                 <Moon className="w-4 h-4 text-white/40" />
