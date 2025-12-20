@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
-import { Bell, Moon, CheckCircle2, ArrowRight, Zap, Clock } from "lucide-react";
+import { Bell, Moon, CheckCircle2, ArrowRight, Zap, Clock, Calendar, DollarSign } from "lucide-react";
 
 const BeforePhone = () => {
   const [showAlarm, setShowAlarm] = useState(true);
@@ -274,11 +274,28 @@ const HeroSection = () => {
 
         {/* Before/After Comparison */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 lg:gap-12 max-w-6xl mx-auto mb-12 relative">
-          {/* VS Divider - Desktop Only */}
-          <div className="hidden md:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
-            <div className="flex items-center gap-2 bg-background px-4 py-2 rounded-full border-2 border-primary/20 shadow-lg">
-              <span className="text-sm font-bold text-primary">VS</span>
-            </div>
+          {/* Metrics Cards - Between Before and After (Desktop) */}
+          <div className="hidden md:flex absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 gap-3">
+            {[
+              { icon: Clock, value: "3 min", label: "Avg. response time" },
+              { icon: Calendar, value: "2 weeks", label: "Dev time saved" },
+              { icon: DollarSign, value: "$20K+", label: "Annual savings" },
+            ].map((metric, index) => (
+              <div
+                key={index}
+                className="bg-card border-2 border-primary/30 rounded-xl p-5 shadow-lg hover:shadow-xl hover:border-primary/50 transition-all hover:-translate-y-1 min-w-[150px] backdrop-blur-sm"
+              >
+                <div className="flex flex-col items-start gap-2">
+                  <metric.icon className="w-6 h-6 text-primary" strokeWidth={2} />
+                  <span className="text-3xl font-bold gradient-text bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent leading-none">
+                    {metric.value}
+                  </span>
+                  <p className="text-xs text-muted-foreground font-medium leading-tight mt-1">
+                    {metric.label}
+                  </p>
+                </div>
+              </div>
+            ))}
           </div>
           {/* Before - Left Side */}
           <div className="flex flex-col items-center relative z-0">
@@ -309,6 +326,28 @@ const HeroSection = () => {
               <AfterPhone />
             </div>
           </div>
+        </div>
+
+        {/* Metrics Cards - Mobile Version */}
+        <div className="md:hidden grid grid-cols-3 gap-4 max-w-2xl mx-auto mb-12">
+          {[
+            { icon: Clock, value: "3 min", label: "Avg. response time" },
+            { icon: Calendar, value: "2 weeks", label: "Dev time saved" },
+            { icon: DollarSign, value: "$20K+", label: "Annual savings" },
+          ].map((metric, index) => (
+            <div
+              key={index}
+              className="bg-card border-2 border-primary/30 rounded-xl p-4 shadow-lg text-center"
+            >
+              <metric.icon className="w-5 h-5 text-primary mx-auto mb-2" strokeWidth={2} />
+              <span className="text-xl font-bold gradient-text bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent block mb-1">
+                {metric.value}
+              </span>
+              <p className="text-xs text-muted-foreground font-medium leading-tight">
+                {metric.label}
+              </p>
+            </div>
+          ))}
         </div>
 
         {/* CTA Section */}
