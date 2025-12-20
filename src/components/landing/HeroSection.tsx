@@ -48,7 +48,7 @@ const BeforePhone = () => {
 
           {/* Lock Screen Content */}
           <div className="absolute inset-0 flex flex-col p-6 pt-16 pb-20">
-            {/* Top: Sleeping Dev Indicator - Bigger than After */}
+            {/* Top: Sleeping Dev Indicator */}
             <div className="flex items-center justify-center mb-4">
               <div className="flex items-center gap-2 px-5 py-2.5 bg-white/5 rounded-full border border-white/10">
                 <Moon className="w-5 h-5 text-white/40" />
@@ -56,10 +56,10 @@ const BeforePhone = () => {
               </div>
             </div>
             
-            {/* Middle: Alarm Notification */}
-            <div className="flex-1 flex items-center">
+            {/* Middle: Alarm Notification - Fixed height, centered */}
+            <div className="flex-1 flex items-center justify-center">
               <div className={`w-full transition-all duration-500 ${showAlarm ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-                <div className="bg-red-500/20 backdrop-blur-xl rounded-2xl p-4 border border-red-500/50 shadow-[0_0_30px_rgba(239,68,68,0.5)] animate-pulse-glow">
+                <div className="bg-red-500/20 backdrop-blur-xl rounded-2xl p-4 border border-red-500/50 shadow-[0_0_30px_rgba(239,68,68,0.5)] animate-pulse-glow h-[120px] flex flex-col justify-center">
                   <div className="flex items-center gap-3 mb-2">
                     <Bell className="w-6 h-6 text-red-400 animate-pulse" />
                     <div className="flex-1">
@@ -72,14 +72,16 @@ const BeforePhone = () => {
               </div>
             </div>
 
-            {/* Bottom: Wake up indicator */}
-            {showWake && (
-              <div className="mt-4 text-center animate-fade-up">
-                <div className="inline-flex items-center gap-2 px-4 py-2 bg-yellow-500/20 rounded-full border border-yellow-500/30">
-                  <span className="text-xs text-yellow-400 font-medium">😴 Dev wakes up</span>
+            {/* Bottom: Wake up indicator - Fixed position */}
+            <div className="h-[60px] flex items-center justify-center">
+              {showWake && (
+                <div className="text-center animate-fade-up">
+                  <div className="inline-flex items-center gap-2 px-4 py-2 bg-yellow-500/20 rounded-full border border-yellow-500/30">
+                    <span className="text-xs text-yellow-400 font-medium">😴 Dev wakes up</span>
+                  </div>
                 </div>
-              </div>
-            )}
+              )}
+            </div>
           </div>
 
           {/* Home Indicator */}
@@ -152,8 +154,8 @@ const AfterPhone = () => {
               </div>
             </div>
             
-            {/* Middle: Triage Active Notifications */}
-            <div className="flex-1 flex items-center">
+            {/* Middle: Triage Active Notifications - Centered */}
+            <div className="flex-1 flex items-center justify-center">
               <div className="w-full relative">
                 {slides.map((slide, index) => (
                   <div
@@ -167,7 +169,7 @@ const AfterPhone = () => {
                     }`}
                   >
                     <div
-                      className={`bg-white/10 backdrop-blur-xl rounded-2xl p-4 border w-full ${
+                      className={`bg-white/10 backdrop-blur-xl rounded-2xl p-4 border w-full h-[120px] flex flex-col justify-center ${
                         slide.type === "alert"
                           ? "border-red-500/50 shadow-[0_0_20px_rgba(239,68,68,0.3)]"
                           : slide.type === "resolved"
