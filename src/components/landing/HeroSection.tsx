@@ -257,25 +257,12 @@ const HeroSection = () => {
               Your On-Call Engineer
             </span>
           </h2>
-          
-          {/* Quick Stats Badge */}
-          <div className="inline-flex items-center gap-4 px-6 py-3 bg-primary/5 border border-primary/20 rounded-full mb-8 animate-fade-up stagger-2">
-            <div className="flex items-center gap-2">
-              <Clock className="w-4 h-4 text-primary" />
-              <span className="text-sm font-medium text-foreground">47s avg resolution</span>
-            </div>
-            <div className="w-1 h-1 bg-primary/30 rounded-full" />
-            <div className="flex items-center gap-2">
-              <Zap className="w-4 h-4 text-primary" />
-              <span className="text-sm font-medium text-foreground">Auto-resolved</span>
-            </div>
-          </div>
         </div>
 
         {/* Before/After Comparison */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 lg:gap-12 max-w-6xl mx-auto mb-12 relative">
-          {/* Metrics Cards - Between Before and After (Desktop) */}
-          <div className="hidden md:flex absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 gap-3">
+          {/* Metrics Cards - Between Before and After (Desktop) - Vertical Stack */}
+          <div className="hidden md:flex absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 flex-col gap-3">
             {[
               { icon: Clock, value: "3 min", label: "Avg. response time" },
               { icon: Calendar, value: "2 weeks", label: "Dev time saved" },
@@ -283,16 +270,18 @@ const HeroSection = () => {
             ].map((metric, index) => (
               <div
                 key={index}
-                className="bg-card border-2 border-primary/30 rounded-xl p-5 shadow-lg hover:shadow-xl hover:border-primary/50 transition-all hover:-translate-y-1 min-w-[150px] backdrop-blur-sm"
+                className="bg-card border-2 border-primary/30 rounded-xl p-4 shadow-lg hover:shadow-xl hover:border-primary/50 transition-all hover:-translate-y-1 w-[160px] backdrop-blur-sm"
               >
-                <div className="flex flex-col items-start gap-2">
-                  <metric.icon className="w-6 h-6 text-primary" strokeWidth={2} />
-                  <span className="text-3xl font-bold gradient-text bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent leading-none">
-                    {metric.value}
-                  </span>
-                  <p className="text-xs text-muted-foreground font-medium leading-tight mt-1">
-                    {metric.label}
-                  </p>
+                <div className="flex items-center gap-3">
+                  <metric.icon className="w-5 h-5 text-primary flex-shrink-0" strokeWidth={2} />
+                  <div className="flex flex-col">
+                    <span className="text-2xl font-bold gradient-text bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent leading-none">
+                      {metric.value}
+                    </span>
+                    <p className="text-xs text-muted-foreground font-medium leading-tight mt-0.5">
+                      {metric.label}
+                    </p>
+                  </div>
                 </div>
               </div>
             ))}
