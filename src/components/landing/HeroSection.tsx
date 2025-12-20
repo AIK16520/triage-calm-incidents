@@ -144,17 +144,17 @@ const AfterPhone = () => {
 
           {/* Lock Screen Content - Split View */}
           <div className="absolute inset-0 flex flex-col p-6 pt-16 pb-20">
-            {/* Top: Sleeping Dev Indicator - Smaller than Before */}
+            {/* Top: Sleeping Dev Indicator - Same size as Before */}
             <div className="flex items-center justify-center mb-4">
-              <div className="flex items-center gap-2 px-4 py-2 bg-white/5 rounded-full border border-white/10">
-                <Moon className="w-4 h-4 text-white/40" />
-                <span className="text-xs text-white/60 font-medium">Dev sleeping</span>
+              <div className="flex items-center gap-2 px-5 py-2.5 bg-white/5 rounded-full border border-white/10">
+                <Moon className="w-5 h-5 text-white/40" />
+                <span className="text-sm text-white/60 font-medium">Dev sleeping</span>
               </div>
             </div>
             
             {/* Middle: Triage Active Notifications */}
             <div className="flex-1 flex items-center">
-              <div className="w-full relative min-h-[200px]">
+              <div className="w-full relative">
                 {slides.map((slide, index) => (
                   <div
                     key={index}
