@@ -1,7 +1,82 @@
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
+import { Bell, Moon, CheckCircle2 } from "lucide-react";
 
-const PhoneMockup = () => {
+const BeforePhone = () => {
+  const [showAlarm, setShowAlarm] = useState(false);
+  const [showWake, setShowWake] = useState(false);
+
+  useEffect(() => {
+    const alarmInterval = setInterval(() => {
+      setShowAlarm(true);
+      setTimeout(() => setShowWake(true), 1000);
+      setTimeout(() => {
+        setShowAlarm(false);
+        setShowWake(false);
+      }, 3000);
+    }, 5000);
+
+    return () => clearInterval(alarmInterval);
+  }, []);
+
+  return (
+    <div className="relative w-full max-w-[280px] mx-auto">
+      {/* Phone Frame */}
+      <div className="relative bg-[#1a1a1a] rounded-[3rem] p-3 shadow-2xl border border-white/10">
+        {/* Notch */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 bg-[#1a1a1a] rounded-b-2xl z-10" />
+        
+        {/* Screen */}
+        <div className="relative bg-[#0a0a0a] rounded-[2.5rem] overflow-hidden aspect-[9/19.5]">
+          {/* Status Bar */}
+          <div className="absolute top-0 left-0 right-0 h-12 bg-gradient-to-b from-black/50 to-transparent z-20 flex items-center justify-between px-6 pt-2">
+            <span className="text-white text-xs font-medium">2:47 AM</span>
+            <div className="flex items-center gap-1">
+              <div className="w-4 h-2 border border-white/30 rounded-sm">
+                <div className="w-full h-full bg-white/80 rounded-sm" />
+              </div>
+              <div className="w-1 h-1 bg-white/80 rounded-full" />
+            </div>
+          </div>
+
+          {/* Lock Screen Content */}
+          <div className="absolute inset-0 flex flex-col items-center justify-center p-6">
+            {/* Moon icon for night */}
+            <Moon className="w-12 h-12 text-white/40 mb-8" />
+            
+            {/* Alarm Notification */}
+            <div className={`w-full transition-all duration-500 ${showAlarm ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+              <div className="bg-red-500/20 backdrop-blur-xl rounded-2xl p-4 border border-red-500/50 shadow-[0_0_30px_rgba(239,68,68,0.5)] animate-pulse-glow">
+                <div className="flex items-center gap-3 mb-2">
+                  <Bell className="w-6 h-6 text-red-400 animate-pulse" />
+                  <div className="flex-1">
+                    <h3 className="text-sm font-bold text-red-400">🚨 PAGERDUTY ALERT</h3>
+                    <p className="text-xs text-white/70 mt-1">INFRA DOWN - API Gateway</p>
+                  </div>
+                </div>
+                <p className="text-xs text-white/60">Error rate: 8% → Normal: 1%</p>
+              </div>
+            </div>
+
+            {/* Wake up indicator */}
+            {showWake && (
+              <div className="mt-4 text-center animate-fade-up">
+                <div className="inline-flex items-center gap-2 px-4 py-2 bg-yellow-500/20 rounded-full border border-yellow-500/30">
+                  <span className="text-xs text-yellow-400 font-medium">😴 Dev wakes up</span>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* Home Indicator */}
+        <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-32 h-1 bg-white/30 rounded-full" />
+      </div>
+    </div>
+  );
+};
+
+const AfterPhone = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const slides = [
@@ -28,13 +103,13 @@ const PhoneMockup = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 4500); // Change slide every 4.5 seconds
+    }, 4500);
 
     return () => clearInterval(interval);
   }, [slides.length]);
 
   return (
-    <div className="relative w-full max-w-[320px] mx-auto">
+    <div className="relative w-full max-w-[280px] mx-auto">
       {/* Phone Frame */}
       <div className="relative bg-[#1a1a1a] rounded-[3rem] p-3 shadow-2xl border border-white/10">
         {/* Notch */}
@@ -44,7 +119,7 @@ const PhoneMockup = () => {
         <div className="relative bg-[#0a0a0a] rounded-[2.5rem] overflow-hidden aspect-[9/19.5]">
           {/* Status Bar */}
           <div className="absolute top-0 left-0 right-0 h-12 bg-gradient-to-b from-black/50 to-transparent z-20 flex items-center justify-between px-6 pt-2">
-            <span className="text-white text-xs font-medium">9:41</span>
+            <span className="text-white text-xs font-medium">2:47 AM</span>
             <div className="flex items-center gap-1">
               <div className="w-4 h-2 border border-white/30 rounded-sm">
                 <div className="w-full h-full bg-white/80 rounded-sm" />
@@ -54,8 +129,8 @@ const PhoneMockup = () => {
           </div>
 
           {/* Lock Screen Content */}
-          <div className="absolute inset-0 flex flex-col items-center justify-center p-8 text-center">
-            <div className="text-white/60 text-sm mb-4">Triage</div>
+          <div className="absolute inset-0 flex flex-col items-center justify-center p-6">
+            <div className="text-white/60 text-xs mb-4">Triage</div>
             
             {/* Notification Container */}
             <div className="w-full relative min-h-[180px] flex items-center">
@@ -73,7 +148,7 @@ const PhoneMockup = () => {
                   <div
                     className={`bg-white/10 backdrop-blur-xl rounded-2xl p-4 border w-full ${
                       slide.type === "alert"
-                        ? "border-red-500/50 shadow-[0_0_20px_rgba(239,68,68,0.3)] animate-pulse-glow"
+                        ? "border-red-500/50 shadow-[0_0_20px_rgba(239,68,68,0.3)]"
                         : slide.type === "resolved"
                         ? "border-green-500/50 shadow-[0_0_20px_rgba(34,197,94,0.3)]"
                         : "border-white/20"
@@ -108,7 +183,7 @@ const PhoneMockup = () => {
                       </p>
                     </div>
 
-                    {/* Expanding Animation for Slide 2 */}
+                    {/* Analyzing Animation */}
                     {slide.type === "analyzing" && (
                       <div className="mt-3 pt-3 border-t border-white/10">
                         <div className="flex items-center gap-2">
@@ -122,28 +197,23 @@ const PhoneMockup = () => {
                       </div>
                     )}
 
-                    {/* Success Checkmark Animation */}
+                    {/* Success Checkmark */}
                     {slide.type === "resolved" && (
                       <div className="mt-3 flex items-center gap-2 text-green-400">
-                        <svg
-                          className="w-4 h-4 animate-scale-in"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={3}
-                            d="M5 13l4 4L19 7"
-                          />
-                        </svg>
+                        <CheckCircle2 className="w-4 h-4 animate-scale-in" />
                         <span className="text-xs font-medium">Auto-resolved</span>
                       </div>
                     )}
                   </div>
                 </div>
               ))}
+            </div>
+
+            {/* Sleep indicator */}
+            <div className="mt-4 text-center">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-green-500/20 rounded-full border border-green-500/30">
+                <span className="text-xs text-green-400 font-medium">😴 Dev sleeps peacefully</span>
+              </div>
             </div>
           </div>
         </div>
@@ -164,47 +234,67 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden pt-20 bg-background">
+    <section className="relative py-16 md:py-24 overflow-hidden bg-background">
       {/* Mesh Gradient Background */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_hsl(173_58%_39%/0.08)_0%,_transparent_50%)]" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_hsl(160_84%_35%/0.06)_0%,_transparent_50%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_hsl(173_58%_39%/0.04)_0%,_transparent_70%)]" />
       
-      <div className="container relative z-10 px-4 py-20 md:py-32">
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16 items-center">
-          {/* Left Column - 60% (3/5) */}
-          <div className="lg:col-span-3 space-y-6 md:space-y-8">
-            {/* Main Heading */}
-            <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold leading-[1.05] text-foreground">
-              Triage
-            </h1>
-            
-            {/* Subheading */}
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold leading-tight">
-              <span className="gradient-text bg-gradient-to-r from-primary via-primary/90 to-primary/70 bg-clip-text text-transparent">
-                Your AI On-Call Engineer
+      <div className="container relative z-10 px-4">
+        {/* Centered Heading */}
+        <div className="text-center mb-12 md:mb-16">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight text-foreground mb-3">
+            Triage
+          </h1>
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold">
+            <span className="gradient-text bg-gradient-to-r from-primary via-primary/90 to-primary/70 bg-clip-text text-transparent">
+              Your On-Call Engineer
+            </span>
+          </h2>
+        </div>
+
+        {/* Before/After Comparison */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 lg:gap-16 max-w-6xl mx-auto mb-12">
+          {/* Before - Left Side */}
+          <div className="flex flex-col items-center">
+            <div className="mb-4">
+              <span className="inline-flex items-center gap-2 px-4 py-2 bg-red-50 border border-red-200 rounded-full">
+                <span className="text-sm font-semibold text-red-600">Before</span>
               </span>
-            </h2>
-            
-            {/* CTA Button */}
-            <div className="flex flex-col sm:flex-row gap-4 pt-4">
-              <Button 
-                variant="hero" 
-                size="lg" 
-                className="h-14 px-8 text-base shadow-[0_0_30px_hsl(var(--primary)/0.4)] hover:shadow-[0_0_40px_hsl(var(--primary)/0.5)] group"
-                onClick={scrollToWaitlist}
-              >
-                Join Waitlist
-              </Button>
             </div>
-          </div>
-          
-          {/* Right Column - 40% (2/5) */}
-          <div className="lg:col-span-2 flex items-center justify-center">
-            <div className="phone-float w-full">
-              <PhoneMockup />
+            <div className="phone-float">
+              <BeforePhone />
             </div>
+            <p className="mt-4 text-sm text-muted-foreground text-center max-w-xs">
+              Devs get woken up by alerts at 2 AM
+            </p>
           </div>
+
+          {/* After - Right Side */}
+          <div className="flex flex-col items-center">
+            <div className="mb-4">
+              <span className="inline-flex items-center gap-2 px-4 py-2 bg-green-50 border border-green-200 rounded-full">
+                <span className="text-sm font-semibold text-green-600">After</span>
+              </span>
+            </div>
+            <div className="phone-float">
+              <AfterPhone />
+            </div>
+            <p className="mt-4 text-sm text-muted-foreground text-center max-w-xs">
+              Triage auto-resolves incidents while you sleep
+            </p>
+          </div>
+        </div>
+
+        {/* CTA Button */}
+        <div className="flex justify-center">
+          <Button 
+            variant="hero" 
+            size="lg" 
+            className="h-14 px-8 text-base shadow-[0_0_30px_hsl(var(--primary)/0.4)] hover:shadow-[0_0_40px_hsl(var(--primary)/0.5)]"
+            onClick={scrollToWaitlist}
+          >
+            Join Waitlist
+          </Button>
         </div>
       </div>
     </section>
