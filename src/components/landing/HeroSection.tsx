@@ -169,7 +169,7 @@ const AfterPhone = () => {
                     }`}
                   >
                     <div
-                      className={`bg-white/10 backdrop-blur-xl rounded-2xl p-4 border w-full h-[120px] flex flex-col justify-center ${
+                      className={`bg-white/10 backdrop-blur-xl rounded-2xl p-4 border w-full min-h-[140px] flex flex-col justify-center overflow-hidden ${
                         slide.type === "alert"
                           ? "border-red-500/50 shadow-[0_0_20px_rgba(239,68,68,0.3)]"
                           : slide.type === "resolved"
@@ -178,20 +178,20 @@ const AfterPhone = () => {
                       }`}
                     >
                       {/* App Icon & Time */}
-                      <div className="flex items-center justify-between mb-2">
-                        <div className="flex items-center gap-2">
-                          <div className="w-8 h-8 bg-gradient-to-br from-primary to-primary/60 rounded-xl flex items-center justify-center">
+                      <div className="flex items-center justify-between mb-2 flex-shrink-0">
+                        <div className="flex items-center gap-2 min-w-0">
+                          <div className="w-8 h-8 bg-gradient-to-br from-primary to-primary/60 rounded-xl flex items-center justify-center flex-shrink-0">
                             <span className="text-white text-xs font-bold">T</span>
                           </div>
-                          <span className="text-white/90 text-xs font-medium">Triage</span>
+                          <span className="text-white/90 text-xs font-medium truncate">Triage</span>
                         </div>
-                        <span className="text-white/50 text-xs font-mono">{slide.time}</span>
+                        <span className="text-white/50 text-xs font-mono flex-shrink-0 ml-2">{slide.time}</span>
                       </div>
 
                       {/* Notification Content */}
-                      <div className="mt-2">
+                      <div className="mt-2 flex-1 min-h-0">
                         <h3
-                          className={`text-sm font-semibold mb-1 ${
+                          className={`text-sm font-semibold mb-1 break-words ${
                             slide.type === "alert"
                               ? "text-red-400"
                               : slide.type === "resolved"
@@ -202,16 +202,16 @@ const AfterPhone = () => {
                           {slide.type === "resolved" && "✅ "}
                           {slide.title}
                         </h3>
-                        <p className="text-white/70 text-xs leading-relaxed">
+                        <p className="text-white/70 text-xs leading-relaxed break-words">
                           {slide.subtitle}
                         </p>
                       </div>
 
                       {/* Analyzing Animation */}
                       {slide.type === "analyzing" && (
-                        <div className="mt-3 pt-3 border-t border-white/10">
+                        <div className="mt-2 pt-2 border-t border-white/10 flex-shrink-0">
                           <div className="flex items-center gap-2">
-                            <div className="flex gap-1">
+                            <div className="flex gap-1 flex-shrink-0">
                               <div className="w-1.5 h-1.5 bg-primary rounded-full animate-pulse" />
                               <div className="w-1.5 h-1.5 bg-primary rounded-full animate-pulse delay-75" />
                               <div className="w-1.5 h-1.5 bg-primary rounded-full animate-pulse delay-150" />
@@ -223,8 +223,8 @@ const AfterPhone = () => {
 
                       {/* Success Checkmark */}
                       {slide.type === "resolved" && (
-                        <div className="mt-3 flex items-center gap-2 text-green-400">
-                          <CheckCircle2 className="w-4 h-4 animate-scale-in" />
+                        <div className="mt-2 flex items-center gap-2 text-green-400 flex-shrink-0">
+                          <CheckCircle2 className="w-4 h-4 animate-scale-in flex-shrink-0" />
                           <span className="text-xs font-medium">Auto-resolved</span>
                         </div>
                       )}
@@ -280,7 +280,7 @@ const HeroSection = () => {
         {/* Before/After Comparison */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 lg:gap-12 max-w-6xl mx-auto mb-12 relative">
           {/* Metrics Cards - Between Before and After (Desktop) - Vertical Stack */}
-          <div className="hidden md:flex absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 flex-col gap-3">
+          <div className="hidden md:flex absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 flex-col gap-3 items-center">
             {[
               { icon: Clock, value: "3 min", label: "Avg. response time" },
               { icon: Calendar, value: "2 weeks", label: "Dev time saved" },
@@ -292,11 +292,11 @@ const HeroSection = () => {
               >
                 <div className="flex items-center gap-3">
                   <metric.icon className="w-5 h-5 text-primary flex-shrink-0" strokeWidth={2} />
-                  <div className="flex flex-col">
+                  <div className="flex flex-col min-w-0 flex-1">
                     <span className="text-2xl font-bold gradient-text bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent leading-none">
                       {metric.value}
                     </span>
-                    <p className="text-xs text-muted-foreground font-medium leading-tight mt-0.5">
+                    <p className="text-xs text-muted-foreground font-medium leading-tight mt-0.5 break-words">
                       {metric.label}
                     </p>
                   </div>
