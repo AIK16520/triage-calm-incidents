@@ -34,10 +34,10 @@ const BeforePhone = () => {
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 bg-[#1a1a1a] rounded-b-2xl z-10" />
         
         {/* Screen */}
-        <div className="relative bg-[#0a0a0a] rounded-[2.5rem] overflow-hidden" style={{ aspectRatio: '9/19.5', minHeight: '500px' }}>
+        <div className="relative bg-[#1A1B3D] rounded-[2.5rem] overflow-hidden" style={{ aspectRatio: '9/19.5', minHeight: '500px' }}>
           {/* Status Bar */}
-          <div className="absolute top-0 left-0 right-0 h-12 bg-gradient-to-b from-black/50 to-transparent z-20 flex items-center justify-between px-6 pt-2">
-            <span className="text-white text-xs font-medium">2:47 AM</span>
+          <div className="absolute top-0 left-0 right-0 h-12 bg-gradient-to-b from-[#1A1B3D]/80 to-transparent z-20 flex items-center justify-between px-6 pt-2">
+            <span className="text-white text-xs font-medium">3:47 AM</span>
             <div className="flex items-center gap-1">
               <div className="w-4 h-2 border border-white/30 rounded-sm">
                 <div className="w-full h-full bg-white/80 rounded-sm" />
@@ -49,7 +49,7 @@ const BeforePhone = () => {
           {/* Lock Screen Content */}
           <div className="absolute inset-0 flex flex-col items-center justify-center p-6 pt-16 pb-20">
             {/* Moon icon for night */}
-            <Moon className="w-12 h-12 text-white/40 mb-6" />
+            <Moon className="w-12 h-12 text-white/30 mb-6" />
             
             {/* Alarm Notification */}
             <div className={`w-full transition-all duration-500 ${showAlarm ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
@@ -57,7 +57,7 @@ const BeforePhone = () => {
                 <div className="flex items-center gap-3 mb-2">
                   <Bell className="w-6 h-6 text-red-400 animate-pulse" />
                   <div className="flex-1">
-                    <h3 className="text-sm font-bold text-red-400">🚨 PAGERDUTY ALERT</h3>
+                    <h3 className="text-sm font-bold text-red-400">PAGERDUTY ALERT</h3>
                     <p className="text-xs text-white/70 mt-1">INFRA DOWN - API Gateway</p>
                   </div>
                 </div>
@@ -89,21 +89,21 @@ const AfterPhone = () => {
   const slides = [
     {
       type: "alert",
-      title: "🚨 INFRA DOWN - API Gateway",
+      title: "INFRA DOWN - API Gateway",
       subtitle: "Error rate: 8% → Normal: 1%",
-      time: "2:47 AM",
+      time: "3:47 AM",
     },
     {
       type: "analyzing",
       title: "Analyzing incident...",
       subtitle: "Deploy detected 3 min ago",
-      time: "2:47 AM",
+      time: "3:47 AM",
     },
     {
       type: "resolved",
-      title: "✅ RESOLVED - Rolled back to deploy-xyz788",
+      title: "RESOLVED - Rolled back to deploy-xyz788",
       subtitle: "Incident duration: 47 seconds",
-      time: "2:48 AM",
+      time: "3:48 AM",
     },
   ];
 
@@ -135,88 +135,98 @@ const AfterPhone = () => {
             </div>
           </div>
 
-          {/* Lock Screen Content */}
-          <div className="absolute inset-0 flex flex-col items-center justify-center p-6 pt-16 pb-20">
-            <div className="text-white/60 text-xs mb-4">Triage</div>
+          {/* Lock Screen Content - Split View */}
+          <div className="absolute inset-0 flex flex-col p-6 pt-16 pb-20">
+            {/* Top: Sleeping Dev Indicator */}
+            <div className="flex items-center justify-center mb-4">
+              <div className="flex items-center gap-2 px-4 py-2 bg-white/5 rounded-full border border-white/10">
+                <Moon className="w-4 h-4 text-white/40" />
+                <span className="text-xs text-white/60 font-medium">Dev sleeping</span>
+              </div>
+            </div>
             
-            {/* Notification Container */}
-            <div className="w-full relative min-h-[180px] flex items-center">
-              {slides.map((slide, index) => (
-                <div
-                  key={index}
-                  className={`absolute inset-x-0 transition-all duration-700 ease-in-out ${
-                    index === currentSlide
-                      ? "opacity-100 translate-x-0 translate-y-0 scale-100 z-10"
-                      : index < currentSlide
-                      ? "opacity-0 -translate-x-8 translate-y-0 scale-95 pointer-events-none z-0"
-                      : "opacity-0 translate-x-8 translate-y-0 scale-95 pointer-events-none z-0"
-                  }`}
-                >
+            {/* Middle: Triage Active Notifications */}
+            <div className="flex-1 flex items-center">
+              <div className="w-full relative min-h-[200px]">
+                {slides.map((slide, index) => (
                   <div
-                    className={`bg-white/10 backdrop-blur-xl rounded-2xl p-4 border w-full ${
-                      slide.type === "alert"
-                        ? "border-red-500/50 shadow-[0_0_20px_rgba(239,68,68,0.3)]"
-                        : slide.type === "resolved"
-                        ? "border-green-500/50 shadow-[0_0_20px_rgba(34,197,94,0.3)]"
-                        : "border-white/20"
+                    key={index}
+                    className={`absolute inset-x-0 transition-all duration-700 ease-in-out ${
+                      index === currentSlide
+                        ? "opacity-100 translate-x-0 translate-y-0 scale-100 z-10"
+                        : index < currentSlide
+                        ? "opacity-0 -translate-x-8 translate-y-0 scale-95 pointer-events-none z-0"
+                        : "opacity-0 translate-x-8 translate-y-0 scale-95 pointer-events-none z-0"
                     }`}
                   >
-                    {/* App Icon & Time */}
-                    <div className="flex items-center justify-between mb-2">
-                      <div className="flex items-center gap-2">
-                        <div className="w-8 h-8 bg-gradient-to-br from-primary to-primary/60 rounded-xl flex items-center justify-center">
-                          <span className="text-white text-xs font-bold">T</span>
-                        </div>
-                        <span className="text-white/90 text-xs font-medium">Triage</span>
-                      </div>
-                      <span className="text-white/50 text-xs">{slide.time}</span>
-                    </div>
-
-                    {/* Notification Content */}
-                    <div className="mt-2">
-                      <h3
-                        className={`text-sm font-semibold mb-1 ${
-                          slide.type === "alert"
-                            ? "text-red-400"
-                            : slide.type === "resolved"
-                            ? "text-green-400"
-                            : "text-white"
-                        }`}
-                      >
-                        {slide.title}
-                      </h3>
-                      <p className="text-white/70 text-xs leading-relaxed">
-                        {slide.subtitle}
-                      </p>
-                    </div>
-
-                    {/* Analyzing Animation */}
-                    {slide.type === "analyzing" && (
-                      <div className="mt-3 pt-3 border-t border-white/10">
+                    <div
+                      className={`bg-white/10 backdrop-blur-xl rounded-2xl p-4 border w-full ${
+                        slide.type === "alert"
+                          ? "border-red-500/50 shadow-[0_0_20px_rgba(239,68,68,0.3)]"
+                          : slide.type === "resolved"
+                          ? "border-green-500/50 shadow-[0_0_20px_rgba(34,197,94,0.3)]"
+                          : "border-white/20"
+                      }`}
+                    >
+                      {/* App Icon & Time */}
+                      <div className="flex items-center justify-between mb-2">
                         <div className="flex items-center gap-2">
-                          <div className="flex gap-1">
-                            <div className="w-1.5 h-1.5 bg-primary rounded-full animate-pulse" />
-                            <div className="w-1.5 h-1.5 bg-primary rounded-full animate-pulse delay-75" />
-                            <div className="w-1.5 h-1.5 bg-primary rounded-full animate-pulse delay-150" />
+                          <div className="w-8 h-8 bg-gradient-to-br from-primary to-primary/60 rounded-xl flex items-center justify-center">
+                            <span className="text-white text-xs font-bold">T</span>
                           </div>
-                          <span className="text-white/60 text-xs">Processing logs...</span>
+                          <span className="text-white/90 text-xs font-medium">Triage</span>
                         </div>
+                        <span className="text-white/50 text-xs font-mono">{slide.time}</span>
                       </div>
-                    )}
 
-                    {/* Success Checkmark */}
-                    {slide.type === "resolved" && (
-                      <div className="mt-3 flex items-center gap-2 text-green-400">
-                        <CheckCircle2 className="w-4 h-4 animate-scale-in" />
-                        <span className="text-xs font-medium">Auto-resolved</span>
+                      {/* Notification Content */}
+                      <div className="mt-2">
+                        <h3
+                          className={`text-sm font-semibold mb-1 ${
+                            slide.type === "alert"
+                              ? "text-red-400"
+                              : slide.type === "resolved"
+                              ? "text-green-400"
+                              : "text-white"
+                          }`}
+                        >
+                          {slide.type === "alert" && "🚨 "}
+                          {slide.type === "resolved" && "✅ "}
+                          {slide.title}
+                        </h3>
+                        <p className="text-white/70 text-xs leading-relaxed">
+                          {slide.subtitle}
+                        </p>
                       </div>
-                    )}
+
+                      {/* Analyzing Animation */}
+                      {slide.type === "analyzing" && (
+                        <div className="mt-3 pt-3 border-t border-white/10">
+                          <div className="flex items-center gap-2">
+                            <div className="flex gap-1">
+                              <div className="w-1.5 h-1.5 bg-primary rounded-full animate-pulse" />
+                              <div className="w-1.5 h-1.5 bg-primary rounded-full animate-pulse delay-75" />
+                              <div className="w-1.5 h-1.5 bg-primary rounded-full animate-pulse delay-150" />
+                            </div>
+                            <span className="text-white/60 text-xs">Processing logs...</span>
+                          </div>
+                        </div>
+                      )}
+
+                      {/* Success Checkmark */}
+                      {slide.type === "resolved" && (
+                        <div className="mt-3 flex items-center gap-2 text-green-400">
+                          <CheckCircle2 className="w-4 h-4 animate-scale-in" />
+                          <span className="text-xs font-medium">Auto-resolved</span>
+                        </div>
+                      )}
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
 
-            {/* Sleep indicator */}
+            {/* Bottom: Sleep indicator */}
             <div className="mt-4 text-center">
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-green-500/20 rounded-full border border-green-500/30">
                 <span className="text-xs text-green-400 font-medium">😴 Dev sleeps peacefully</span>
@@ -249,12 +259,12 @@ const HeroSection = () => {
       <div className="container relative z-10 px-4">
         {/* Centered Heading */}
         <div className="text-center mb-10 md:mb-14">
-          <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold leading-tight text-foreground mb-4 animate-fade-up">
-            Triage
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight text-foreground mb-4 animate-fade-up">
+            Never Wake Up for Production Incidents Again
           </h1>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold mb-6 animate-fade-up stagger-1">
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold mb-6 animate-fade-up stagger-1">
             <span className="gradient-text bg-gradient-to-r from-primary via-primary/90 to-primary/70 bg-clip-text text-transparent">
-              Your On-Call Engineer
+              Your AI Engineer Handles Incidents While You Sleep
             </span>
           </h2>
         </div>
