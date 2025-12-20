@@ -156,16 +156,16 @@ const AfterPhone = () => {
             
             {/* Middle: Triage Active Notifications - Centered */}
             <div className="flex-1 flex items-center justify-center">
-              <div className="w-full relative">
+              <div className="w-full relative min-h-[140px]">
                 {slides.map((slide, index) => (
                   <div
                     key={index}
-                    className={`absolute inset-x-0 transition-all duration-700 ease-in-out ${
+                    className={`absolute inset-x-0 top-1/2 -translate-y-1/2 transition-all duration-700 ease-in-out ${
                       index === currentSlide
-                        ? "opacity-100 translate-x-0 translate-y-0 scale-100 z-10"
+                        ? "opacity-100 translate-x-0 scale-100 z-10"
                         : index < currentSlide
-                        ? "opacity-0 -translate-x-8 translate-y-0 scale-95 pointer-events-none z-0"
-                        : "opacity-0 translate-x-8 translate-y-0 scale-95 pointer-events-none z-0"
+                        ? "opacity-0 -translate-x-8 scale-95 pointer-events-none z-0"
+                        : "opacity-0 translate-x-8 scale-95 pointer-events-none z-0"
                     }`}
                   >
                     <div
