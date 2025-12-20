@@ -123,10 +123,10 @@ const AfterPhone = () => {
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 bg-[#1a1a1a] rounded-b-2xl z-10" />
         
         {/* Screen */}
-        <div className="relative bg-[#0a0a0a] rounded-[2.5rem] overflow-hidden" style={{ aspectRatio: '9/19.5', minHeight: '500px' }}>
+        <div className="relative bg-[#1A1B3D] rounded-[2.5rem] overflow-hidden" style={{ aspectRatio: '9/19.5', minHeight: '500px' }}>
           {/* Status Bar */}
-          <div className="absolute top-0 left-0 right-0 h-12 bg-gradient-to-b from-black/50 to-transparent z-20 flex items-center justify-between px-6 pt-2">
-            <span className="text-white text-xs font-medium">2:47 AM</span>
+          <div className="absolute top-0 left-0 right-0 h-12 bg-gradient-to-b from-[#1A1B3D]/80 to-transparent z-20 flex items-center justify-between px-6 pt-2">
+            <span className="text-white text-xs font-medium">3:47 AM</span>
             <div className="flex items-center gap-1">
               <div className="w-4 h-2 border border-white/30 rounded-sm">
                 <div className="w-full h-full bg-white/80 rounded-sm" />
@@ -190,7 +190,6 @@ const AfterPhone = () => {
                               : "text-white"
                           }`}
                         >
-                          {slide.type === "alert" && "🚨 "}
                           {slide.type === "resolved" && "✅ "}
                           {slide.title}
                         </h3>
