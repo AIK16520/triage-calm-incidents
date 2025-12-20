@@ -215,7 +215,7 @@ const AfterPhone = () => {
             <div className="h-[60px] flex items-center justify-center">
               <div className="text-center">
                 <div className="inline-flex items-center gap-2 px-5 py-2.5 bg-green-500/30 rounded-full border-2 border-green-500/60 shadow-lg">
-                  <span className="text-sm text-green-300 font-bold">😴 Dev sleeps peacefully</span>
+                  <span className="text-sm text-green-300 font-bold">😴 Dev sleeps easily</span>
                 </div>
               </div>
             </div>
