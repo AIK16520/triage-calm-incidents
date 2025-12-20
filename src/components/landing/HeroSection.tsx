@@ -1,5 +1,4 @@
 import { Button } from "@/components/ui/button";
-import { Play } from "lucide-react";
 import { useState, useEffect } from "react";
 
 const PhoneMockup = () => {
@@ -157,20 +156,27 @@ const PhoneMockup = () => {
 };
 
 const HeroSection = () => {
+  const scrollToWaitlist = () => {
+    const waitlistSection = document.getElementById('waitlist');
+    if (waitlistSection) {
+      waitlistSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden pt-20 bg-gradient-to-b from-[#0a0a0a] via-[#0f0f0f] to-[#0a0a0a]">
+    <section className="relative min-h-screen flex items-center overflow-hidden pt-20 bg-background">
       {/* Mesh Gradient Background */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_hsl(173_58%_39%/0.1)_0%,_transparent_50%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_hsl(160_84%_35%/0.08)_0%,_transparent_50%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_hsl(173_58%_39%/0.05)_0%,_transparent_70%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_hsl(173_58%_39%/0.08)_0%,_transparent_50%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_hsl(160_84%_35%/0.06)_0%,_transparent_50%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_hsl(173_58%_39%/0.04)_0%,_transparent_70%)]" />
       
       <div className="container relative z-10 px-4 py-20 md:py-32">
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16 items-center">
           {/* Left Column - 60% (3/5) */}
           <div className="lg:col-span-3 space-y-6 md:space-y-8">
             {/* Main Heading */}
-            <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold leading-[1.05] text-white">
-              Autonomous Incident Response
+            <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold leading-[1.05] text-foreground">
+              Triage
             </h1>
             
             {/* Subheading */}
@@ -180,28 +186,15 @@ const HeroSection = () => {
               </span>
             </h2>
             
-            {/* Body Text */}
-            <p className="text-base sm:text-lg md:text-xl text-white/70 max-w-2xl leading-relaxed">
-              Triage automatically detects, analyzes, and fixes production incidents while your team rests. 
-              It reads logs, analyzes root causes, then either rolls back, restarts, or alerts developers when needed.
-            </p>
-            
-            {/* CTA Buttons */}
+            {/* CTA Button */}
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <Button 
                 variant="hero" 
                 size="lg" 
                 className="h-14 px-8 text-base shadow-[0_0_30px_hsl(var(--primary)/0.4)] hover:shadow-[0_0_40px_hsl(var(--primary)/0.5)] group"
+                onClick={scrollToWaitlist}
               >
-                Start Free Trial
-              </Button>
-              <Button 
-                variant="heroOutline" 
-                size="lg" 
-                className="h-14 px-8 text-base group"
-              >
-                <Play className="w-5 h-5 group-hover:scale-110 transition-transform" />
-                Watch Demo
+                Join Waitlist
               </Button>
             </div>
           </div>
