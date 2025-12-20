@@ -38,11 +38,11 @@ const BeforePhone = () => {
             {/* Middle: Alarm Notification - Fixed height, centered */}
             <div className="flex-1 flex items-center justify-center">
               <div className="w-full">
-                <div className="bg-red-500/20 backdrop-blur-xl rounded-2xl p-4 border-2 border-red-500/50 shadow-[0_0_30px_rgba(239,68,68,0.5)] animate-pulse-glow min-h-[140px] flex flex-col justify-center">
+                <div className="bg-red-500/20 backdrop-blur-xl rounded-2xl p-4 border-4 border-red-500/60 shadow-[0_0_40px_rgba(239,68,68,0.6)] animate-pulse min-h-[140px] flex flex-col justify-center">
                   <div className="flex items-center gap-3 mb-2">
                     <Bell className="w-6 h-6 text-red-400 animate-pulse" />
                     <div className="flex-1">
-                      <h3 className="text-sm font-bold text-red-400">PAGERDUTY ALERT</h3>
+                      <h3 className="text-sm font-bold text-red-400 animate-pulse">PAGERDUTY ALERT</h3>
                       <p className="text-xs text-white/70 mt-1">INFRA DOWN - API Gateway</p>
                     </div>
                   </div>
@@ -54,8 +54,8 @@ const BeforePhone = () => {
             {/* Bottom: Wake up indicator - Fixed position */}
             <div className="h-[60px] flex items-center justify-center">
               <div className="text-center">
-                <div className="inline-flex items-center gap-2 px-4 py-2 bg-yellow-500/20 rounded-full border-2 border-yellow-500/40 animate-pulse">
-                  <span className="text-xs text-yellow-400 font-medium">😴 Dev wakes up</span>
+                <div className="inline-flex items-center gap-2 px-5 py-2.5 bg-yellow-500/30 rounded-full border-2 border-yellow-500/60 shadow-lg">
+                  <span className="text-sm text-yellow-300 font-bold">😴 Dev wakes up</span>
                 </div>
               </div>
             </div>
