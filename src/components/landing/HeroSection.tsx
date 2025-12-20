@@ -3,20 +3,27 @@ import { useState, useEffect } from "react";
 import { Bell, Moon, CheckCircle2 } from "lucide-react";
 
 const BeforePhone = () => {
-  const [showAlarm, setShowAlarm] = useState(false);
+  const [showAlarm, setShowAlarm] = useState(true);
   const [showWake, setShowWake] = useState(false);
 
   useEffect(() => {
+    // Show alarm immediately
+    const wakeTimeout = setTimeout(() => setShowWake(true), 2000);
+    
     const alarmInterval = setInterval(() => {
       setShowAlarm(true);
-      setTimeout(() => setShowWake(true), 1000);
+      setShowWake(false);
+      setTimeout(() => setShowWake(true), 2000);
       setTimeout(() => {
         setShowAlarm(false);
         setShowWake(false);
-      }, 3000);
-    }, 5000);
+      }, 4000);
+    }, 6000);
 
-    return () => clearInterval(alarmInterval);
+    return () => {
+      clearInterval(alarmInterval);
+      clearTimeout(wakeTimeout);
+    };
   }, []);
 
   return (
@@ -27,7 +34,7 @@ const BeforePhone = () => {
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 bg-[#1a1a1a] rounded-b-2xl z-10" />
         
         {/* Screen */}
-        <div className="relative bg-[#0a0a0a] rounded-[2.5rem] overflow-hidden aspect-[9/19.5]">
+        <div className="relative bg-[#0a0a0a] rounded-[2.5rem] overflow-hidden" style={{ aspectRatio: '9/19.5', minHeight: '500px' }}>
           {/* Status Bar */}
           <div className="absolute top-0 left-0 right-0 h-12 bg-gradient-to-b from-black/50 to-transparent z-20 flex items-center justify-between px-6 pt-2">
             <span className="text-white text-xs font-medium">2:47 AM</span>
@@ -40,9 +47,9 @@ const BeforePhone = () => {
           </div>
 
           {/* Lock Screen Content */}
-          <div className="absolute inset-0 flex flex-col items-center justify-center p-6">
+          <div className="absolute inset-0 flex flex-col items-center justify-center p-6 pt-16 pb-20">
             {/* Moon icon for night */}
-            <Moon className="w-12 h-12 text-white/40 mb-8" />
+            <Moon className="w-12 h-12 text-white/40 mb-6" />
             
             {/* Alarm Notification */}
             <div className={`w-full transition-all duration-500 ${showAlarm ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
@@ -67,10 +74,10 @@ const BeforePhone = () => {
               </div>
             )}
           </div>
-        </div>
 
-        {/* Home Indicator */}
-        <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-32 h-1 bg-white/30 rounded-full" />
+          {/* Home Indicator */}
+          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 w-32 h-1 bg-white/30 rounded-full z-20" />
+        </div>
       </div>
     </div>
   );
@@ -116,7 +123,7 @@ const AfterPhone = () => {
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 bg-[#1a1a1a] rounded-b-2xl z-10" />
         
         {/* Screen */}
-        <div className="relative bg-[#0a0a0a] rounded-[2.5rem] overflow-hidden aspect-[9/19.5]">
+        <div className="relative bg-[#0a0a0a] rounded-[2.5rem] overflow-hidden" style={{ aspectRatio: '9/19.5', minHeight: '500px' }}>
           {/* Status Bar */}
           <div className="absolute top-0 left-0 right-0 h-12 bg-gradient-to-b from-black/50 to-transparent z-20 flex items-center justify-between px-6 pt-2">
             <span className="text-white text-xs font-medium">2:47 AM</span>
@@ -129,7 +136,7 @@ const AfterPhone = () => {
           </div>
 
           {/* Lock Screen Content */}
-          <div className="absolute inset-0 flex flex-col items-center justify-center p-6">
+          <div className="absolute inset-0 flex flex-col items-center justify-center p-6 pt-16 pb-20">
             <div className="text-white/60 text-xs mb-4">Triage</div>
             
             {/* Notification Container */}
@@ -216,10 +223,10 @@ const AfterPhone = () => {
               </div>
             </div>
           </div>
-        </div>
 
-        {/* Home Indicator */}
-        <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-32 h-1 bg-white/30 rounded-full" />
+          {/* Home Indicator */}
+          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 w-32 h-1 bg-white/30 rounded-full z-20" />
+        </div>
       </div>
     </div>
   );
@@ -261,22 +268,22 @@ const HeroSection = () => {
                 <span className="text-sm font-semibold text-red-600">Before</span>
               </span>
             </div>
-            <div className="phone-float">
+            <div className="phone-float w-full flex justify-center">
               <BeforePhone />
             </div>
             <p className="mt-4 text-sm text-muted-foreground text-center max-w-xs">
               Devs get woken up by alerts at 2 AM
             </p>
           </div>
-
+          
           {/* After - Right Side */}
           <div className="flex flex-col items-center">
             <div className="mb-4">
               <span className="inline-flex items-center gap-2 px-4 py-2 bg-green-50 border border-green-200 rounded-full">
                 <span className="text-sm font-semibold text-green-600">After</span>
-              </span>
-            </div>
-            <div className="phone-float">
+                  </span>
+                </div>
+            <div className="phone-float w-full flex justify-center">
               <AfterPhone />
             </div>
             <p className="mt-4 text-sm text-muted-foreground text-center max-w-xs">
