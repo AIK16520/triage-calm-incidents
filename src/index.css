@@ -226,10 +226,19 @@
 
 @keyframes pulse-glow {
   0%, 100% {
-    box-shadow: 0 0 20px hsl(173, 58%, 39%, 0.2);
+    box-shadow: 0 0 20px rgba(239, 68, 68, 0.3);
   }
   50% {
-    box-shadow: 0 0 40px hsl(173, 58%, 39%, 0.4);
+    box-shadow: 0 0 40px rgba(239, 68, 68, 0.5);
+  }
+}
+
+@keyframes phone-float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-15px) rotate(1deg);
   }
 }
 
@@ -280,8 +289,20 @@
   animation: float 6s ease-in-out infinite;
 }
 
+.phone-float {
+  animation: phone-float 6s ease-in-out infinite;
+}
+
 .animate-pulse-glow {
   animation: pulse-glow 3s ease-in-out infinite;
+}
+
+.delay-75 {
+  animation-delay: 0.075s;
+}
+
+.delay-150 {
+  animation-delay: 0.15s;
 }
 
 .animate-gradient {
