@@ -3,28 +3,7 @@ import { useState, useEffect } from "react";
 import { Bell, Moon, CheckCircle2, ArrowRight, Zap, Clock, Calendar, DollarSign } from "lucide-react";
 
 const BeforePhone = () => {
-  const [showAlarm, setShowAlarm] = useState(true);
-  const [showWake, setShowWake] = useState(false);
-
-  useEffect(() => {
-    // Show alarm immediately
-    const wakeTimeout = setTimeout(() => setShowWake(true), 2000);
-    
-    const alarmInterval = setInterval(() => {
-      setShowAlarm(true);
-      setShowWake(false);
-      setTimeout(() => setShowWake(true), 2000);
-      setTimeout(() => {
-        setShowAlarm(false);
-        setShowWake(false);
-      }, 4000);
-    }, 6000);
-
-    return () => {
-      clearInterval(alarmInterval);
-      clearTimeout(wakeTimeout);
-    };
-  }, []);
+  // No state needed - everything stays visible with pulsing borders
 
   return (
     <div className="relative w-full max-w-[280px] mx-auto">
@@ -58,8 +37,8 @@ const BeforePhone = () => {
             
             {/* Middle: Alarm Notification - Fixed height, centered */}
             <div className="flex-1 flex items-center justify-center">
-              <div className={`w-full transition-all duration-500 ${showAlarm ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-                <div className="bg-red-500/20 backdrop-blur-xl rounded-2xl p-4 border border-red-500/50 shadow-[0_0_30px_rgba(239,68,68,0.5)] animate-pulse-glow min-h-[140px] flex flex-col justify-center">
+              <div className="w-full">
+                <div className="bg-red-500/20 backdrop-blur-xl rounded-2xl p-4 border-2 border-red-500/50 shadow-[0_0_30px_rgba(239,68,68,0.5)] animate-pulse-glow min-h-[140px] flex flex-col justify-center">
                   <div className="flex items-center gap-3 mb-2">
                     <Bell className="w-6 h-6 text-red-400 animate-pulse" />
                     <div className="flex-1">
@@ -74,13 +53,11 @@ const BeforePhone = () => {
 
             {/* Bottom: Wake up indicator - Fixed position */}
             <div className="h-[60px] flex items-center justify-center">
-              {showWake && (
-                <div className="text-center animate-fade-up">
-                  <div className="inline-flex items-center gap-2 px-4 py-2 bg-yellow-500/20 rounded-full border border-yellow-500/30">
-                    <span className="text-xs text-yellow-400 font-medium">😴 Dev wakes up</span>
-                  </div>
+              <div className="text-center">
+                <div className="inline-flex items-center gap-2 px-4 py-2 bg-yellow-500/20 rounded-full border-2 border-yellow-500/40 animate-pulse">
+                  <span className="text-xs text-yellow-400 font-medium">😴 Dev wakes up</span>
                 </div>
-              )}
+              </div>
             </div>
           </div>
 
