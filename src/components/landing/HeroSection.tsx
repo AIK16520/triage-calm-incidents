@@ -263,32 +263,32 @@ const HeroSection = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 lg:gap-16 max-w-6xl mx-auto mb-12">
           {/* Before - Left Side */}
           <div className="flex flex-col items-center">
-            <div className="mb-4">
-              <span className="inline-flex items-center gap-2 px-4 py-2 bg-red-50 border border-red-200 rounded-full">
-                <span className="text-sm font-semibold text-red-600">Before</span>
+            <div className="mb-3">
+              <span className="inline-flex items-center gap-2 px-6 py-3 bg-red-100 border-2 border-red-400 rounded-full shadow-sm">
+                <span className="text-base font-bold text-red-700">Before</span>
               </span>
             </div>
+            <p className="mb-6 text-base font-medium text-foreground text-center max-w-xs">
+              Devs get woken up by alerts at 2 AM
+            </p>
             <div className="phone-float w-full flex justify-center">
               <BeforePhone />
             </div>
-            <p className="mt-4 text-sm text-muted-foreground text-center max-w-xs">
-              Devs get woken up by alerts at 2 AM
-            </p>
           </div>
           
           {/* After - Right Side */}
           <div className="flex flex-col items-center">
-            <div className="mb-4">
-              <span className="inline-flex items-center gap-2 px-4 py-2 bg-green-50 border border-green-200 rounded-full">
-                <span className="text-sm font-semibold text-green-600">After</span>
-                  </span>
-                </div>
+            <div className="mb-3">
+              <span className="inline-flex items-center gap-2 px-6 py-3 bg-green-100 border-2 border-green-400 rounded-full shadow-sm">
+                <span className="text-base font-bold text-green-700">After</span>
+              </span>
+            </div>
+            <p className="mb-6 text-base font-medium text-foreground text-center max-w-xs">
+              Triage auto-resolves incidents while you sleep
+            </p>
             <div className="phone-float w-full flex justify-center">
               <AfterPhone />
             </div>
-            <p className="mt-4 text-sm text-muted-foreground text-center max-w-xs">
-              Triage auto-resolves incidents while you sleep
-            </p>
           </div>
         </div>
 
