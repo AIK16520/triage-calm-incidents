@@ -302,7 +302,7 @@ const HeroSection = () => {
                 <span className="text-base font-bold text-red-700">Before</span>
               </span>
             </div>
-            <p className="mb-6 text-base font-semibold text-foreground text-center max-w-xs leading-relaxed">
+            <p className="mb-6 text-base font-semibold text-foreground text-center max-w-xs leading-relaxed min-h-[3.5rem] flex items-center">
               Devs get woken up by alerts at 2 AM
             </p>
             <div className="phone-float w-full flex justify-center">
@@ -317,7 +317,7 @@ const HeroSection = () => {
                 <span className="text-base font-bold text-green-700">After</span>
               </span>
             </div>
-            <p className="mb-6 text-base font-semibold text-foreground text-center max-w-xs leading-relaxed">
+            <p className="mb-6 text-base font-semibold text-foreground text-center max-w-xs leading-relaxed min-h-[3.5rem] flex items-center">
               Triage auto-resolves incidents while you sleep
             </p>
             <div className="phone-float w-full flex justify-center">
