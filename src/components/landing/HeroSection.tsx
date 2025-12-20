@@ -59,7 +59,7 @@ const BeforePhone = () => {
             {/* Middle: Alarm Notification - Fixed height, centered */}
             <div className="flex-1 flex items-center justify-center">
               <div className={`w-full transition-all duration-500 ${showAlarm ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-                <div className="bg-red-500/20 backdrop-blur-xl rounded-2xl p-4 border border-red-500/50 shadow-[0_0_30px_rgba(239,68,68,0.5)] animate-pulse-glow h-[120px] flex flex-col justify-center">
+                <div className="bg-red-500/20 backdrop-blur-xl rounded-2xl p-4 border border-red-500/50 shadow-[0_0_30px_rgba(239,68,68,0.5)] animate-pulse-glow min-h-[140px] flex flex-col justify-center">
                   <div className="flex items-center gap-3 mb-2">
                     <Bell className="w-6 h-6 text-red-400 animate-pulse" />
                     <div className="flex-1">
@@ -234,14 +234,16 @@ const AfterPhone = () => {
               </div>
             </div>
 
-            {/* Bottom: Sleep indicator */}
-            <div className="mt-4 text-center">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-green-500/20 rounded-full border border-green-500/30">
-                <span className="text-xs text-green-400 font-medium">😴 Dev sleeps peacefully</span>
+            {/* Bottom: Sleep indicator - Fixed position to match Before */}
+            <div className="h-[60px] flex items-center justify-center">
+              <div className="text-center">
+                <div className="inline-flex items-center gap-2 px-4 py-2 bg-green-500/20 rounded-full border border-green-500/30">
+                  <span className="text-xs text-green-400 font-medium">😴 Dev sleeps peacefully</span>
+                </div>
               </div>
             </div>
           </div>
-
+          
           {/* Home Indicator */}
           <div className="absolute bottom-4 left-1/2 -translate-x-1/2 w-32 h-1 bg-white/30 rounded-full z-20" />
         </div>
@@ -294,8 +296,8 @@ const HeroSection = () => {
                   <metric.icon className="w-5 h-5 text-primary flex-shrink-0" strokeWidth={2} />
                   <div className="flex flex-col min-w-0 flex-1">
                     <span className="text-2xl font-bold gradient-text bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent leading-none">
-                      {metric.value}
-                    </span>
+                    {metric.value}
+                  </span>
                     <p className="text-xs text-muted-foreground font-medium leading-tight mt-0.5 break-words">
                       {metric.label}
                     </p>
@@ -351,11 +353,11 @@ const HeroSection = () => {
                 {metric.value}
               </span>
               <p className="text-xs text-muted-foreground font-medium leading-tight">
-                {metric.label}
-              </p>
-            </div>
-          ))}
-        </div>
+                  {metric.label}
+                </p>
+              </div>
+            ))}
+          </div>
 
         {/* CTA Section */}
         <div className="flex flex-col items-center gap-4">
