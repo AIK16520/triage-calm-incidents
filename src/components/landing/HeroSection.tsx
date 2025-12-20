@@ -288,7 +288,7 @@ const HeroSection = () => {
           </div>
           {/* Before - Left Side */}
           <div className="flex flex-col items-center relative z-0">
-            <div className="mb-4">
+            <div className="mb-4 -translate-x-4">
               <span className="inline-flex items-center gap-2 px-6 py-3 bg-red-50 border-2 border-red-500 rounded-full shadow-md">
                 <span className="text-base font-bold text-red-700">Before</span>
               </span>
@@ -303,7 +303,7 @@ const HeroSection = () => {
           
           {/* After - Right Side */}
           <div className="flex flex-col items-center relative z-0">
-            <div className="mb-4">
+            <div className="mb-4 translate-x-4">
               <span className="inline-flex items-center gap-2 px-6 py-3 bg-green-50 border-2 border-green-500 rounded-full shadow-md">
                 <span className="text-base font-bold text-green-700">After</span>
               </span>
