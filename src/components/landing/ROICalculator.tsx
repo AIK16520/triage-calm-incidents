@@ -74,7 +74,7 @@ const ROICalculator = () => {
             <h2 className="text-3xl sm:text-4xl font-bold text-foreground leading-tight">
               AI Agent that handles deployment issues automatically
             </h2>
-            <p className="text-xl text-muted-foreground leading-relaxed">
+            <p className="text-xl text-muted-foreground leading-relaxed mb-10">
               So your devs can focus on shipping new features instead of fixing production fires at 3am.
             </p>
 
@@ -83,6 +83,13 @@ const ROICalculator = () => {
               <p className="text-2xl font-bold text-white text-center leading-relaxed">
                 Use the calculator to see how much time and money you'll save with Triage
               </p>
+            </div>
+
+            {/* Join Waitlist Button */}
+            <div className="mt-6">
+              <button className="w-full bg-white text-primary font-bold text-xl py-6 px-8 rounded-2xl border-3 border-primary shadow-lg hover:shadow-2xl hover:scale-[1.02] transition-all duration-300">
+                Join Waitlist
+              </button>
             </div>
           </div>
 
