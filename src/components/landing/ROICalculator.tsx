@@ -150,7 +150,7 @@ const ROICalculator = () => {
                       <p className="text-2xl font-bold text-foreground">{formatNumber(monthlyIncidents)}</p>
                     </div>
                     <div>
-                      <p className="text-sm text-muted-foreground mb-1">Hours wasted</p>
+                      <p className="text-sm text-muted-foreground mb-1">Time spent on deployment bugs</p>
                       <p className="text-2xl font-bold text-destructive">{formatNumber(Math.round(hoursWastedManual))} hrs/year</p>
                     </div>
                   </div>
@@ -172,7 +172,7 @@ const ROICalculator = () => {
                       <p className="text-2xl font-bold text-foreground">{formatNumber(monthlyIncidents)}</p>
                     </div>
                     <div>
-                      <p className="text-sm text-muted-foreground mb-1">Hours wasted</p>
+                      <p className="text-sm text-muted-foreground mb-1">Time spent on deployment bugs</p>
                       <p className="text-2xl font-bold text-success">{formatNumber(Math.round(hoursWastedTriage))} hrs/year</p>
                     </div>
                   </div>
@@ -181,26 +181,32 @@ const ROICalculator = () => {
             </div>
 
             {/* Main Results */}
-            <div className="text-center space-y-6 mb-8">
-              {/* Annual Savings */}
-              <div className="bg-gradient-to-r from-primary to-success rounded-2xl p-8 shadow-lg">
-                <div className="flex items-center justify-center gap-3 mb-2">
-                  <DollarSign className="w-8 h-8 text-white" />
-                  <h2 className="text-2xl md:text-3xl font-bold text-white">ANNUAL SAVINGS</h2>
+            <div className="space-y-6 mb-8">
+              {/* Annual Savings and Hours Reclaimed */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="bg-gradient-to-r from-primary to-success rounded-xl p-5 shadow-lg text-center">
+                  <div className="flex items-center justify-center gap-2 mb-1">
+                    <DollarSign className="w-6 h-6 text-white" />
+                    <h2 className="text-xl md:text-2xl font-bold text-white">ANNUAL SAVINGS</h2>
+                  </div>
+                  <p className="text-4xl md:text-5xl font-black text-white tracking-tight">
+                    {formatCurrency(annualSavings)}
+                  </p>
                 </div>
-                <p className="text-5xl md:text-7xl font-black text-white mb-2 tracking-tight">
-                  {formatCurrency(annualSavings)}
-                </p>
+
+                <div className="bg-gradient-to-r from-primary to-success rounded-xl p-5 shadow-lg text-center">
+                  <div className="flex items-center justify-center gap-2 mb-1">
+                    <Clock className="w-6 h-6 text-white" />
+                    <h2 className="text-xl md:text-2xl font-bold text-white">HOURS RECLAIMED</h2>
+                  </div>
+                  <p className="text-4xl md:text-5xl font-black text-white tracking-tight">
+                    {formatNumber(hoursSaved)}
+                  </p>
+                </div>
               </div>
 
               {/* Key Benefits */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div className="flex items-start gap-3 p-4 bg-success/10 border border-success/30 rounded-xl">
-                  <Check className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
-                  <div className="text-left">
-                    <p className="font-bold text-foreground">{formatNumber(hoursSaved)} hours reclaimed per year</p>
-                  </div>
-                </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="flex items-start gap-3 p-4 bg-success/10 border border-success/30 rounded-xl">
                   <Check className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
                   <div className="text-left">
