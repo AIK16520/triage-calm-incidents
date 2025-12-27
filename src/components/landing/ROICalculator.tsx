@@ -7,6 +7,13 @@ const ROICalculator = () => {
   const [avgSalary, setAvgSalary] = useState(150000);
   const [showDetails, setShowDetails] = useState(false);
 
+  const scrollToWaitlist = () => {
+    const waitlistSection = document.getElementById('waitlist');
+    if (waitlistSection) {
+      waitlistSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   // Constants
   const avgIncidentTimeManual = 45; // minutes
   const avgIncidentTimeTriage = 1.5; // minutes (90 seconds)
@@ -87,7 +94,10 @@ const ROICalculator = () => {
 
             {/* Join Waitlist Button */}
             <div className="mt-6">
-              <button className="w-full bg-white text-primary font-bold text-xl py-6 px-8 rounded-2xl border-3 border-primary shadow-lg hover:shadow-2xl hover:scale-[1.02] transition-all duration-300">
+              <button 
+                onClick={scrollToWaitlist}
+                className="w-full bg-white text-primary font-bold text-xl py-6 px-8 rounded-2xl border-3 border-primary shadow-lg hover:shadow-2xl hover:scale-[1.02] transition-all duration-300"
+              >
                 Join Waitlist
               </button>
             </div>
