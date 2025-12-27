@@ -59,16 +59,16 @@ const ROICalculator = () => {
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_hsl(173_58%_39%/0.08)_0%,_transparent_50%)]" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_hsl(160_84%_35%/0.06)_0%,_transparent_50%)]" />
 
-      <div className="container relative z-10 px-4">
+      <div className="container relative z-10 px-6 md:px-8 lg:px-12 max-w-[1600px]">
         {/* Title */}
-        <div className="text-center mb-12 md:mb-16">
-          <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold text-foreground animate-fade-up">
+        <div className="text-center mb-10 md:mb-12">
+          <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold text-primary animate-fade-up">
             Triage
           </h1>
         </div>
 
         {/* Two Column Layout */}
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-[40%_60%] gap-8 lg:gap-10 items-start">
           {/* Left Side - Text Content */}
           <div className="space-y-6 animate-fade-up">
             <h2 className="text-3xl sm:text-4xl font-bold text-foreground leading-tight">
@@ -77,31 +77,31 @@ const ROICalculator = () => {
             <p className="text-xl text-muted-foreground leading-relaxed">
               So your devs can focus on shipping new features instead of fixing production fires at 3am.
             </p>
+            
+            {/* Feature Cards */}
             <div className="space-y-4">
-              <div className="flex items-start gap-3">
-                <Check className="w-6 h-6 text-success flex-shrink-0 mt-1" />
-                <p className="text-lg text-foreground">
+              <div className="p-5 bg-background border-2 border-primary/40 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                <p className="text-lg font-semibold text-foreground">
                   Automatically detects, diagnoses, and fixes deployment issues in seconds
                 </p>
               </div>
-              <div className="flex items-start gap-3">
-                <Check className="w-6 h-6 text-success flex-shrink-0 mt-1" />
-                <p className="text-lg text-foreground">
+              <div className="p-5 bg-background border-2 border-primary/40 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                <p className="text-lg font-semibold text-foreground">
                   Reduces mean time to resolution from 22 minutes to 90 seconds
                 </p>
               </div>
-              <div className="flex items-start gap-3">
-                <Check className="w-6 h-6 text-success flex-shrink-0 mt-1" />
-                <p className="text-lg text-foreground">
+              <div className="p-5 bg-background border-2 border-primary/40 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                <p className="text-lg font-semibold text-foreground">
                   Eliminates 95% of manual intervention and saves thousands of engineering hours
                 </p>
               </div>
-              <div className="flex items-start gap-3">
-                <Check className="w-6 h-6 text-success flex-shrink-0 mt-1" />
-                <p className="text-lg text-foreground">
-                  Deploy 3x more frequently with confidence, knowing issues will be handled automatically
-                </p>
-              </div>
+            </div>
+
+            {/* CTA Box */}
+            <div className="bg-gradient-to-br from-primary/10 to-primary/5 border-2 border-primary/30 rounded-xl p-6 mt-6">
+              <p className="text-lg text-foreground font-medium text-center">
+                Use the calculator to see how much time and money you'll save with Triage
+              </p>
             </div>
           </div>
 
