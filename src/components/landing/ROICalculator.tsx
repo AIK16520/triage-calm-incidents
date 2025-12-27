@@ -77,29 +77,10 @@ const ROICalculator = () => {
             <p className="text-xl text-muted-foreground leading-relaxed">
               So your devs can focus on shipping new features instead of fixing production fires at 3am.
             </p>
-            
-            {/* Feature Cards */}
-            <div className="space-y-4">
-              <div className="p-5 bg-background border-2 border-primary/40 rounded-xl shadow-sm hover:shadow-md transition-shadow">
-                <p className="text-lg font-semibold text-foreground">
-                  Automatically detects, diagnoses, and fixes deployment issues in seconds
-                </p>
-              </div>
-              <div className="p-5 bg-background border-2 border-primary/40 rounded-xl shadow-sm hover:shadow-md transition-shadow">
-                <p className="text-lg font-semibold text-foreground">
-                  Reduces mean time to resolution from 22 minutes to 90 seconds
-                </p>
-              </div>
-              <div className="p-5 bg-background border-2 border-primary/40 rounded-xl shadow-sm hover:shadow-md transition-shadow">
-                <p className="text-lg font-semibold text-foreground">
-                  Eliminates 95% of manual intervention and saves thousands of engineering hours
-                </p>
-              </div>
-            </div>
 
             {/* CTA Box */}
-            <div className="bg-gradient-to-br from-primary/10 to-primary/5 border-2 border-primary/30 rounded-xl p-6 mt-6">
-              <p className="text-lg text-foreground font-medium text-center">
+            <div className="bg-gradient-to-br from-primary via-primary/90 to-success rounded-2xl p-8 mt-8 shadow-2xl hover:shadow-[0_0_80px_rgba(20,184,166,0.4)] transition-all duration-300 border-2 border-primary/50 animate-pulse-subtle">
+              <p className="text-2xl font-bold text-white text-center leading-relaxed">
                 Use the calculator to see how much time and money you'll save with Triage
               </p>
             </div>
