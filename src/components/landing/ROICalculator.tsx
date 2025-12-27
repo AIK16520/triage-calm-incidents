@@ -60,62 +60,92 @@ const ROICalculator = () => {
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_hsl(160_84%_35%/0.06)_0%,_transparent_50%)]" />
 
       <div className="container relative z-10 px-4">
-        {/* Header */}
-        <div className="text-center max-w-4xl mx-auto mb-12 md:mb-16">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight text-foreground mb-4 animate-fade-up">
-            Triage: An AI agent that handles deployment issues automatically
+        {/* Title */}
+        <div className="text-center mb-12 md:mb-16">
+          <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold text-foreground animate-fade-up">
+            Triage
           </h1>
-          <p className="text-xl sm:text-2xl text-muted-foreground leading-relaxed animate-fade-up stagger-1">
-            So your devs can focus on shipping new features instead of fixing production fires at 3am
-          </p>
         </div>
 
-        {/* Calculator Card */}
-        <div className="max-w-5xl mx-auto">
-          <div className="glass-card shadow-elevated hover:shadow-[0_0_60px_rgba(20,184,166,0.15)] transition-all duration-500">
+        {/* Two Column Layout */}
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
+          {/* Left Side - Text Content */}
+          <div className="space-y-6 animate-fade-up">
+            <h2 className="text-3xl sm:text-4xl font-bold text-foreground leading-tight">
+              AI Agent that handles deployment issues automatically
+            </h2>
+            <p className="text-xl text-muted-foreground leading-relaxed">
+              So your devs can focus on shipping new features instead of fixing production fires at 3am.
+            </p>
+            <div className="space-y-4">
+              <div className="flex items-start gap-3">
+                <Check className="w-6 h-6 text-success flex-shrink-0 mt-1" />
+                <p className="text-lg text-foreground">
+                  Automatically detects, diagnoses, and fixes deployment issues in seconds
+                </p>
+              </div>
+              <div className="flex items-start gap-3">
+                <Check className="w-6 h-6 text-success flex-shrink-0 mt-1" />
+                <p className="text-lg text-foreground">
+                  Reduces mean time to resolution from 22 minutes to 90 seconds
+                </p>
+              </div>
+              <div className="flex items-start gap-3">
+                <Check className="w-6 h-6 text-success flex-shrink-0 mt-1" />
+                <p className="text-lg text-foreground">
+                  Eliminates 95% of manual intervention and saves thousands of engineering hours
+                </p>
+              </div>
+              <div className="flex items-start gap-3">
+                <Check className="w-6 h-6 text-success flex-shrink-0 mt-1" />
+                <p className="text-lg text-foreground">
+                  Deploy 3x more frequently with confidence, knowing issues will be handled automatically
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Side - Calculator */}
+          <div className="glass-card shadow-elevated hover:shadow-[0_0_60px_rgba(20,184,166,0.15)] transition-all duration-500 animate-fade-up stagger-1">
             {/* Input Controls */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
               {/* Team Size */}
-              <div className="space-y-3">
-                <label className="text-sm font-semibold text-foreground block">
+              <div className="space-y-2">
+                <label className="text-xs font-semibold text-foreground block">
                   Team Size
                 </label>
-                <div className="relative">
-                  <input
-                    type="number"
-                    min="1"
-                    max="1000"
-                    value={teamSize}
-                    onChange={(e) => setTeamSize(Math.max(1, parseInt(e.target.value) || 1))}
-                    className="w-full px-4 py-3 text-lg font-semibold bg-white border-2 border-border rounded-xl focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all"
-                  />
-                </div>
+                <input
+                  type="number"
+                  min="1"
+                  max="1000"
+                  value={teamSize}
+                  onChange={(e) => setTeamSize(Math.max(1, parseInt(e.target.value) || 1))}
+                  className="w-full px-3 py-2 text-base font-semibold bg-white border-2 border-border rounded-lg focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all"
+                />
               </div>
 
               {/* Incidents per Week */}
-              <div className="space-y-3">
-                <label className="text-sm font-semibold text-foreground block">
+              <div className="space-y-2">
+                <label className="text-xs font-semibold text-foreground block">
                   Incidents per Week
                 </label>
-                <div className="relative">
-                  <input
-                    type="number"
-                    min="1"
-                    max="200"
-                    value={incidentsPerWeek}
-                    onChange={(e) => setIncidentsPerWeek(Math.max(1, parseInt(e.target.value) || 1))}
-                    className="w-full px-4 py-3 text-lg font-semibold bg-white border-2 border-border rounded-xl focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all"
-                  />
-                </div>
+                <input
+                  type="number"
+                  min="1"
+                  max="200"
+                  value={incidentsPerWeek}
+                  onChange={(e) => setIncidentsPerWeek(Math.max(1, parseInt(e.target.value) || 1))}
+                  className="w-full px-3 py-2 text-base font-semibold bg-white border-2 border-border rounded-lg focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all"
+                />
               </div>
 
               {/* Average Engineer Annual Salary */}
-              <div className="space-y-3">
-                <label className="text-sm font-semibold text-foreground block">
-                  Average Engineer Annual Salary
+              <div className="space-y-2">
+                <label className="text-xs font-semibold text-foreground block">
+                  Avg Annual Salary
                 </label>
                 <div className="relative">
-                  <div className="absolute left-4 top-1/2 -translate-y-1/2 text-lg font-semibold text-muted-foreground pointer-events-none">
+                  <div className="absolute left-3 top-1/2 -translate-y-1/2 text-base font-semibold text-muted-foreground pointer-events-none">
                     $
                   </div>
                   <input
@@ -125,186 +155,179 @@ const ROICalculator = () => {
                     step="1000"
                     value={avgSalary}
                     onChange={(e) => setAvgSalary(Math.max(30000, parseInt(e.target.value) || 30000))}
-                    className="w-full pl-8 pr-4 py-3 text-lg font-semibold bg-white border-2 border-border rounded-xl focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all"
+                    className="w-full pl-7 pr-3 py-2 text-base font-semibold bg-white border-2 border-border rounded-lg focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all"
                   />
                 </div>
               </div>
             </div>
 
+            {/* Annual Savings and Hours Reclaimed */}
+            <div className="grid grid-cols-2 gap-3 mb-6">
+              <div className="bg-gradient-to-r from-primary to-success rounded-xl p-4 shadow-lg text-center">
+                <div className="flex items-center justify-center gap-1.5 mb-1">
+                  <DollarSign className="w-5 h-5 text-white" />
+                  <h2 className="text-sm md:text-base font-bold text-white">ANNUAL SAVINGS</h2>
+                </div>
+                <p className="text-2xl md:text-3xl font-black text-white tracking-tight">
+                  {formatCurrency(annualSavings)}
+                </p>
+              </div>
+
+              <div className="bg-gradient-to-r from-primary to-success rounded-xl p-4 shadow-lg text-center">
+                <div className="flex items-center justify-center gap-1.5 mb-1">
+                  <Clock className="w-5 h-5 text-white" />
+                  <h2 className="text-sm md:text-base font-bold text-white">HOURS RECLAIMED</h2>
+                </div>
+                <p className="text-2xl md:text-3xl font-black text-white tracking-tight">
+                  {formatNumber(hoursSaved)}
+                </p>
+              </div>
+            </div>
+
             {/* Comparison Output */}
-            <div className="bg-gradient-to-br from-primary/5 to-success/5 border-2 border-primary/20 rounded-2xl p-6 md:p-8 mb-8">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+            <div className="bg-gradient-to-br from-primary/5 to-success/5 border-2 border-primary/20 rounded-2xl p-4 md:p-6 mb-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                 {/* WITHOUT TRIAGE */}
-                <div className="space-y-4">
-                  <h3 className="text-lg font-bold text-foreground flex items-center gap-2">
+                <div className="space-y-3">
+                  <h3 className="text-base font-bold text-foreground flex items-center gap-2">
                     <span className="w-2 h-2 bg-destructive rounded-full animate-pulse"></span>
                     WITHOUT TRIAGE
                   </h3>
-                  <div className="space-y-3 pl-4 border-l-4 border-destructive/30">
+                  <div className="space-y-2 pl-3 border-l-4 border-destructive/30">
                     <div>
-                      <p className="text-sm text-muted-foreground mb-1">Time per incident</p>
-                      <p className="text-2xl font-bold text-destructive">45 min</p>
+                      <p className="text-xs text-muted-foreground mb-0.5">Time per incident</p>
+                      <p className="text-xl font-bold text-destructive">45 min</p>
                     </div>
                     <div>
-                      <p className="text-sm text-muted-foreground mb-1">Monthly incidents</p>
-                      <p className="text-2xl font-bold text-foreground">{formatNumber(monthlyIncidents)}</p>
+                      <p className="text-xs text-muted-foreground mb-0.5">Monthly incidents</p>
+                      <p className="text-xl font-bold text-foreground">{formatNumber(monthlyIncidents)}</p>
                     </div>
                     <div>
-                      <p className="text-sm text-muted-foreground mb-1">Time spent on deployment bugs</p>
-                      <p className="text-2xl font-bold text-destructive">{formatNumber(Math.round(hoursWastedManual))} hrs/year</p>
+                      <p className="text-xs text-muted-foreground mb-0.5">Time spent on deployment bugs</p>
+                      <p className="text-xl font-bold text-destructive">{formatNumber(Math.round(hoursWastedManual))} hrs/year</p>
                     </div>
                   </div>
                 </div>
 
                 {/* WITH TRIAGE */}
-                <div className="space-y-4">
-                  <h3 className="text-lg font-bold text-foreground flex items-center gap-2">
+                <div className="space-y-3">
+                  <h3 className="text-base font-bold text-foreground flex items-center gap-2">
                     <span className="w-2 h-2 bg-success rounded-full animate-pulse"></span>
                     WITH TRIAGE
                   </h3>
-                  <div className="space-y-3 pl-4 border-l-4 border-success/50">
+                  <div className="space-y-2 pl-3 border-l-4 border-success/50">
                     <div>
-                      <p className="text-sm text-muted-foreground mb-1">Time per incident</p>
-                      <p className="text-2xl font-bold text-success">90 seconds</p>
+                      <p className="text-xs text-muted-foreground mb-0.5">Time per incident</p>
+                      <p className="text-xl font-bold text-success">90 seconds</p>
                     </div>
                     <div>
-                      <p className="text-sm text-muted-foreground mb-1">Monthly incidents</p>
-                      <p className="text-2xl font-bold text-foreground">{formatNumber(monthlyIncidents)}</p>
+                      <p className="text-xs text-muted-foreground mb-0.5">Monthly incidents</p>
+                      <p className="text-xl font-bold text-foreground">{formatNumber(monthlyIncidents)}</p>
                     </div>
                     <div>
-                      <p className="text-sm text-muted-foreground mb-1">Time spent on deployment bugs</p>
-                      <p className="text-2xl font-bold text-success">{formatNumber(Math.round(hoursWastedTriage))} hrs/year</p>
+                      <p className="text-xs text-muted-foreground mb-0.5">Time spent on deployment bugs</p>
+                      <p className="text-xl font-bold text-success">{formatNumber(Math.round(hoursWastedTriage))} hrs/year</p>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Main Results */}
-            <div className="space-y-6 mb-8">
-              {/* Annual Savings and Hours Reclaimed */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="bg-gradient-to-r from-primary to-success rounded-xl p-5 shadow-lg text-center">
-                  <div className="flex items-center justify-center gap-2 mb-1">
-                    <DollarSign className="w-6 h-6 text-white" />
-                    <h2 className="text-xl md:text-2xl font-bold text-white">ANNUAL SAVINGS</h2>
-                  </div>
-                  <p className="text-4xl md:text-5xl font-black text-white tracking-tight">
-                    {formatCurrency(annualSavings)}
-                  </p>
-                </div>
-
-                <div className="bg-gradient-to-r from-primary to-success rounded-xl p-5 shadow-lg text-center">
-                  <div className="flex items-center justify-center gap-2 mb-1">
-                    <Clock className="w-6 h-6 text-white" />
-                    <h2 className="text-xl md:text-2xl font-bold text-white">HOURS RECLAIMED</h2>
-                  </div>
-                  <p className="text-4xl md:text-5xl font-black text-white tracking-tight">
-                    {formatNumber(hoursSaved)}
-                  </p>
-                </div>
+            {/* Key Benefits */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-6">
+              <div className="flex items-start gap-2 p-3 bg-success/10 border border-success/30 rounded-lg">
+                <Check className="w-4 h-4 text-success flex-shrink-0 mt-0.5" />
+                <p className="text-sm font-semibold text-foreground">95% reduction in manual intervention</p>
               </div>
-
-              {/* Key Benefits */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="flex items-start gap-3 p-4 bg-success/10 border border-success/30 rounded-xl">
-                  <Check className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
-                  <div className="text-left">
-                    <p className="font-bold text-foreground">95% reduction in manual intervention</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3 p-4 bg-success/10 border border-success/30 rounded-xl">
-                  <Check className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
-                  <div className="text-left">
-                    <p className="font-bold text-foreground">Zero 3am wake-ups for auto-fixable issues</p>
-                  </div>
-                </div>
+              <div className="flex items-start gap-2 p-3 bg-success/10 border border-success/30 rounded-lg">
+                <Check className="w-4 h-4 text-success flex-shrink-0 mt-0.5" />
+                <p className="text-sm font-semibold text-foreground">Zero 3am wake-ups for auto-fixable issues</p>
               </div>
             </div>
 
             {/* Expandable Details */}
-            <div className="border-t border-border pt-6">
+            <div className="border-t border-border pt-4">
               <button
                 onClick={() => setShowDetails(!showDetails)}
-                className="w-full flex items-center justify-center gap-2 text-primary hover:text-primary/80 font-semibold transition-colors group"
+                className="w-full flex items-center justify-center gap-2 text-primary hover:text-primary/80 font-semibold transition-colors group text-sm"
               >
                 <span>See Detailed Breakdown</span>
                 {showDetails ? (
-                  <ChevronUp className="w-5 h-5 group-hover:-translate-y-1 transition-transform" />
+                  <ChevronUp className="w-4 h-4 group-hover:-translate-y-1 transition-transform" />
                 ) : (
-                  <ChevronDown className="w-5 h-5 group-hover:translate-y-1 transition-transform" />
+                  <ChevronDown className="w-4 h-4 group-hover:translate-y-1 transition-transform" />
                 )}
               </button>
 
               {showDetails && (
-                <div className="mt-6 space-y-6 animate-fade-up">
+                <div className="mt-4 space-y-4 animate-fade-up">
                   {/* Cost Breakdown */}
-                  <div className="bg-gradient-to-br from-primary/5 to-transparent border border-primary/20 rounded-xl p-6">
-                    <h4 className="text-lg font-bold text-foreground mb-4 flex items-center gap-2">
-                      <DollarSign className="w-5 h-5 text-primary" />
+                  <div className="bg-gradient-to-br from-primary/5 to-transparent border border-primary/20 rounded-xl p-4">
+                    <h4 className="text-base font-bold text-foreground mb-3 flex items-center gap-2">
+                      <DollarSign className="w-4 h-4 text-primary" />
                       Cost Breakdown (Annual)
                     </h4>
-                    <div className="space-y-3 ml-7">
+                    <div className="space-y-2 ml-6">
                       <div className="flex justify-between items-center py-2 border-b border-border">
                         <div>
-                          <p className="font-semibold text-foreground">Engineer Time Saved</p>
-                          <p className="text-sm text-muted-foreground">Manual incident response eliminated</p>
+                          <p className="text-sm font-semibold text-foreground">Engineer Time Saved</p>
+                          <p className="text-xs text-muted-foreground">Manual incident response eliminated</p>
                         </div>
-                        <p className="text-xl font-bold text-primary">{formatCurrency(directTimeSaved)}</p>
+                        <p className="text-lg font-bold text-primary">{formatCurrency(directTimeSaved)}</p>
                       </div>
                       <div className="flex justify-between items-center py-2 border-b border-border">
                         <div>
-                          <p className="font-semibold text-foreground">Reduced Context Switching</p>
-                          <p className="text-sm text-muted-foreground">Less interruption, better focus</p>
+                          <p className="text-sm font-semibold text-foreground">Reduced Context Switching</p>
+                          <p className="text-xs text-muted-foreground">Less interruption, better focus</p>
                         </div>
-                        <p className="text-xl font-bold text-primary">{formatCurrency(contextSwitchingReduction)}</p>
+                        <p className="text-lg font-bold text-primary">{formatCurrency(contextSwitchingReduction)}</p>
                       </div>
                       <div className="flex justify-between items-center py-2">
                         <div>
-                          <p className="font-semibold text-foreground">Better Sleep Productivity</p>
-                          <p className="text-sm text-muted-foreground">Well-rested engineers are more productive</p>
+                          <p className="text-sm font-semibold text-foreground">Better Sleep Productivity</p>
+                          <p className="text-xs text-muted-foreground">Well-rested engineers are more productive</p>
                         </div>
-                        <p className="text-xl font-bold text-primary">{formatCurrency(productivityBoost)}</p>
+                        <p className="text-lg font-bold text-primary">{formatCurrency(productivityBoost)}</p>
                       </div>
                     </div>
                   </div>
 
                   {/* Additional Business Value */}
-                  <div className="bg-gradient-to-br from-success/5 to-transparent border border-success/20 rounded-xl p-6">
-                    <h4 className="text-lg font-bold text-foreground mb-4 flex items-center gap-2">
-                      <TrendingUp className="w-5 h-5 text-success" />
+                  <div className="bg-gradient-to-br from-success/5 to-transparent border border-success/20 rounded-xl p-4">
+                    <h4 className="text-base font-bold text-foreground mb-3 flex items-center gap-2">
+                      <TrendingUp className="w-4 h-4 text-success" />
                       Additional Business Value
                     </h4>
-                    <div className="space-y-3 ml-7">
+                    <div className="space-y-2 ml-6">
                       <div className="flex justify-between items-center py-2 border-b border-border">
                         <div>
-                          <p className="font-semibold text-foreground">Faster MTTR (22min → 90sec)</p>
-                          <p className="text-sm text-muted-foreground">Revenue protection from reduced downtime</p>
+                          <p className="text-sm font-semibold text-foreground">Faster MTTR (22min → 90sec)</p>
+                          <p className="text-xs text-muted-foreground">Revenue protection from reduced downtime</p>
                         </div>
-                        <p className="text-xl font-bold text-success">{formatCurrency(revenueProtection)}</p>
+                        <p className="text-lg font-bold text-success">{formatCurrency(revenueProtection)}</p>
                       </div>
                       <div className="flex justify-between items-center py-2 border-b border-border">
                         <div>
-                          <p className="font-semibold text-foreground">Reduced Customer Churn</p>
-                          <p className="text-sm text-muted-foreground">Better uptime, happier customers</p>
+                          <p className="text-sm font-semibold text-foreground">Reduced Customer Churn</p>
+                          <p className="text-xs text-muted-foreground">Better uptime, happier customers</p>
                         </div>
-                        <p className="text-xl font-bold text-success">{formatCurrency(churnReduction)}</p>
+                        <p className="text-lg font-bold text-success">{formatCurrency(churnReduction)}</p>
                       </div>
                       <div className="flex justify-between items-center py-2">
                         <div>
-                          <p className="font-semibold text-foreground">Deploy 3x More Often</p>
-                          <p className="text-sm text-muted-foreground">Faster feature delivery, competitive advantage</p>
+                          <p className="text-sm font-semibold text-foreground">Deploy 3x More Often</p>
+                          <p className="text-xs text-muted-foreground">Faster feature delivery, competitive advantage</p>
                         </div>
-                        <p className="text-xl font-bold text-success">{formatCurrency(featureVelocity)}</p>
+                        <p className="text-lg font-bold text-success">{formatCurrency(featureVelocity)}</p>
                       </div>
                     </div>
                   </div>
 
                   {/* Total Value */}
-                  <div className="bg-gradient-to-r from-primary/10 to-success/10 border-2 border-primary/30 rounded-xl p-6">
+                  <div className="bg-gradient-to-r from-primary/10 to-success/10 border-2 border-primary/30 rounded-xl p-4">
                     <div className="flex items-center justify-between">
-                      <h4 className="text-xl font-bold text-foreground">TOTAL ANNUAL VALUE</h4>
-                      <p className="text-4xl font-black gradient-text">{formatCurrency(totalAnnualValue)}</p>
+                      <h4 className="text-lg font-bold text-foreground">TOTAL ANNUAL VALUE</h4>
+                      <p className="text-3xl font-black gradient-text">{formatCurrency(totalAnnualValue)}</p>
                     </div>
                   </div>
                 </div>
@@ -318,3 +341,5 @@ const ROICalculator = () => {
 };
 
 export default ROICalculator;
+
+

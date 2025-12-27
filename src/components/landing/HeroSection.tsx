@@ -261,7 +261,7 @@ const HeroSection = () => {
           {/* Metrics Cards - Between Before and After (Desktop) - Vertical Stack */}
           <div className="hidden md:flex absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 flex-col gap-3 items-center">
             {[
-              { icon: Clock, value: "3 min", label: "Avg. response time" },
+              { icon: Clock, value: "90 sec", label: "Avg. response time" },
               { icon: Calendar, value: "2 weeks", label: "Dev time saved" },
               { icon: DollarSign, value: "$20K+", label: "Annual savings" },
             ].map((metric, index) => (
@@ -317,7 +317,7 @@ const HeroSection = () => {
         {/* Metrics Cards - Mobile Version */}
         <div className="md:hidden grid grid-cols-3 gap-4 max-w-2xl mx-auto mb-12">
           {[
-            { icon: Clock, value: "3 min", label: "Avg. response time" },
+            { icon: Clock, value: "90 sec", label: "Avg. response time" },
             { icon: Calendar, value: "2 weeks", label: "Dev time saved" },
             { icon: DollarSign, value: "$20K+", label: "Annual savings" },
           ].map((metric, index) => (
