@@ -62,14 +62,13 @@ const ROICalculator = () => {
 
   return (
     <section className="relative py-16 md:py-20 overflow-hidden bg-background">
-      {/* Mesh Gradient Background */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_hsl(173_58%_39%/0.08)_0%,_transparent_50%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_hsl(160_84%_35%/0.06)_0%,_transparent_50%)]" />
+      {/* Background */}
+      <div className="absolute inset-0 bg-primary/5" />
 
       <div className="container relative z-10 px-6 md:px-8 lg:px-12 max-w-[1600px]">
         {/* Title */}
         <div className="text-center mb-10 md:mb-12">
-          <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold text-primary animate-fade-up">
+          <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold text-primary animate-fade-up font-oldenberg">
             Triage
           </h1>
         </div>
@@ -78,24 +77,24 @@ const ROICalculator = () => {
         <div className="grid grid-cols-1 lg:grid-cols-[40%_60%] gap-8 lg:gap-10 items-start">
           {/* Left Side - Text Content */}
           <div className="space-y-6 animate-fade-up">
-            <h2 className="text-3xl sm:text-4xl font-bold text-foreground leading-tight">
+            <h2 className="text-3xl sm:text-4xl font-bold text-primary leading-tight font-title">
               AI Agent that handles deployment issues automatically
             </h2>
-            <p className="text-xl text-muted-foreground leading-relaxed mb-6" style={{ marginBottom: '60px' }}>
+            <p className="text-xl text-foreground leading-relaxed mb-6" style={{ marginBottom: '60px' }}>
               So your devs can focus on shipping new features instead of fixing production fires at 3am.
             </p>
 
             {/* CTA Box */}
-            <div className="bg-gradient-to-br from-primary via-primary/90 to-success rounded-2xl p-8 mt-8 shadow-2xl hover:shadow-[0_0_80px_rgba(20,184,166,0.4)] transition-all duration-300 border-2 border-primary/50 animate-pulse-subtle">
+            <div className="bg-primary rounded-2xl p-8 mt-8 shadow-2xl hover:shadow-[0_0_80px_rgba(20,184,166,0.4)] transition-all duration-300 border-2 border-primary/60 animate-pulse-subtle">
               <p className="text-2xl font-bold text-white text-center leading-relaxed">
-                Use the calculator to see how much time and money you'll save with Triage
+                Use the calculator to see how much time and money you'll save with <span className="font-oldenberg">Triage</span>
               </p>
             </div>
             {/* Join Waitlist Button */}
             <div className="mt-6" style={{ marginTop: '60px' }}>
               <button 
                 onClick={scrollToWaitlist}
-                className="w-full bg-white text-primary font-bold text-xl py-6 px-8 rounded-2xl border-4 border-primary shadow-lg hover:shadow-2xl hover:scale-[1.02] transition-all duration-300"
+                className="w-full bg-white text-primary font-bold text-xl py-6 px-8 rounded-2xl border-4 border-primary/60 shadow-lg hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 font-title"
               >
                 Click to Join Waitlist
               </button>
@@ -142,7 +141,7 @@ const ROICalculator = () => {
                   Avg Annual Salary
                 </label>
                 <div className="relative">
-                  <div className="absolute left-3 top-1/2 -translate-y-1/2 text-base font-semibold text-muted-foreground pointer-events-none">
+                  <div className="absolute left-3 top-1/2 -translate-y-1/2 text-base font-semibold text-foreground pointer-events-none">
                     $
                   </div>
                   <input
@@ -160,7 +159,7 @@ const ROICalculator = () => {
 
             {/* Annual Savings and Hours Reclaimed */}
             <div className="grid grid-cols-2 gap-3 mb-6">
-              <div className="bg-gradient-to-r from-primary to-success rounded-xl p-4 shadow-lg text-center">
+              <div className="bg-primary rounded-xl p-4 shadow-lg text-center border-2 border-primary/60">
                 <div className="flex items-center justify-center gap-1.5 mb-1">
                   <DollarSign className="w-5 h-5 text-white" />
                   <h2 className="text-sm md:text-base font-bold text-white">ANNUAL SAVINGS</h2>
@@ -170,7 +169,7 @@ const ROICalculator = () => {
                 </p>
               </div>
 
-              <div className="bg-gradient-to-r from-primary to-success rounded-xl p-4 shadow-lg text-center">
+              <div className="bg-primary rounded-xl p-4 shadow-lg text-center border-2 border-primary/60">
                 <div className="flex items-center justify-center gap-1.5 mb-1">
                   <Clock className="w-5 h-5 text-white" />
                   <h2 className="text-sm md:text-base font-bold text-white">HOURS RECLAIMED</h2>
@@ -182,47 +181,47 @@ const ROICalculator = () => {
             </div>
 
             {/* Comparison Output */}
-            <div className="bg-gradient-to-br from-primary/5 to-success/5 border-2 border-primary/20 rounded-2xl p-4 md:p-6 mb-6">
+            <div className="bg-primary/5 border-2 border-primary/60 rounded-2xl p-4 md:p-6 mb-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-                {/* WITHOUT TRIAGE */}
+                {/* WITHOUT Triage */}
                 <div className="space-y-3">
                   <h3 className="text-base font-bold text-foreground flex items-center gap-2">
                     <span className="w-2 h-2 bg-destructive rounded-full animate-pulse"></span>
-                    WITHOUT TRIAGE
+                    WITHOUT <span className="font-oldenberg">Triage</span>
                   </h3>
                   <div className="space-y-2 pl-3 border-l-4 border-destructive/30">
                     <div>
-                      <p className="text-xs text-muted-foreground mb-0.5">Time per incident</p>
+                      <p className="text-xs text-foreground mb-0.5">Time per incident</p>
                       <p className="text-xl font-bold text-destructive">45 min</p>
                     </div>
                     <div>
-                      <p className="text-xs text-muted-foreground mb-0.5">Monthly incidents</p>
+                      <p className="text-xs text-foreground mb-0.5">Monthly incidents</p>
                       <p className="text-xl font-bold text-foreground">{formatNumber(monthlyIncidents)}</p>
                     </div>
                     <div>
-                      <p className="text-xs text-muted-foreground mb-0.5">Time spent on deployment bugs</p>
+                      <p className="text-xs text-foreground mb-0.5">Time spent on deployment bugs</p>
                       <p className="text-xl font-bold text-destructive">{formatNumber(Math.round(hoursWastedManual))} hrs/year</p>
                     </div>
                   </div>
                 </div>
 
-                {/* WITH TRIAGE */}
+                {/* WITH Triage */}
                 <div className="space-y-3">
                   <h3 className="text-base font-bold text-foreground flex items-center gap-2">
                     <span className="w-2 h-2 bg-success rounded-full animate-pulse"></span>
-                    WITH TRIAGE
+                    WITH <span className="font-oldenberg">Triage</span>
                   </h3>
                   <div className="space-y-2 pl-3 border-l-4 border-success/50">
                     <div>
-                      <p className="text-xs text-muted-foreground mb-0.5">Time per incident</p>
+                      <p className="text-xs text-foreground mb-0.5">Time per incident</p>
                       <p className="text-xl font-bold text-success">90 seconds</p>
                     </div>
                     <div>
-                      <p className="text-xs text-muted-foreground mb-0.5">Monthly incidents</p>
+                      <p className="text-xs text-foreground mb-0.5">Monthly incidents</p>
                       <p className="text-xl font-bold text-foreground">{formatNumber(monthlyIncidents)}</p>
                     </div>
                     <div>
-                      <p className="text-xs text-muted-foreground mb-0.5">Time spent on deployment bugs</p>
+                      <p className="text-xs text-foreground mb-0.5">Time spent on deployment bugs</p>
                       <p className="text-xl font-bold text-success">{formatNumber(Math.round(hoursWastedTriage))} hrs/year</p>
                     </div>
                   </div>
@@ -259,7 +258,7 @@ const ROICalculator = () => {
               {showDetails && (
                 <div className="mt-4 space-y-4 animate-fade-up">
                   {/* Cost Breakdown */}
-                  <div className="bg-gradient-to-br from-primary/5 to-transparent border border-primary/20 rounded-xl p-4">
+                  <div className="bg-primary/5 border border-primary/60 rounded-xl p-4">
                     <h4 className="text-base font-bold text-foreground mb-3 flex items-center gap-2">
                       <DollarSign className="w-4 h-4 text-primary" />
                       Cost Breakdown (Annual)
@@ -268,21 +267,21 @@ const ROICalculator = () => {
                       <div className="flex justify-between items-center py-2 border-b border-border">
                         <div>
                           <p className="text-sm font-semibold text-foreground">Engineer Time Saved</p>
-                          <p className="text-xs text-muted-foreground">Manual incident response eliminated</p>
+                          <p className="text-xs text-foreground">Manual incident response eliminated</p>
                         </div>
                         <p className="text-lg font-bold text-primary">{formatCurrency(directTimeSaved)}</p>
                       </div>
                       <div className="flex justify-between items-center py-2 border-b border-border">
                         <div>
                           <p className="text-sm font-semibold text-foreground">Reduced Context Switching</p>
-                          <p className="text-xs text-muted-foreground">Less interruption, better focus</p>
+                          <p className="text-xs text-foreground">Less interruption, better focus</p>
                         </div>
                         <p className="text-lg font-bold text-primary">{formatCurrency(contextSwitchingReduction)}</p>
                       </div>
                       <div className="flex justify-between items-center py-2">
                         <div>
                           <p className="text-sm font-semibold text-foreground">Better Sleep Productivity</p>
-                          <p className="text-xs text-muted-foreground">Well-rested engineers are more productive</p>
+                          <p className="text-xs text-foreground">Well-rested engineers are more productive</p>
                         </div>
                         <p className="text-lg font-bold text-primary">{formatCurrency(productivityBoost)}</p>
                       </div>
@@ -290,7 +289,7 @@ const ROICalculator = () => {
                   </div>
 
                   {/* Additional Business Value */}
-                  <div className="bg-gradient-to-br from-success/5 to-transparent border border-success/20 rounded-xl p-4">
+                  <div className="bg-primary/5 border border-primary/60 rounded-xl p-4">
                     <h4 className="text-base font-bold text-foreground mb-3 flex items-center gap-2">
                       <TrendingUp className="w-4 h-4 text-success" />
                       Additional Business Value
@@ -299,21 +298,21 @@ const ROICalculator = () => {
                       <div className="flex justify-between items-center py-2 border-b border-border">
                         <div>
                           <p className="text-sm font-semibold text-foreground">Faster MTTR (22min → 90sec)</p>
-                          <p className="text-xs text-muted-foreground">Revenue protection from reduced downtime</p>
+                          <p className="text-xs text-foreground">Revenue protection from reduced downtime</p>
                         </div>
                         <p className="text-lg font-bold text-success">{formatCurrency(revenueProtection)}</p>
                       </div>
                       <div className="flex justify-between items-center py-2 border-b border-border">
                         <div>
                           <p className="text-sm font-semibold text-foreground">Reduced Customer Churn</p>
-                          <p className="text-xs text-muted-foreground">Better uptime, happier customers</p>
+                          <p className="text-xs text-foreground">Better uptime, happier customers</p>
                         </div>
                         <p className="text-lg font-bold text-success">{formatCurrency(churnReduction)}</p>
                       </div>
                       <div className="flex justify-between items-center py-2">
                         <div>
                           <p className="text-sm font-semibold text-foreground">Deploy 3x More Often</p>
-                          <p className="text-xs text-muted-foreground">Faster feature delivery, competitive advantage</p>
+                          <p className="text-xs text-foreground">Faster feature delivery, competitive advantage</p>
                         </div>
                         <p className="text-lg font-bold text-success">{formatCurrency(featureVelocity)}</p>
                       </div>
@@ -321,10 +320,10 @@ const ROICalculator = () => {
                   </div>
 
                   {/* Total Value */}
-                  <div className="bg-gradient-to-r from-primary/10 to-success/10 border-2 border-primary/30 rounded-xl p-4">
+                  <div className="bg-primary/10 border-2 border-primary/60 rounded-xl p-4">
                     <div className="flex items-center justify-between">
                       <h4 className="text-lg font-bold text-foreground">TOTAL ANNUAL VALUE</h4>
-                      <p className="text-3xl font-black gradient-text">{formatCurrency(totalAnnualValue)}</p>
+                      <p className="text-3xl font-black text-primary">{formatCurrency(totalAnnualValue)}</p>
                     </div>
                   </div>
                 </div>

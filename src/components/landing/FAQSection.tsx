@@ -53,11 +53,11 @@ const FAQSection = () => {
     <section id="faq" className="py-24 md:py-32 relative">
       <div className="container relative z-10 px-4">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold mb-6">
+          <h2 className="text-3xl md:text-5xl font-bold mb-6 font-title text-primary">
             Frequently Asked <span className="gradient-text">Questions</span>
           </h2>
-          <p className="text-lg text-muted-foreground">
-            Everything you need to know about Triage.
+          <p className="text-lg text-foreground">
+            Everything you need to know about <span className="font-oldenberg">Triage</span>.
           </p>
         </div>
         
@@ -70,10 +70,16 @@ const FAQSection = () => {
                 className="glass rounded-xl px-6 border-none"
               >
                 <AccordionTrigger className="text-left hover:no-underline py-6">
-                  <span className="font-medium">{faq.question}</span>
+                  <span className="font-medium">
+                    {faq.question.split(/(Triage)/g).map((part, i) =>
+                      part === 'Triage' ? <span key={i} className="font-oldenberg">Triage</span> : part
+                    )}
+                  </span>
                 </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground pb-6">
-                  {faq.answer}
+                <AccordionContent className="text-foreground pb-6">
+                  {faq.answer.split(/(Triage)/g).map((part, i) =>
+                    part === 'Triage' ? <span key={i} className="font-oldenberg">Triage</span> : part
+                  )}
                 </AccordionContent>
               </AccordionItem>
             ))}

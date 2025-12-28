@@ -14,7 +14,12 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        sans: ['Publico', 'serif'],
+        body: ['Publico', 'serif'],
+        title: ['Caponi', 'serif'],
+        triage: ['FS Ostro', 'sans-serif'],
+        cute: ['Gochi Hand', 'cursive'],
+        oldenberg: ['Oldenburg', 'serif'],
       },
       fontSize: {
         'display': ['clamp(3rem, 8vw, 6rem)', { lineHeight: '1.05', letterSpacing: '-0.02em', fontWeight: '700' }],

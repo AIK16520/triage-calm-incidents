@@ -1,4 +1,4 @@
-import { Check, Zap, Eye, FileText, RotateCcw, ArrowRight, Shield, TrendingUp } from "lucide-react";
+import { Check, Zap, Eye, FileText, ArrowRight } from "lucide-react";
 
 const ReviewModeSection = () => {
   return (
@@ -6,14 +6,13 @@ const ReviewModeSection = () => {
       <div className="container px-4">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
-            <Eye className="w-4 h-4 text-primary" />
             <span className="text-sm font-medium text-primary">Human-in-the-Loop</span>
           </div>
-          <h2 className="text-headline mb-6">
+          <h2 className="text-headline mb-6 font-title text-primary">
             Full Control <span className="gradient-text">When You Need It</span>
           </h2>
-          <p className="text-body text-muted-foreground">
-            AI automation with human judgment as the safety net. You decide how much autonomy Triage gets.
+          <p className="text-body text-foreground">
+            AI automation with human judgment as the safety net. You decide how much autonomy <span className="font-oldenberg">Triage</span> gets.
           </p>
         </div>
 
@@ -28,7 +27,7 @@ const ReviewModeSection = () => {
                 </div>
                 <div>
                   <h3 className="text-xl font-bold">Auto Mode</h3>
-                  <span className="text-sm text-muted-foreground">High-confidence incidents</span>
+                  <span className="text-sm text-foreground">High-confidence incidents</span>
                 </div>
                 <span className="ml-auto px-3 py-1 text-xs font-medium rounded-full bg-primary/10 text-primary">
                   Default
@@ -44,21 +43,21 @@ const ReviewModeSection = () => {
                     </div>
                     <span className="text-xs font-medium">Detected</span>
                   </div>
-                  <ArrowRight className="w-4 h-4 text-muted-foreground/40" />
+                  <ArrowRight className="w-4 h-4 text-foreground/40" />
                   <div className="flex items-center gap-2">
                     <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
                       <div className="w-2 h-2 bg-primary rounded-full" />
                     </div>
                     <span className="text-xs font-medium">Analyzed</span>
                   </div>
-                  <ArrowRight className="w-4 h-4 text-muted-foreground/40" />
+                  <ArrowRight className="w-4 h-4 text-foreground/40" />
                   <div className="flex items-center gap-2">
                     <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
                       <div className="w-2 h-2 bg-primary rounded-full" />
                     </div>
                     <span className="text-xs font-medium">&gt;75%</span>
                   </div>
-                  <ArrowRight className="w-4 h-4 text-muted-foreground/40" />
+                  <ArrowRight className="w-4 h-4 text-foreground/40" />
                   <div className="flex items-center gap-2">
                     <div className="w-8 h-8 rounded-lg bg-success/10 flex items-center justify-center">
                       <Check className="w-4 h-4 text-success" />
@@ -68,7 +67,7 @@ const ReviewModeSection = () => {
                 </div>
               </div>
               
-              <p className="text-muted-foreground mb-6">
+              <p className="text-foreground mb-6">
                 For clear-cut incidents with high confidence. AI handles everything automatically.
               </p>
               
@@ -76,12 +75,12 @@ const ReviewModeSection = () => {
                 <div className="flex items-center gap-2">
                   <div className="w-2 h-2 bg-success rounded-full" />
                   <span className="font-bold text-success">78%</span>
-                  <span className="text-muted-foreground">of incidents</span>
+                  <span className="text-foreground">of incidents</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <div className="w-2 h-2 bg-primary rounded-full" />
                   <span className="font-medium">&lt; 3 min</span>
-                  <span className="text-muted-foreground">avg resolution</span>
+                  <span className="text-foreground">avg resolution</span>
                 </div>
               </div>
             </div>
@@ -97,7 +96,7 @@ const ReviewModeSection = () => {
                   </div>
                   <div>
                     <h3 className="text-xl font-bold">Review Mode</h3>
-                    <span className="text-sm text-muted-foreground">Complex scenarios</span>
+                    <span className="text-sm text-foreground">Complex scenarios</span>
                   </div>
                   <span className="ml-auto px-3 py-1 text-xs font-medium rounded-full bg-primary/10 text-primary">
                     Human Review
@@ -113,21 +112,21 @@ const ReviewModeSection = () => {
                       </div>
                       <span className="text-xs font-medium">Detected</span>
                     </div>
-                    <ArrowRight className="w-4 h-4 text-muted-foreground/40" />
+                    <ArrowRight className="w-4 h-4 text-foreground/40" />
                     <div className="flex items-center gap-2">
                       <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
                         <div className="w-2 h-2 bg-primary rounded-full" />
                       </div>
                       <span className="text-xs font-medium">Analyzed</span>
                     </div>
-                    <ArrowRight className="w-4 h-4 text-muted-foreground/40" />
+                    <ArrowRight className="w-4 h-4 text-foreground/40" />
                     <div className="flex items-center gap-2">
                       <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
                         <FileText className="w-4 h-4 text-primary" />
                       </div>
                       <span className="text-xs font-medium">Report</span>
                     </div>
-                    <ArrowRight className="w-4 h-4 text-muted-foreground/40" />
+                    <ArrowRight className="w-4 h-4 text-foreground/40" />
                     <div className="flex items-center gap-2">
                       <div className="w-8 h-8 rounded-lg bg-success/10 flex items-center justify-center">
                         <Check className="w-4 h-4 text-success" />
@@ -137,7 +136,7 @@ const ReviewModeSection = () => {
                   </div>
                 </div>
                 
-                <p className="text-muted-foreground mb-6">
+                <p className="text-foreground mb-6">
                   For complex scenarios requiring human judgment. Full context, one-click approval.
                 </p>
                 
@@ -145,12 +144,12 @@ const ReviewModeSection = () => {
                   <div className="flex items-center gap-2">
                     <div className="w-2 h-2 bg-primary rounded-full" />
                     <span className="font-bold text-primary">22%</span>
-                    <span className="text-muted-foreground">of incidents</span>
+                    <span className="text-foreground">of incidents</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <div className="w-2 h-2 bg-primary rounded-full" />
                     <span className="font-medium">8 min</span>
-                    <span className="text-muted-foreground">avg resolution</span>
+                    <span className="text-foreground">avg resolution</span>
                   </div>
                 </div>
               </div>
@@ -160,21 +159,18 @@ const ReviewModeSection = () => {
 
         {/* Review Mode Features */}
         <div className="max-w-5xl mx-auto">
-          <p className="text-label text-muted-foreground text-center mb-8">Review Mode Features</p>
+          <p className="text-label text-foreground text-center mb-8">Review Mode Features</p>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
             {[
-              { icon: Check, text: "One-Click Approval", desc: "Approve AI recommendation instantly" },
-              { icon: FileText, text: "Full Context Reports", desc: "Complete incident analysis" },
-              { icon: RotateCcw, text: "Alternative Actions", desc: "AI suggests multiple solutions" },
-              { icon: Shield, text: "Audit Trail", desc: "Every decision logged" },
-              { icon: TrendingUp, text: "Learning Loop", desc: "Your decisions improve AI" },
+              { text: "One-Click Approval", desc: "Approve AI recommendation instantly" },
+              { text: "Full Context Reports", desc: "Complete incident analysis" },
+              { text: "Alternative Actions", desc: "AI suggests multiple solutions" },
+              { text: "Audit Trail", desc: "Every decision logged" },
+              { text: "Learning Loop", desc: "Your decisions improve AI" },
             ].map((feature) => (
               <div key={feature.text} className="bg-card border border-border rounded-2xl p-5 text-center hover:shadow-elegant transition-all">
-                <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-3">
-                  <feature.icon className="w-5 h-5 text-primary" />
-                </div>
-                <h4 className="font-semibold text-sm mb-1">{feature.text}</h4>
-                <p className="text-xs text-muted-foreground">{feature.desc}</p>
+                <h4 className="text-lg md:text-xl font-bold mb-2 text-primary">{feature.text}</h4>
+                <p className="text-xs text-foreground">{feature.desc}</p>
               </div>
             ))}
           </div>

@@ -59,11 +59,11 @@ const WaitlistSection = () => {
               <Sparkles className="w-4 h-4 text-primary" />
               <span className="text-sm font-medium text-primary">Join the Waitlist</span>
             </div>
-            <h2 className="text-headline mb-6">
+            <h2 className="text-headline mb-6 font-title text-primary">
               Get <span className="gradient-text">Early Access</span>
             </h2>
-            <p className="text-body text-muted-foreground">
-              Be among the first to experience AI-powered incident response. We'll notify you when Triage is ready.
+            <p className="text-body text-foreground">
+              Be among the first to experience AI-powered incident response. We'll notify you when <span className="font-oldenberg">Triage</span> is ready.
             </p>
           </div>
           
@@ -81,7 +81,7 @@ const WaitlistSection = () => {
                   />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-sm font-medium">Company <span className="text-muted-foreground">(optional)</span></label>
+                  <label className="text-sm font-medium">Company <span className="text-foreground">(optional)</span></label>
                   <Input 
                     placeholder="Company name" 
                     value={formData.company}
@@ -104,7 +104,7 @@ const WaitlistSection = () => {
               </div>
               
               <div className="space-y-2">
-                <label className="text-sm font-medium">Team Size <span className="text-muted-foreground">(optional)</span></label>
+                <label className="text-sm font-medium">Team Size <span className="text-foreground">(optional)</span></label>
                 <Input 
                   placeholder="" 
                   value={formData.teamSize}
@@ -114,7 +114,7 @@ const WaitlistSection = () => {
               </div>
               
               <div className="space-y-2">
-                <label className="text-sm font-medium">Additional Comments <span className="text-muted-foreground">(optional)</span></label>
+                <label className="text-sm font-medium">Additional Comments <span className="text-foreground">(optional)</span></label>
                 <Textarea 
                   placeholder="Tell us about your use case, current on-call challenges, or anything else..."
                   value={formData.comments}
@@ -134,7 +134,7 @@ const WaitlistSection = () => {
                 {isSubmitting ? "Joining..." : "Join the Waitlist"}
               </Button>
               
-              <p className="text-sm text-center text-muted-foreground">
+              <p className="text-sm text-center text-foreground">
                 No spam, ever.
               </p>
             </form>

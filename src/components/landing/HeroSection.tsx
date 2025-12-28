@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
-import { Bell, Moon, CheckCircle2, ArrowRight, Zap, Clock, Calendar, DollarSign } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 const BeforePhone = () => {
   // No state needed - everything stays visible with pulsing borders
@@ -29,24 +29,50 @@ const BeforePhone = () => {
           <div className="absolute inset-0 flex flex-col p-6 pt-16 pb-20">
             {/* Top: Sleeping Dev Indicator */}
             <div className="flex items-center justify-center mb-4">
-              <div className="flex items-center gap-2 px-5 py-2.5 bg-white/5 rounded-full border border-white/10">
-                <Moon className="w-5 h-5 text-white/40" />
+              <div className="px-5 py-2.5 bg-white/5 rounded-full border border-white/10">
                 <span className="text-sm text-white/60 font-medium">Dev sleeping</span>
               </div>
             </div>
             
-            {/* Middle: Alarm Notification - Fixed height, centered */}
+            {/* Middle: PagerDuty Alert Notification - iPhone style */}
             <div className="flex-1 flex items-center justify-center">
-              <div className="w-full">
-                <div className="bg-red-500/20 backdrop-blur-xl rounded-2xl p-4 border-4 border-red-500/60 shadow-[0_0_40px_rgba(239,68,68,0.6)] animate-pulse min-h-[140px] flex flex-col justify-center">
-                  <div className="flex items-center gap-3 mb-2">
-                    <Bell className="w-6 h-6 text-red-400 animate-pulse" />
-                    <div className="flex-1">
-                      <h3 className="text-sm font-bold text-red-400 animate-pulse">PAGERDUTY ALERT</h3>
-                      <p className="text-xs text-white/70 mt-1">INFRA DOWN - API Gateway</p>
+              <div className="w-full max-w-[240px] mx-auto px-2">
+                {/* iPhone Lock Screen Notification */}
+                <div className="bg-white/95 backdrop-blur-2xl rounded-2xl shadow-2xl overflow-hidden border border-white/20">
+                  {/* PagerDuty App Header */}
+                  <div className="bg-[#06AC38] px-4 py-2.5 flex items-center justify-between">
+                    <span className="text-white text-xs font-semibold">PagerDuty</span>
+                    <span className="text-white/90 text-xs font-mono">now</span>
+                  </div>
+                  
+                  {/* Alert Content */}
+                  <div className="px-4 py-3 bg-red-50 border-l-4 border-red-500">
+                    <div className="flex items-start gap-2 mb-1">
+                      <div className="w-2 h-2 bg-red-500 rounded-full mt-1.5 animate-pulse flex-shrink-0" />
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center gap-2 mb-1">
+                          <span className="text-[10px] font-bold text-red-600 uppercase tracking-wide">Critical</span>
+                          <span className="text-[10px] text-red-500">•</span>
+                          <span className="text-[10px] text-red-500">Service: API Gateway</span>
+                        </div>
+                        <h3 className="text-sm font-bold text-red-700 mb-1">INFRA DOWN</h3>
+                        <p className="text-xs text-red-600 leading-relaxed">
+                          Error rate: 8% → Normal: 1%
+                        </p>
+                        <p className="text-[10px] text-red-500 mt-1.5">Incident #INC-12345</p>
+                      </div>
                     </div>
                   </div>
-                  <p className="text-xs text-white/60">Error rate: 8% → Normal: 1%</p>
+                  
+                  {/* Action Buttons */}
+                  <div className="px-4 py-2.5 bg-white/50 border-t border-gray-200/50 flex gap-2">
+                    <button className="flex-1 py-2 bg-red-500 text-white text-xs font-semibold rounded-lg">
+                      Acknowledge
+                    </button>
+                    <button className="flex-1 py-2 bg-gray-100 text-foreground text-xs font-semibold rounded-lg">
+                      View
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -55,7 +81,7 @@ const BeforePhone = () => {
             <div className="h-[60px] flex items-center justify-center">
               <div className="text-center">
                 <div className="inline-flex items-center gap-2 px-5 py-2.5 bg-yellow-500/30 rounded-full border-2 border-yellow-500/60 shadow-lg">
-                  <span className="text-sm text-yellow-300 font-bold">😴 Dev wakes up</span>
+                  <span className="text-sm text-yellow-300 font-bold">Dev wakes up</span>
                 </div>
               </div>
             </div>
@@ -125,15 +151,14 @@ const AfterPhone = () => {
           <div className="absolute inset-0 flex flex-col p-6 pt-16 pb-20">
             {/* Top: Sleeping Dev Indicator - Same size as Before */}
             <div className="flex items-center justify-center mb-4">
-              <div className="flex items-center gap-2 px-5 py-2.5 bg-white/5 rounded-full border border-white/10">
-                <Moon className="w-5 h-5 text-white/40" />
+              <div className="px-5 py-2.5 bg-white/5 rounded-full border border-white/10">
                 <span className="text-sm text-white/60 font-medium">Dev sleeping</span>
               </div>
             </div>
             
             {/* Middle: Triage Active Notifications - Centered */}
             <div className="flex-1 flex items-center justify-center">
-              <div className="w-full relative min-h-[140px]">
+              <div className="w-full max-w-[240px] mx-auto relative min-h-[140px]">
                 {slides.map((slide, index) => (
                   <div
                     key={index}
@@ -145,64 +170,93 @@ const AfterPhone = () => {
                         : "opacity-0 translate-x-8 scale-95 pointer-events-none z-0"
                     }`}
                   >
-                    <div
-                      className={`bg-white/10 backdrop-blur-xl rounded-2xl p-4 border w-full min-h-[140px] flex flex-col justify-center overflow-hidden ${
+                    {/* iPhone Lock Screen Notification Style */}
+                    <div className="bg-white/95 backdrop-blur-2xl rounded-2xl shadow-2xl overflow-hidden border border-white/20 w-full min-h-[140px]">
+                      {/* App Header */}
+                      <div className={`px-4 py-2.5 flex items-center justify-between ${
                         slide.type === "alert"
-                          ? "border-red-500/50 shadow-[0_0_20px_rgba(239,68,68,0.3)]"
+                          ? "bg-red-500"
                           : slide.type === "resolved"
-                          ? "border-green-500/50 shadow-[0_0_20px_rgba(34,197,94,0.3)]"
-                          : "border-white/20"
-                      }`}
-                    >
-                      {/* App Icon & Time */}
-                      <div className="flex items-center justify-between mb-2 flex-shrink-0">
-                        <div className="flex items-center gap-2 min-w-0">
-                          <div className="w-8 h-8 bg-gradient-to-br from-primary to-primary/60 rounded-xl flex items-center justify-center flex-shrink-0">
-                            <span className="text-white text-xs font-bold">T</span>
-                          </div>
-                          <span className="text-white/90 text-xs font-medium truncate">Triage</span>
-                        </div>
-                        <span className="text-white/50 text-xs font-mono flex-shrink-0 ml-2">{slide.time}</span>
+                          ? "bg-primary"
+                          : "bg-primary"
+                      }`}>
+                        <span className="text-white text-xs font-semibold font-oldenberg">
+                          Triage
+                        </span>
+                        <span className="text-white/90 text-xs font-mono">{slide.time}</span>
                       </div>
-
+                      
                       {/* Notification Content */}
-                      <div className="mt-2 flex-1 min-h-0">
-                        <h3
-                          className={`text-sm font-semibold mb-1 break-words ${
-                            slide.type === "alert"
-                              ? "text-red-400"
-                              : slide.type === "resolved"
-                              ? "text-green-400"
-                              : "text-white"
-                          }`}
-                        >
-                          {slide.type === "resolved" && "✅ "}
-                          {slide.title}
-                        </h3>
-                        <p className="text-white/70 text-xs leading-relaxed break-words">
-                          {slide.subtitle}
-                        </p>
+                      <div className={`px-4 py-3 ${
+                        slide.type === "alert"
+                          ? "bg-red-50 border-l-4 border-red-500"
+                          : slide.type === "resolved"
+                          ? "bg-green-50 border-l-4 border-green-500"
+                          : "bg-primary/5 border-l-4 border-primary"
+                      }`}>
+                        <div className="flex items-start gap-2 mb-1">
+                          {slide.type === "alert" && (
+                            <div className="w-2 h-2 bg-red-500 rounded-full mt-1.5 animate-pulse flex-shrink-0" />
+                          )}
+                          {slide.type === "analyzing" && (
+                            <div className="w-2 h-2 bg-primary rounded-full mt-1.5 flex-shrink-0" />
+                          )}
+                          <div className="flex-1 min-w-0">
+                            {slide.type === "alert" && (
+                              <div className="flex items-center gap-2 mb-1">
+                                <span className="text-[10px] font-bold text-red-600 uppercase tracking-wide">Critical</span>
+                                <span className="text-[10px] text-red-500">•</span>
+                                <span className="text-[10px] text-red-500">Service: API Gateway</span>
+                              </div>
+                            )}
+                            <h3 className={`text-sm font-bold mb-1 break-words ${
+                              slide.type === "alert"
+                                ? "text-red-700"
+                                : slide.type === "resolved"
+                                ? "text-green-700"
+                                : "text-foreground"
+                            }`}>
+                              {slide.title}
+                            </h3>
+                            <p className={`text-xs leading-relaxed break-words ${
+                              slide.type === "alert"
+                                ? "text-red-600"
+                                : slide.type === "resolved"
+                                ? "text-green-600"
+                                : "text-foreground"
+                            }`}>
+                              {slide.subtitle}
+                            </p>
+                            {slide.type === "resolved" && (
+                              <p className="text-[10px] text-green-500 mt-1.5">Auto-resolved by <span className="font-oldenberg">Triage</span></p>
+                            )}
+                          </div>
+                        </div>
                       </div>
 
                       {/* Analyzing Animation */}
                       {slide.type === "analyzing" && (
-                        <div className="mt-2 pt-2 border-t border-white/10 flex-shrink-0">
+                        <div className="px-4 py-2.5 bg-white/50 border-t border-gray-200/50">
                           <div className="flex items-center gap-2">
                             <div className="flex gap-1 flex-shrink-0">
                               <div className="w-1.5 h-1.5 bg-primary rounded-full animate-pulse" />
                               <div className="w-1.5 h-1.5 bg-primary rounded-full animate-pulse delay-75" />
                               <div className="w-1.5 h-1.5 bg-primary rounded-full animate-pulse delay-150" />
                             </div>
-                            <span className="text-white/60 text-xs">Processing logs...</span>
+                            <span className="text-foreground text-xs">Analyzing incident...</span>
                           </div>
                         </div>
                       )}
 
-                      {/* Success Checkmark */}
-                      {slide.type === "resolved" && (
-                        <div className="mt-2 flex items-center gap-2 text-green-400 flex-shrink-0">
-                          <CheckCircle2 className="w-4 h-4 animate-scale-in flex-shrink-0" />
-                          <span className="text-xs font-medium">Auto-resolved</span>
+                      {/* Action Buttons for Alert */}
+                      {slide.type === "alert" && (
+                        <div className="px-4 py-2.5 bg-white/50 border-t border-gray-200/50 flex gap-2">
+                          <button className="flex-1 py-2 bg-red-500 text-white text-xs font-semibold rounded-lg">
+                            Acknowledge
+                          </button>
+                          <button className="flex-1 py-2 bg-gray-100 text-foreground text-xs font-semibold rounded-lg">
+                            View
+                          </button>
                         </div>
                       )}
                     </div>
@@ -215,7 +269,7 @@ const AfterPhone = () => {
             <div className="h-[60px] flex items-center justify-center">
               <div className="text-center">
                 <div className="inline-flex items-center gap-2 px-5 py-2.5 bg-green-500/30 rounded-full border-2 border-green-500/60 shadow-lg">
-                  <span className="text-sm text-green-300 font-bold">😴 Dev sleeps easily</span>
+                  <span className="text-sm text-green-300 font-bold">Dev sleeps easily</span>
                 </div>
               </div>
             </div>
@@ -239,18 +293,17 @@ const HeroSection = () => {
 
   return (
     <section className="relative py-16 md:py-24 overflow-hidden bg-background">
-      {/* Mesh Gradient Background */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_hsl(173_58%_39%/0.08)_0%,_transparent_50%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_hsl(160_84%_35%/0.06)_0%,_transparent_50%)]" />
+      {/* Background */}
+      <div className="absolute inset-0 bg-primary/5" />
       
       <div className="container relative z-10 px-4">
         {/* Centered Heading */}
         <div className="text-center mb-10 md:mb-14">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight text-foreground mb-4 animate-fade-up">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight text-primary mb-4 animate-fade-up font-title">
             Never Wake Up for Production Incidents Again
           </h1>
-          <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold mb-6 animate-fade-up stagger-1">
-            <span className="gradient-text bg-gradient-to-r from-primary via-primary/90 to-primary/70 bg-clip-text text-transparent">
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold mb-6 animate-fade-up stagger-1 font-title">
+            <span className="text-foreground">
               Your AI Engineer Handles Incidents While You Sleep
             </span>
           </h2>
@@ -261,24 +314,21 @@ const HeroSection = () => {
           {/* Metrics Cards - Between Before and After (Desktop) - Vertical Stack */}
           <div className="hidden md:flex absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 flex-col gap-3 items-center">
             {[
-              { icon: Clock, value: "90 sec", label: "Avg. response time" },
-              { icon: Calendar, value: "2 weeks", label: "Dev time saved" },
-              { icon: DollarSign, value: "$20K+", label: "Annual savings" },
+              { value: "90 sec", label: "Avg. response time" },
+              { value: "2 weeks", label: "Dev time saved" },
+              { value: "$20K+", label: "Annual savings" },
             ].map((metric, index) => (
               <div
                 key={index}
                 className="bg-card border-2 border-primary/30 rounded-xl p-4 shadow-lg hover:shadow-xl hover:border-primary/50 transition-all hover:-translate-y-1 w-[160px] backdrop-blur-sm"
               >
-                <div className="flex items-center gap-3">
-                  <metric.icon className="w-5 h-5 text-primary flex-shrink-0" strokeWidth={2} />
-                  <div className="flex flex-col min-w-0 flex-1">
-                    <span className="text-2xl font-bold gradient-text bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent leading-none">
+                <div className="flex flex-col">
+                  <span className="text-2xl font-bold text-primary leading-none">
                     {metric.value}
                   </span>
-                    <p className="text-xs text-muted-foreground font-medium leading-tight mt-0.5 break-words">
-                      {metric.label}
-                    </p>
-                  </div>
+                  <p className="text-xs text-foreground font-medium leading-tight mt-0.5 break-words">
+                    {metric.label}
+                  </p>
                 </div>
               </div>
             ))}
@@ -306,7 +356,8 @@ const HeroSection = () => {
               </span>
             </div>
             <p className="mb-6 text-base font-semibold text-foreground text-center max-w-xs leading-relaxed min-h-[3.5rem] flex items-center">
-              Triage auto-resolves incidents while you sleep
+              <span className="font-oldenberg">Triage</span>
+              <span> auto-resolves incidents while you sleep</span>
             </p>
             <div className="w-full flex justify-center">
               <AfterPhone />
@@ -317,23 +368,22 @@ const HeroSection = () => {
         {/* Metrics Cards - Mobile Version */}
         <div className="md:hidden grid grid-cols-3 gap-4 max-w-2xl mx-auto mb-12">
           {[
-            { icon: Clock, value: "90 sec", label: "Avg. response time" },
-            { icon: Calendar, value: "2 weeks", label: "Dev time saved" },
-            { icon: DollarSign, value: "$20K+", label: "Annual savings" },
+            { value: "90 sec", label: "Avg. response time" },
+            { value: "2 weeks", label: "Dev time saved" },
+            { value: "$20K+", label: "Annual savings" },
           ].map((metric, index) => (
             <div
               key={index}
               className="bg-card border-2 border-primary/30 rounded-xl p-4 shadow-lg text-center"
             >
-              <metric.icon className="w-5 h-5 text-primary mx-auto mb-2" strokeWidth={2} />
-              <span className="text-xl font-bold gradient-text bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent block mb-1">
+              <span className="text-xl font-bold text-primary block mb-1">
                 {metric.value}
               </span>
-              <p className="text-xs text-muted-foreground font-medium leading-tight">
-                  {metric.label}
-                </p>
-              </div>
-            ))}
+              <p className="text-xs text-foreground font-medium leading-tight">
+                {metric.label}
+              </p>
+            </div>
+          ))}
           </div>
 
         {/* CTA Section */}
@@ -347,7 +397,7 @@ const HeroSection = () => {
             Join Waitlist
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </Button>
-          <p className="text-sm text-muted-foreground">
+          <p className="text-sm text-foreground">
             Be among the first to experience autonomous incident response
           </p>
         </div>

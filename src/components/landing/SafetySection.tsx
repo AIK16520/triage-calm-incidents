@@ -30,14 +30,14 @@ const safetyFeatures = [
 const SafetySection = () => {
   return (
     <section className="py-24 md:py-32 relative">
-      <div className="absolute inset-0 gradient-mesh opacity-30" />
+      <div className="absolute inset-0 bg-primary/5" />
       
       <div className="container relative z-10 px-4">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold mb-6">
+          <h2 className="text-3xl md:text-5xl font-bold mb-6 font-title text-primary">
             Built for <span className="gradient-text">Safety First</span>
           </h2>
-          <p className="text-lg text-muted-foreground">
+          <p className="text-lg text-foreground">
             We take the responsibility of managing your production environment seriously.
           </p>
         </div>
@@ -57,7 +57,7 @@ const SafetySection = () => {
               </span>
               
               <h3 className="text-xl font-semibold mb-3">{feature.title}</h3>
-              <p className="text-muted-foreground text-sm">{feature.description}</p>
+              <p className="text-foreground text-sm">{feature.description}</p>
             </div>
           ))}
         </div>

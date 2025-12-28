@@ -1,4 +1,72 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+/* Cute font fallback - Gochi Hand from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap');
+
+/* Oldenburg font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Oldenburg&display=swap');
+
+/* Font Face Declarations - Add your font files to /public/fonts/ */
+@font-face {
+  font-family: 'Publico';
+  src: url('/fonts/Publico-Roman.woff2') format('woff2'),
+       url('/fonts/Publico-Roman.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Publico';
+  src: url('/fonts/Publico-Italic.woff2') format('woff2'),
+       url('/fonts/Publico-Italic.woff') format('woff');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Publico';
+  src: url('/fonts/Publico-Bold.woff2') format('woff2'),
+       url('/fonts/Publico-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Caponi';
+  src: url('/fonts/Caponi-Regular.woff2') format('woff2'),
+       url('/fonts/Caponi-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Caponi';
+  src: url('/fonts/Caponi-Bold.woff2') format('woff2'),
+       url('/fonts/Caponi-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'FS Ostro';
+  src: url('/fonts/FS-Ostro-Regular.woff2') format('woff2'),
+       url('/fonts/FS-Ostro-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'FS Ostro';
+  src: url('/fonts/FS-Ostro-Bold.woff2') format('woff2'),
+       url('/fonts/FS-Ostro-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
 
 @tailwind base;
 @tailwind components;
@@ -53,10 +121,9 @@
     --dark-bg-secondary: 0 0% 6%;
     --dark-bg-tertiary: 0 0% 10%;
 
-    /* Custom design tokens - teal/green focused */
-    --gradient-primary: linear-gradient(135deg, hsl(173, 58%, 39%) 0%, hsl(160, 84%, 35%) 100%);
-    --gradient-text: linear-gradient(135deg, hsl(0, 0%, 7%) 0%, hsl(173, 58%, 39%) 100%);
-    --gradient-mesh: radial-gradient(ellipse at 50% 50%, hsl(173, 58%, 39%, 0.05) 0%, transparent 50%);
+    /* Custom design tokens - solid teal */
+    --teal-primary: hsl(173, 58%, 39%);
+    --teal-border: hsl(173, 58%, 35%);
     
     /* Refined glows */
     --glow-primary: 0 0 40px hsl(173, 58%, 39%, 0.3);
@@ -97,7 +164,7 @@
 
   body {
     @apply bg-background text-foreground antialiased;
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: 'Publico', serif;
   }
 }
 
@@ -136,23 +203,17 @@
     text-transform: uppercase;
   }
 
-  /* Gradient utilities */
+  /* Teal utilities */
   .gradient-text {
-    @apply bg-clip-text text-transparent;
-    background-image: var(--gradient-primary);
+    color: hsl(var(--primary));
   }
 
   .gradient-text-dark {
-    @apply bg-clip-text text-transparent;
-    background-image: var(--gradient-text);
+    color: hsl(var(--primary));
   }
 
   .gradient-bg {
-    background-image: var(--gradient-primary);
-  }
-
-  .gradient-mesh {
-    background-image: var(--gradient-mesh);
+    background-color: hsl(var(--primary));
   }
 
   /* Glassmorphism */

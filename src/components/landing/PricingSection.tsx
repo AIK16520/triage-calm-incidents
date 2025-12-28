@@ -53,14 +53,14 @@ const plans = [
 const PricingSection = () => {
   return (
     <section id="pricing" className="py-24 md:py-32 relative">
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent" />
+      <div className="absolute inset-0 bg-primary/5" />
       
       <div className="container relative z-10 px-4">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold mb-6">
+          <h2 className="text-3xl md:text-5xl font-bold mb-6 font-title text-primary">
             Simple, <span className="gradient-text">Transparent Pricing</span>
           </h2>
-          <p className="text-lg text-muted-foreground">
+          <p className="text-lg text-foreground">
             No hidden fees. No surprises. Just reliable incident response.
           </p>
         </div>
@@ -86,16 +86,16 @@ const PricingSection = () => {
                 <h3 className="text-xl font-semibold mb-2">{plan.name}</h3>
                 <div className="mb-2">
                   <span className="text-4xl font-bold">{plan.price}</span>
-                  {plan.price !== "Custom" && <span className="text-muted-foreground">/month</span>}
+                  {plan.price !== "Custom" && <span className="text-foreground">/month</span>}
                 </div>
-                <p className="text-sm text-muted-foreground">{plan.description}</p>
+                <p className="text-sm text-foreground">{plan.description}</p>
               </div>
               
               <ul className="space-y-4 mb-8">
                 {plan.features.map((feature) => (
                   <li key={feature} className="flex items-start gap-3">
                     <Check className="w-5 h-5 text-primary shrink-0 mt-0.5" />
-                    <span className="text-sm text-muted-foreground">{feature}</span>
+                    <span className="text-sm text-foreground">{feature}</span>
                   </li>
                 ))}
               </ul>

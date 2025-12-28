@@ -22,8 +22,8 @@ const Footer = () => {
         <div className="grid grid-cols-2 md:grid-cols-6 gap-8 mb-12">
           {/* Logo and description */}
           <div className="col-span-2">
-            <h3 className="text-2xl font-bold text-foreground mb-4">Triage</h3>
-            <p className="text-muted-foreground text-sm mb-6">
+            <h3 className="text-2xl font-bold text-foreground mb-4 font-oldenberg">Triage</h3>
+            <p className="text-foreground text-sm mb-6">
               Your AI on-call engineer. Automatic incident detection, analysis, and resolution.
             </p>
             
@@ -49,7 +49,7 @@ const Footer = () => {
                   <li key={link}>
                     <a 
                       href="#" 
-                      className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                      className="text-sm text-foreground hover:text-foreground transition-colors"
                     >
                       {link}
                     </a>
@@ -62,28 +62,28 @@ const Footer = () => {
         
         {/* Bottom bar */}
         <div className="pt-8 border-t border-border flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-sm text-muted-foreground">
-            © 2025 Triage. All rights reserved.
+          <p className="text-sm text-foreground">
+            © 2025 <span className="font-oldenberg">Triage</span>. All rights reserved.
           </p>
           
           <div className="flex items-center gap-4">
             <a 
               href="#" 
-              className="text-muted-foreground hover:text-foreground transition-colors"
+              className="text-foreground hover:text-foreground transition-colors"
               aria-label="Twitter"
             >
               <Twitter className="w-5 h-5" />
             </a>
             <a 
               href="#" 
-              className="text-muted-foreground hover:text-foreground transition-colors"
+              className="text-foreground hover:text-foreground transition-colors"
               aria-label="LinkedIn"
             >
               <Linkedin className="w-5 h-5" />
             </a>
             <a 
               href="#" 
-              className="text-muted-foreground hover:text-foreground transition-colors"
+              className="text-foreground hover:text-foreground transition-colors"
               aria-label="GitHub"
             >
               <Github className="w-5 h-5" />

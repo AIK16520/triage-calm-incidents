@@ -11,18 +11,13 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border">
       <div className="container px-4">
         <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <a href="#" className="text-xl font-bold text-foreground">
-            Triage
-          </a>
-          
           {/* Desktop nav */}
           <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
-                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+                className="text-sm font-medium text-foreground hover:text-foreground transition-colors"
               >
                 {link.name}
               </a>
@@ -54,7 +49,7 @@ const Navbar = () => {
                 <a
                   key={link.name}
                   href={link.href}
-                  className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+                  className="text-sm font-medium text-foreground hover:text-foreground transition-colors"
                   onClick={() => setIsOpen(false)}
                 >
                   {link.name}

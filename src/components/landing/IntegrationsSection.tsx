@@ -87,17 +87,17 @@ const IntegrationsSection = () => {
     <section id="integrations" className="py-24 md:py-32 bg-secondary/30">
       <div className="container px-4">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-headline mb-6">
-            One Platform, <span className="gradient-text">Every Stack</span>
+          <h2 className="text-headline mb-6 font-title text-primary">
+            Easily Integrates with Your <span className="gradient-text">Platform</span>
           </h2>
-          <p className="text-body text-muted-foreground">
+          <p className="text-body text-foreground">
             Connect your entire infrastructure in minutes. No complex setup required.
           </p>
         </div>
         
         {/* Supported integrations */}
         <div className="mb-16">
-          <p className="text-label text-muted-foreground text-center mb-8">Supported Platforms</p>
+          <p className="text-label text-foreground text-center mb-8">Supported Platforms</p>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 max-w-5xl mx-auto">
             {supportedIntegrations.map((integration) => (
               <div
@@ -115,7 +115,7 @@ const IntegrationsSection = () => {
         
         {/* Coming soon with logos */}
         <div className="text-center">
-          <p className="text-label text-muted-foreground mb-6">Coming Soon</p>
+          <p className="text-label text-foreground mb-6">Coming Soon</p>
           <div className="flex items-center justify-center gap-8">
             {comingSoonIntegrations.map((integration) => (
               <div 
@@ -125,7 +125,7 @@ const IntegrationsSection = () => {
                 <div className="w-12 h-12 rounded-xl bg-secondary/50 flex items-center justify-center">
                   {integration.logo}
                 </div>
-                <span className="text-xs text-muted-foreground">{integration.name}</span>
+                <span className="text-xs text-foreground">{integration.name}</span>
               </div>
             ))}
           </div>
