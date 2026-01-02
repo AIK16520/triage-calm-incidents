@@ -134,9 +134,7 @@ const WaitlistSection = () => {
                 {isSubmitting ? "Joining..." : "Join the Waitlist"}
               </Button>
               
-              <p className="text-sm text-center text-foreground">
-                No spam, ever.
-              </p>
+           
             </form>
           </div>
         </div>

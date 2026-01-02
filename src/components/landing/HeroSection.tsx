@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
 import { ArrowRight } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const BeforePhone = () => {
   // No state needed - everything stays visible with pulsing borders
@@ -284,12 +285,7 @@ const AfterPhone = () => {
 };
 
 const HeroSection = () => {
-  const scrollToWaitlist = () => {
-    const waitlistSection = document.getElementById('waitlist');
-    if (waitlistSection) {
-      waitlistSection.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+  const navigate = useNavigate();
 
   return (
     <section className="relative py-16 md:py-24 overflow-hidden bg-background">
@@ -388,11 +384,11 @@ const HeroSection = () => {
 
         {/* CTA Section */}
         <div className="flex flex-col items-center gap-4">
-          <Button 
-            variant="hero" 
-            size="lg" 
+          <Button
+            variant="hero"
+            size="lg"
             className="h-14 px-10 text-base shadow-[0_0_30px_hsl(var(--primary)/0.4)] hover:shadow-[0_0_40px_hsl(var(--primary)/0.5)] group"
-            onClick={scrollToWaitlist}
+            onClick={() => navigate('/signin')}
           >
             Join Waitlist
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />

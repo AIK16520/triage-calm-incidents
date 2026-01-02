@@ -46,12 +46,12 @@ const ProblemSection = () => {
               </div>
               
               {/* Description */}
-              <p className="text-foreground flex-1">{problem.description}</p>
+              <p className="text-muted-foreground flex-1">{problem.description}</p>
               
               {/* Stat */}
               <div className="md:text-right shrink-0">
                 <span className="text-3xl font-bold text-destructive">{problem.stat}</span>
-                <p className="text-sm text-foreground mt-1">{problem.statLabel}</p>
+                <p className="text-sm text-muted-foreground mt-1">{problem.statLabel}</p>
               </div>
             </div>
           ))}

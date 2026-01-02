@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 
@@ -6,6 +7,7 @@ const navLinks: { name: string; href: string }[] = [];
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border">
@@ -26,8 +28,11 @@ const Navbar = () => {
           
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center gap-4">
-            <Button variant="default" size="sm" asChild>
+            <Button variant="outline" size="sm" asChild className="bg-teal-500 text-white border-teal-500 hover:bg-teal-600 hover:text-white hover:border-teal-600">
               <a href="#waitlist">Join Waitlist</a>
+            </Button>
+            <Button variant="default" size="sm" onClick={() => navigate('/signin')} className="bg-white text-black hover:bg-gray-100">
+              Sign Up
             </Button>
           </div>
           
@@ -56,8 +61,11 @@ const Navbar = () => {
                 </a>
               ))}
               <div className="flex flex-col gap-2 pt-4 border-t border-border">
-                <Button variant="default" size="sm" asChild>
+                <Button variant="outline" size="sm" asChild className="bg-teal-500 text-white border-teal-500 hover:bg-teal-600 hover:text-white hover:border-teal-600">
                   <a href="#waitlist">Join Waitlist</a>
+                </Button>
+                <Button variant="default" size="sm" onClick={() => { navigate('/signin'); setIsOpen(false); }} className="bg-white text-black hover:bg-gray-100">
+                  Sign Up
                 </Button>
               </div>
             </div>
