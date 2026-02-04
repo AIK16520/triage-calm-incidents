@@ -15,28 +15,54 @@ export default function Actions() {
 
   useEffect(() => {
     async function loadActions() {
-      // Fetch commands with joined service information
-      const { data, error } = await supabase
+      console.log('Loading actions...')
+
+      // Fetch commands
+      const { data: commandsData, error: commandsError } = await supabase
         .from('commands')
-        .select(`
-          *,
-          services (
-            name,
-            platform
-          )
-        `)
+        .select('*')
         .order('created_at', { ascending: false })
 
-      if (error) {
-        console.error('Error loading actions:', error)
+      if (commandsError) {
+        console.error('Error loading actions:', commandsError)
+        console.error('Error details:', JSON.stringify(commandsError, null, 2))
+        setLoading(false)
+        return
       }
 
-      // Flatten the service data for easier access
-      const flattenedData = data?.map(action => ({
-        ...action,
-        service_name: action.services?.name || 'Unknown Service',
-        platform: action.services?.platform || 'unknown'
-      }))
+      console.log('Raw commands from Supabase:', commandsData)
+      console.log('Number of commands fetched:', commandsData?.length || 0)
+
+      if (!commandsData || commandsData.length === 0) {
+        setActions([])
+        setStats({ total: 0, successRate: 0 })
+        setLoading(false)
+        return
+      }
+
+      // Fetch all services to map service_id to service details
+      const { data: servicesData } = await supabase
+        .from('services')
+        .select('service_id, name, platform')
+
+      console.log('Services data:', servicesData)
+
+      // Create a map of service_id to service details
+      const servicesMap = new Map()
+      servicesData?.forEach(service => {
+        servicesMap.set(service.service_id, service)
+      })
+
+      // Enrich commands with service data
+      const flattenedData = commandsData.map(action => {
+        const service = action.service_id ? servicesMap.get(action.service_id) : null
+        console.log('Mapping action:', action.command_id, 'service_id:', action.service_id, 'to service:', service)
+        return {
+          ...action,
+          service_name: service?.name || action.service_name || 'Unknown Service',
+          platform: service?.platform || action.platform || 'unknown'
+        }
+      })
 
       const total = flattenedData?.length || 0
       const completed = flattenedData?.filter(a => a.status === 'completed').length || 0
