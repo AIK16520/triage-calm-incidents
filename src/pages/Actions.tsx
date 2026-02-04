@@ -43,7 +43,7 @@ export default function Actions() {
       // Try to fetch services (but don't fail if it errors)
       const { data: servicesData, error: servicesError } = await supabase
         .from('services')
-        .select('service_id, name, platform')
+        .select('*')
 
       if (servicesError) {
         console.error('Error loading services:', servicesError)
@@ -54,18 +54,41 @@ export default function Actions() {
       console.log('Services data:', servicesData)
       console.log('Number of services fetched:', servicesData?.length || 0)
 
-      // Create a map of service_id to service details (if services loaded)
-      const servicesMap = new Map()
+      // Create maps for both service_id and platform_service_id (if services loaded)
+      const servicesByIdMap = new Map()
+      const servicesByPlatformIdMap = new Map()
+
       if (servicesData) {
         servicesData.forEach(service => {
-          servicesMap.set(service.service_id, service)
+          // Map by service_id (could be 'id' or 'service_id')
+          const serviceId = service.service_id || service.id
+          if (serviceId) {
+            servicesByIdMap.set(serviceId, service)
+          }
+          // Also map by platform_service_id for fallback
+          if (service.platform_service_id) {
+            servicesByPlatformIdMap.set(service.platform_service_id, service)
+          }
         })
       }
 
-      // Enrich commands with service data (fallback to service_name if mapping fails)
+      console.log('Service mappings created:', {
+        byId: servicesByIdMap.size,
+        byPlatformId: servicesByPlatformIdMap.size
+      })
+
+      // Enrich commands with service data (fallback chain)
       const flattenedData = commandsData.map(action => {
-        const service = action.service_id ? servicesMap.get(action.service_id) : null
-        console.log('Mapping action:', action.command_id, 'service_id:', action.service_id, 'service_name:', action.service_name, 'to service:', service)
+        // Try to find service by service_id first
+        let service = action.service_id ? servicesByIdMap.get(action.service_id) : null
+
+        // Fallback: try to match by platform_service_id if service_name looks like a platform ID
+        if (!service && action.service_name && action.service_name.startsWith('prj_')) {
+          service = servicesByPlatformIdMap.get(action.service_name)
+        }
+
+        console.log('Mapping action:', action.command_id, 'service_id:', action.service_id, 'service_name:', action.service_name, 'found service:', service?.name)
+
         return {
           ...action,
           service_name: service?.name || action.service_name || 'Unknown Service',
