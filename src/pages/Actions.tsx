@@ -40,23 +40,32 @@ export default function Actions() {
         return
       }
 
-      // Fetch all services to map service_id to service details
-      const { data: servicesData } = await supabase
+      // Try to fetch services (but don't fail if it errors)
+      const { data: servicesData, error: servicesError } = await supabase
         .from('services')
         .select('service_id, name, platform')
 
+      if (servicesError) {
+        console.error('Error loading services:', servicesError)
+        console.error('Services error details:', JSON.stringify(servicesError, null, 2))
+        console.warn('Continuing without service mapping...')
+      }
+
       console.log('Services data:', servicesData)
+      console.log('Number of services fetched:', servicesData?.length || 0)
 
-      // Create a map of service_id to service details
+      // Create a map of service_id to service details (if services loaded)
       const servicesMap = new Map()
-      servicesData?.forEach(service => {
-        servicesMap.set(service.service_id, service)
-      })
+      if (servicesData) {
+        servicesData.forEach(service => {
+          servicesMap.set(service.service_id, service)
+        })
+      }
 
-      // Enrich commands with service data
+      // Enrich commands with service data (fallback to service_name if mapping fails)
       const flattenedData = commandsData.map(action => {
         const service = action.service_id ? servicesMap.get(action.service_id) : null
-        console.log('Mapping action:', action.command_id, 'service_id:', action.service_id, 'to service:', service)
+        console.log('Mapping action:', action.command_id, 'service_id:', action.service_id, 'service_name:', action.service_name, 'to service:', service)
         return {
           ...action,
           service_name: service?.name || action.service_name || 'Unknown Service',
